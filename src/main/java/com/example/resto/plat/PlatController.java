@@ -43,5 +43,11 @@ public class PlatController {
 	    model.addAttribute("listCategorie", listCategorie);
 	    return new ModelAndView("listPlat");
 	 }
+        
+         @GetMapping("index")
+	 public ModelAndView getIndex(Model model){
+	
+	    return new ModelAndView("index");
+	 }
 
 }
