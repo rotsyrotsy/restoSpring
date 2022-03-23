@@ -35,19 +35,22 @@ public class PlatController {
 		 if (categorie!=null ) {
 			 if (!categorie.isEmpty() && categorie.compareToIgnoreCase("tous")!=0) {
 					listPlat = service.getPlatByCategorie(categorie);
+					model.addAttribute("misyCat", 1);
 			 }
 		 }
 		 
          List<Categorie> listCategorie = catService.getAllCategories();
 		model.addAttribute("listPlat", listPlat);
 	    model.addAttribute("listCategorie", listCategorie);
-	    return new ModelAndView("listPlat");
+	    model.addAttribute("view", "menu");
+	    return new ModelAndView("template");
 	 }
         
          @GetMapping("index")
 	 public ModelAndView getIndex(Model model){
-	
-	    return new ModelAndView("index");
+
+     	    model.addAttribute("view", "index");
+     	    return new ModelAndView("template");
 	 }
 
 }
