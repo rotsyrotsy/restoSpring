@@ -1,5 +1,6 @@
 package com.example.resto.plat;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,5 +17,8 @@ public interface PlatRepository extends JpaRepository<Plat,String>{
 	
 	@Query(nativeQuery = true, value ="select * from platDetail  where categorie=?1  ")
 	List<Object[]> getAllPlatDetailByCat(String categorie);
+
+	@Query(nativeQuery = true, value ="select * from prixRevient")
+	List<Object[]> getPrixAllPlats();
   
 }

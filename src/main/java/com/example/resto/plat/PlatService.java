@@ -43,4 +43,21 @@ public class PlatService {
         List<HashMap<String, Object>> listehm = this.hashMapPlatDetail(liste);
         return listehm;
 	}
+	
+	public List<HashMap<String, Object>> getPrixAllPlats(){
+		List<HashMap<String, Object>> listehm = new ArrayList<HashMap<String, Object>>();
+		List<Object[]> liste = repository.getPrixAllPlats();
+
+        for (int i = 0; i < liste.size(); i++) {
+            HashMap<String, Object> hm = new HashMap<String, Object>();
+            Object[] s = (Object[]) liste.get(i);
+            hm.put("idPlat", s[0]);
+            hm.put("label", s[1]);
+            hm.put("prixVente", s[2]);
+            hm.put("prixDeRevient", s[3]);
+            hm.put("prixAchatPlat", s[5]);
+            listehm.add(hm);
+        }
+        return listehm;
+	}
 }
