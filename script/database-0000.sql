@@ -13,48 +13,6 @@ create table categorie
 );
 
 
-create table ingredient
-(
-	id varchar(15) primary key,
-	label varchar(50),
-	labelUnity varchar(20),
-	price double precision
-);
-
-create table platIngredient
-(
-	id varchar(15) primary key,
-	idPlat varchar(15),
-	idIngredient varchar(15),
-	quantity double precision
-);
-
-insert into ingredient(id,label,labelUnity,price) values ('I1','tomate','kg',200);
-insert into ingredient(id,label,labelUnity,price) values ('I2','oignon','kg',200);
-insert into ingredient(id,label,labelUnity,price) values ('I3','salade','kg',500);
-insert into ingredient(id,label,labelUnity,price) values ('I4','farine','kg',1000);
-insert into ingredient(id,label,labelUnity,price) values ('I5','huile','l',1000);
-
-insert into platIngredient (id,idPlat,idIngredient,quantity) values ('1','24','I1',1);
-insert into platIngredient (id,idPlat,idIngredient,quantity) values ('2','24','I2',5);
-insert into platIngredient (id,idPlat,idIngredient,quantity) values ('3','24','I5',1);
-insert into platIngredient (id,idPlat,idIngredient,quantity) values ('4','25','I1',0.5);
-insert into platIngredient (id,idPlat,idIngredient,quantity) values ('5','26','I3',0.1);
-insert into platIngredient (id,idPlat,idIngredient,quantity) values ('6','26','I1',0.5);
-insert into platIngredient (id,idPlat,idIngredient,quantity) values ('7','26','I4',1);
-insert into platIngredient (id,idPlat,idIngredient,quantity) values ('8','27','I4',1);
-
-create view prixAchatPlat as
-	select idPlat,sum(quantity*price) as price from platIngredient pi
-		join ingredient i on i.id = pi.idIngredient
-		group by idPlat ;
-
-create view prixRevient as
-	select idPlat,label,p.price as prixVente,pap.price as prixDeRevient from prixAchatPlat pap
-		 join plat p on pap.idPlat = p.id;
-
-
-
 create view platDetail as
 	select p.id,p.label,p.price,cat.label as categorie
 	from plat p join categorie cat on p.id_categorie = cat.id;
