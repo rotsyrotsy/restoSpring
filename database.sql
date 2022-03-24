@@ -12,6 +12,35 @@ create table categorie
 	label varchar(50)
 );
 
+
+create table ingredient
+(
+	id varchar(15) primary key,
+	label varchar(50),
+	labelUnity varchar(20),
+	price double precision
+);
+
+create table platIngredient
+(
+	id varchar(15) primary key,
+	idPlat varchar(15),
+	idIngredient varchar(15),
+	quantity double precision
+);
+
+
+create view prixAchatPlat as
+	select idPlat,sum(quantity*price) as price from platIngredient pi
+		join ingredient i on i.id = pi.idIngredient
+		group by idPlat 
+
+create view prixRevient as
+	select idPlat,label,p.price as prixVente,pap.price as prixDeRevient from prixAchatPlat pap
+		 join plat p on pap.idPlat = p.id
+
+
+
 create view platDetail as
 	select p.id,p.label,p.price,cat.label as categorie
 	from plat p join categorie cat on p.id_categorie = cat.id;
