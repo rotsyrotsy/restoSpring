@@ -33,11 +33,11 @@ create table platIngredient
 create view prixAchatPlat as
 	select idPlat,sum(quantity*price) as price from platIngredient pi
 		join ingredient i on i.id = pi.idIngredient
-		group by idPlat 
+		group by idPlat; 
 
 create view prixRevient as
 	select idPlat,label,p.price as prixVente,pap.price as prixDeRevient from prixAchatPlat pap
-		 join plat p on pap.idPlat = p.id
+		 join plat p on pap.idPlat = p.id;
 
 
 
