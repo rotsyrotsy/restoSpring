@@ -53,7 +53,7 @@
 
 		<div class="container">
 			<div class="row p-t-108 p-b-70">
-				<c:forEach begin="0" end="${(listPlat.size()/2)-1}" varStatus="i">
+				<c:forEach items="${listPlat}" var ="plat">
 					<div class="col-md-8 col-lg-6 m-l-r-auto">
 					<!-- Block3 -->
 						<div class="blo3 flex-w flex-col-l-sm m-b-30">
@@ -63,41 +63,15 @@
 	
 							<div class="text-blo3 size21 flex-col-l-m">
 								<a href="#" class="txt21 m-b-3">
-									${listPlat[i.index].label}
+									${plat.label}
 								</a>
 	
 								<span class="txt23">
-									${listPlat[i.index].categorie}
+									${plat.categorie}
 								</span>
 	
 								<span class="txt22 m-t-20">
-									${listPlat[i.index].price}
-								</span>
-							</div>
-						</div>
-					</div>
-				</c:forEach>
-	
-				
-				<c:forEach begin="${listPlat.size()/2}" end="${listPlat.size()}" varStatus="i">
-					<div class="col-md-8 col-lg-6 m-l-r-auto">
-						<!-- Block3 -->
-						<div class="blo3 flex-w flex-col-l-sm m-b-30">
-							<div class="pic-blo3 size20 bo-rad-10 hov-img-zoom m-r-28">
-								<a href="#"><img src="${baseURL}/views/images/lunch-02.jpg" alt="IMG-MENU"></a>
-							</div>
-	
-							<div class="text-blo3 size21 flex-col-l-m">
-								<a href="#" class="txt21 m-b-3">
-									${listPlat[i.index].label}
-								</a>
-	
-								<span class="txt23">
-									${listPlat[i.index].categorie}
-								</span>
-	
-								<span class="txt22 m-t-20">
-									${listPlat[i.index].price}
+									${plat.price}
 								</span>
 							</div>
 						</div>
