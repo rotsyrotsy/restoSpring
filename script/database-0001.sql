@@ -47,5 +47,5 @@ insert into marge("1",2000,1000,200);
 insert into marge("2",3000,2000,150);
 insert into marge("3",4000,3000,50);
 insert into marge("4",5000,4000,15);
-
+insert into marge("5",1000,0,250);
 
