@@ -54,12 +54,12 @@ public class PlatController {
 	 }
          
          @GetMapping("prix-plat")
-    	 public ModelAndView getPrixAllPlats(Model model){
+    	 public List<HashMap<String, Object>> getPrixAllPlats(Model model){
     		 List<HashMap<String, Object>> listPlat = service.getPrixAllPlats();
     		 
     		model.addAttribute("prixDeRevientPlat", listPlat);
     	    model.addAttribute("view", "prixDeRevientPlat");
-    	    return new ModelAndView("template");
+    	    return listPlat;
     	 }
 
 }

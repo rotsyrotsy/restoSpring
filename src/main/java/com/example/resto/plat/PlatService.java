@@ -55,7 +55,6 @@ public class PlatService {
             hm.put("label", s[1]);
             hm.put("prixVente", s[2]);
             hm.put("prixDeRevient", s[3]);
-            hm.put("prixAchatPlat", s[5]);
             listehm.add(hm);
         }
         return listehm;
