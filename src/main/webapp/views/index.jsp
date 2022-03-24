@@ -689,7 +689,7 @@
 
 				<div class="col-lg-6 p-b-30 p-t-18">
 					<div class="wrap-pic-booking size2 bo-rad-10 hov-img-zoom m-l-r-auto">
-						<img src="images/booking-01.jpg" alt="IMG-OUR">
+						<img src="${baseURL}/views/images/booking-01.jpg" alt="IMG-OUR">
 					</div>
 				</div>
 			</div>
@@ -716,7 +716,7 @@
 					<div class="wrap-content-slide3 p-b-50 p-t-50">
 						<div class="container">
 							<div class="pic-review size14 bo4 wrap-cir-pic m-l-r-auto animated visible-false" data-appear="zoomIn">
-								<img src="images/avatar-01.jpg" alt="IGM-AVATAR">
+								<img src="${baseURL}/views/images/avatar-01.jpg" alt="IGM-AVATAR">
 							</div>
 
 							<div class="content-review m-t-33 animated visible-false" data-appear="fadeInUp">
@@ -744,7 +744,7 @@
 					<div class="wrap-content-slide3 p-b-50 p-t-50">
 						<div class="container">
 							<div class="pic-review size14 bo4 wrap-cir-pic m-l-r-auto animated visible-false" data-appear="zoomIn">
-								<img src="images/avatar-04.jpg" alt="IGM-AVATAR">
+								<img src="${baseURL}/views/images/avatar-04.jpg" alt="IGM-AVATAR">
 							</div>
 
 							<div class="content-review m-t-33 animated visible-false" data-appear="fadeInUp">
@@ -772,7 +772,7 @@
 					<div class="wrap-content-slide3 p-b-50 p-t-50">
 						<div class="container">
 							<div class="pic-review size14 bo4 wrap-cir-pic m-l-r-auto animated visible-false" data-appear="zoomIn">
-								<img src="images/avatar-05.jpg" alt="IGM-AVATAR">
+								<img src="${baseURL}/views/images/avatar-05.jpg" alt="IGM-AVATAR">
 							</div>
 
 							<div class="content-review m-t-33 animated visible-false" data-appear="fadeInUp">
@@ -841,7 +841,7 @@
 					<!-- Block1 -->
 					<div class="blo1">
 						<div class="wrap-pic-blo1 bo-rad-10 hov-img-zoom pos-relative">
-							<a href="blog-detail.html"><img src="images/blog-01.jpg" alt="IMG-INTRO"></a>
+							<a href="blog-detail.html"><img src="${baseURL}/views/images/blog-01.jpg" alt="IMG-INTRO"></a>
 
 							<div class="time-blog">
 								21 Dec 2017
@@ -869,7 +869,7 @@
 					<!-- Block1 -->
 					<div class="blo1">
 						<div class="wrap-pic-blo1 bo-rad-10 hov-img-zoom pos-relative">
-							<a href="blog-detail.html"><img src="images/blog-02.jpg" alt="IMG-INTRO"></a>
+							<a href="blog-detail.html"><img src="${baseURL}/views/images/blog-02.jpg" alt="IMG-INTRO"></a>
 
 							<div class="time-blog">
 								15 Dec 2017
@@ -897,7 +897,7 @@
 					<!-- Block1 -->
 					<div class="blo1">
 						<div class="wrap-pic-blo1 bo-rad-10 hov-img-zoom pos-relative">
-							<a href="blog-detail.html"><img src="images/blog-03.jpg" alt="IMG-INTRO"></a>
+							<a href="blog-detail.html"><img src="${baseURL}/views/images/blog-03.jpg" alt="IMG-INTRO"></a>
 
 							<div class="time-blog">
 								12 Dec 2017
