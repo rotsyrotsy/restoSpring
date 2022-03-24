@@ -116,7 +116,7 @@
 			</span>
 
 			<div class="wrap-input-signup size17 bo2 bo-rad-10 bgwhite pos-relative txt10 m-10">
-				<select class="bo-rad-10 sizefull txt10 p-l-20" name="categorie">
+				<select class="selection-1 select2-hidden-accessible" tabindex="-1" aria-hidden="true" name="categorie">
                     <option value="tous">Tous</option>
 				<c:forEach  items="${listCategorie}" var ="categorie">
 					<option value="${categorie.label}">${categorie.label}</option>
