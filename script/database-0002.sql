@@ -35,6 +35,7 @@ create sequence seqOrderr;
 create sequence seqDetailsOrder;
 
 create view dateDetailsOrder as
-	select  d.id,d.idOrder,d.idPlat,o.idServeur,o.daty
+	select  d.id,d.idOrder,d.idPlat,o.daty as date,o.idServeur
 		from detailsOrder d
 		join orderr o on o.id = d.idOrder
+
