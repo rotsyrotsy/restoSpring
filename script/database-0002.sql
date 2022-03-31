@@ -28,9 +28,6 @@ CREATE TABLE detailsOrder
 	foreign key(idOrder) references orderr(id),
 	foreign key(idPlat) references plat(id)
 );
-ALTER TABLE detailsOrder ADD daty date;
-ALTER TABLE detailsOrder ADD idServeur varchar(15);
-ALTER TABLE detailsOrder ADD foreign key(idServeur) references serveur(id);
 
 create sequence seqServeur;
 create sequence seqIdTable;
