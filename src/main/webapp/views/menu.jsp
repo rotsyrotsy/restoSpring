@@ -74,6 +74,12 @@
 									${plat.price}
 								</span>
 							</div>
+                                                                <button type="submit" class="btn3 flex-c-m size18 txt11 trans-0-4 m-10">
+                                                                    Commander
+                                                                </button>
+                                                                <button type="submit" class="btn3 flex-c-m size18 txt11 trans-0-4 m-10">
+                                                                    Voir Ingredient
+                                                                </button>
 						</div>
 					</div>
 				</c:forEach>
