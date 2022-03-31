@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.resto.plat.PlatService;
 
@@ -107,4 +108,36 @@ public class DetailsOrderService {
         }
  		return listehm;
  	}
+ 	
+ 	public List<HashMap<String, Object>> getprixPlatOrderByIdOrder (String idOrder){
+ 		List<Object[]> liste = repository.getprixPlatOrderByIdOrder( idOrder);
+    	List<HashMap<String, Object>> listehm = new ArrayList<HashMap<String, Object>>();
+
+        for (int i = 0; i < liste.size(); i++) {
+            HashMap<String, Object> hm = new HashMap<String, Object>();
+            Object[] s = (Object[]) liste.get(i);
+
+            hm.put("id", s[0]);	//sumPrix
+            hm.put("idOrder", s[1]);	//idOrder
+            hm.put("idPlat", s[2]);	//idServeur
+            hm.put("plat", s[3]);		
+            hm.put("idServeur", s[4]);	
+            hm.put("date", s[5]);
+            hm.put("prixVente", s[6]);
+            listehm.add(hm);
+        }
+ 		return listehm;
+ 	}
+ 	
+
+	 @Transactional
+	   public void validerCommande(String idOrder) {
+		 	List<DetailsOrder> listedo = repository.getDetailsOrderByIdOrder(idOrder);
+		 	for(int i=0; i<listedo.size(); i++) {
+		 		DetailsOrder temp = listedo.get(i);
+		 		temp.setEtat("valide");
+		 		repository.save(temp);
+		 	}
+
+	    }
 }

@@ -35,3 +35,5 @@ create view qteParPlatParIngredient as
 		join plat p on p.id = idPlat; 
 
 
+
+ALTER TABLE detailsOrder ADD etat VARCHAR(100);

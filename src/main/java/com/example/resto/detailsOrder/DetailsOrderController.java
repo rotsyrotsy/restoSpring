@@ -83,4 +83,5 @@ public class DetailsOrderController {
 	    model.addAttribute("view", "resultPourboire");
 	    return new ModelAndView("template");
 	 }
+	
 }
