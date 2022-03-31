@@ -17,3 +17,5 @@ create view prixOrderServeur as
 insert into tables values ('1',1);
 insert into tables values ('2',2);
 insert into tables values ('3',3);
+
+ALTER TABLE detailsOrder ADD etat VARCHAR(100);

@@ -4,7 +4,7 @@ CREATE TABLE serveur
 	nom varchar(50)
 );
 
-CREATE TABLE table
+CREATE TABLE tables
 (
 	id varchar(15) primary key,
 	numero float	
@@ -16,7 +16,7 @@ CREATE TABLE orderr
 	idTable varchar(15),
 	idServeur varchar(15),
 	daty date,
-	foreign key(idTable) references idTable(id),
+	foreign key(idTable) references tables(id),
 	foreign key(idServeur) references serveur(id)
 );
 
@@ -46,9 +46,9 @@ insert into serveur values ('S2','THESERVE');
 insert into serveur values ('S3','CERVEAU');
 
 
-insert into orderr values ('O1',null,'S1','28-03-2022');
-insert into orderr values ('O2',null,'S1','28-03-2022');
-insert into orderr values ('O3',null,'S1','28-03-2022');
+insert into orderr values ('O1',1,'S1','28-03-2022');
+insert into orderr values ('O2',1,'S1','28-03-2022');
+insert into orderr values ('O3',2,'S1','28-03-2022');
 
 insert into detailsOrder values ('DO1','O1','24','28-03-2022','S1');
 insert into detailsOrder values ('DO2','O1','25','28-03-2022','S1');
