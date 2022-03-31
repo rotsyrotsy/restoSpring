@@ -17,3 +17,16 @@ create view prixOrderServeur as
 insert into tables values ('1',1);
 insert into tables values ('2',2);
 insert into tables values ('3',3);
+
+
+
+ALTER TABLE orderr
+ALTER COLUMN daty TYPE timestamp;
+
+
+
+ALTER TABLE detailsOrder
+ADD COLUMN etat varchar(15);
+
+
+create view lastOrder as select id from orderr where daty=(select max(daty) from orderr)

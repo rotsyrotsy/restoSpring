@@ -122,7 +122,7 @@ public class DetailsOrderService {
      public void insertDetailsOrder(String idPlat,String idServeur) {
      try {
      	String idOrder = repository.getCurrOrder();
-     	 entityManager.createNativeQuery("INSERT INTO detailsOrder VALUES (nextval('seqDetailsOrder'),?,?,now(),?)")
+     	 entityManager.createNativeQuery("INSERT INTO detailsOrder VALUES (nextval('seqDetailsOrder'),?,?,now(),?,'non valide')")
      	 .setParameter(1, idOrder)
      	 .setParameter(2, idPlat)
           .setParameter(3, idServeur)

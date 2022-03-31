@@ -101,4 +101,21 @@ public class PlatService {
 		}
 		return 0.0;
 	}
+	
+	public List<HashMap<String, Object>> getAllIngredient(String idPlat){
+		List<HashMap<String, Object>> listehm = new ArrayList<HashMap<String, Object>>();
+		List<Object[]> liste = repository.getAllIngredient(idPlat);
+        for (int i = 0; i < liste.size(); i++) {
+            HashMap<String, Object> hm = new HashMap<String, Object>();
+            Object[] platIng = (Object[]) liste.get(i);
+
+            hm.put("idPlat", platIng[0]);
+            hm.put("nomPlat", platIng[1]);
+            hm.put("label", platIng[2]);
+            hm.put("quantite",platIng[3]);
+            hm.put("unite", platIng[4]);
+            listehm.add(hm);
+        }
+        return listehm;
+	}
 }
