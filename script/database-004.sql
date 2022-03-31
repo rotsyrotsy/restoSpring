@@ -12,3 +12,18 @@ create view prixDeVente as (
 create view prixOrderServeur as
 	select sum(prixVente) as sommePrix,idOrder,idServeur,date,sum(prixVente)*0.02 as pourboire from prixPlatOrder
 		group by idOrder,idServeur,date;
+
+
+create view prixPlatOrder2 as
+	select dt.id,dt.idOrder as idOrder,dt.idPlat,pv.label as plat,dt.idServeur,dt.daty as date,prixVente, o.idTable from detailsOrder dt 
+		join prixDeVente pv on dt.idPlat = pv.id 
+		join orderr o on o.id = dt.idOrder;
+
+
+
+ALTER TABLE orderr
+ALTER COLUMN daty TYPE timestamp;
+
+
+create view lastOrderByTable as
+ select o.id,t.numero from orderr o join idTable t on o.idTable = t.id where daty=(select max(daty) from orderr od where od.idTable = o.idTable)
