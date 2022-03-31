@@ -5,9 +5,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.example.resto.plat.PlatService;
 
@@ -22,6 +30,8 @@ public class DetailsOrderService {
     public DetailsOrderService(DetailsOrderRepository repository) {
         this.repository = repository;
     }
+    @PersistenceContext
+    private EntityManager entityManager;
     
     public List<HashMap<String, Object>> getDateOrderDetails (String idServeur, Date date, Date date2){
     	List<Object[]> liste = repository.dateOrderDetails( idServeur,  date,  date2);
@@ -140,4 +150,17 @@ public class DetailsOrderService {
 		 	}
 
 	    }
+    
+ 	 @Transactional
+     public void insertDetailsOrder(String idPlat,String idServeur) {
+     try {
+     	String idOrder = repository.getCurrOrder();
+     	 entityManager.createNativeQuery("INSERT INTO detailsOrder VALUES (nextval('seqDetailsOrder'),?,?,now(),?,'non valide')")
+     	 .setParameter(1, idOrder)
+     	 .setParameter(2, idPlat)
+          .setParameter(3, idServeur)
+          .executeUpdate(); 	
+     	}
+     catch(Exception e) {e.printStackTrace();}
+     }
 }

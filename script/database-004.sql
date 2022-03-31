@@ -14,6 +14,10 @@ create view prixOrderServeur as
 		group by idOrder,idServeur,date;
 
 
+insert into tables values ('1',1);
+insert into tables values ('2',2);
+insert into tables values ('3',3);
+
 create view prixPlatOrder2 as
 	select dt.id,dt.idOrder as idOrder,dt.idPlat,pv.label as plat,dt.idServeur,dt.daty as date,prixVente, o.idTable from detailsOrder dt 
 		join prixDeVente pv on dt.idPlat = pv.id 
@@ -23,6 +27,13 @@ create view prixPlatOrder2 as
 
 ALTER TABLE orderr
 ALTER COLUMN daty TYPE timestamp;
+
+
+ALTER TABLE detailsOrder
+ADD COLUMN etat varchar(15);
+
+
+create view lastOrder as select id from orderr where daty=(select max(daty) from orderr);
 
 
 create view lastOrderByTable as
@@ -35,5 +46,3 @@ create view qteParPlatParIngredient as
 		join plat p on p.id = idPlat; 
 
 
-
-ALTER TABLE detailsOrder ADD etat VARCHAR(100);
