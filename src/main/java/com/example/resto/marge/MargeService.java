@@ -5,8 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.resto.categorie.Categorie;
-import com.example.resto.ingredient.IngredientRepository;
 @Service
 public class MargeService {
 	private final MargeRepository repository;

@@ -13,6 +13,7 @@
 	<link rel="icon" type="image/png" href="${baseURL}/views/images/icons/favicon.png"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="${baseURL}/views/vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="${baseURL}/views/assets/vendor/bootstrap-icons/bootstrap-icons.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="${baseURL}/views/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 <!--===============================================================================================-->
@@ -34,6 +35,8 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="${baseURL}/views/css/util.css">
 	<link rel="stylesheet" type="text/css" href="${baseURL}/views/css/main.css">
+		<link rel="stylesheet" type="text/css" href="${baseURL}/views/css/panier.css">
+	
 <!--===============================================================================================-->
 </head>
 <body class="animsition">
@@ -85,7 +88,39 @@
 							</ul>
 						</nav>
 					</div>
-
+					
+<div class="ps-cart">
+<a class="ps-cart__toggle" href="#"><span><i>20</i></span><i class="bi bi-basket" aria-hidden="true"></i></a>
+              <div class="ps-cart__listing">
+                <div class="ps-cart__content">
+                  <div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
+                    <div class="ps-cart-item__thumbnail"><a href="product-detail.html"></a><img src="${baseURL}/views/images/lunch-01.jpg" alt="IMG-MENU"></div>
+                    <div class="ps-cart-item__content"><a class="ps-cart-item__title" href="product-detail.html">Amazin’ Glazin’</a>
+                      <p><span>Quantity:<i>12</i></span><span>Total:<i>£176</i></span></p>
+                    </div>
+                  </div>
+                  <div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
+                    <div class="ps-cart-item__thumbnail"><a href="product-detail.html"></a><img src="${baseURL}/views/images/lunch-01.jpg" alt="IMG-MENU"></div>
+                    <div class="ps-cart-item__content"><a class="ps-cart-item__title" href="product-detail.html">The Crusty Croissant</a>
+                      <p><span>Quantity:<i>12</i></span><span>Total:<i>£176</i></span></p>
+                    </div>
+                  </div>
+                  <div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
+                    <div class="ps-cart-item__thumbnail"><a href="product-detail.html"></a><img src="${baseURL}/views/images/lunch-01.jpg" alt="IMG-MENU"></div>
+                    <div class="ps-cart-item__content"><a class="ps-cart-item__title" href="product-detail.html">The Rolling Pin</a>
+                      <p><span>Quantity:<i>12</i></span><span>Total:<i>£176</i></span></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="ps-cart__total">
+                  <p>Number of items:<span>36</span></p>
+                  <p>Item Total:<span>£528.00</span></p>
+                </div>
+                <div class="ps-cart__footer"><a class="ps-btn" href="cart.html">Check out<i class="bi bi-arrow-right" aria-hidden="true"></i></a></div>
+              </div>
+            </div>
+            
+            
 					<!-- Social -->
 					<div class="social flex-w flex-l-m p-r-20">
 						<a href="#"><i class="fa fa-tripadvisor" aria-hidden="true"></i></a>
@@ -228,7 +263,7 @@
 
 					<ul>
 						<li class="txt14">
-							09:30 AM – 11:00 PM
+							09:30 AM â 11:00 PM
 						</li>
 
 						<li class="txt14">
