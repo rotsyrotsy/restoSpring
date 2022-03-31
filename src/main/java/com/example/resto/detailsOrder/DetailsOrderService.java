@@ -89,4 +89,22 @@ public class DetailsOrderService {
 			
  		return val;
  	}
+ 	
+ 	public List<HashMap<String, Object>> getPrixOrderServeur (String idServeur, Date date1, Date date2){
+ 		List<Object[]> liste = repository.prixOrderServeur( idServeur,  date1,  date2);
+    	List<HashMap<String, Object>> listehm = new ArrayList<HashMap<String, Object>>();
+
+        for (int i = 0; i < liste.size(); i++) {
+            HashMap<String, Object> hm = new HashMap<String, Object>();
+            Object[] s = (Object[]) liste.get(i);
+
+            hm.put("valeurOrder", s[0]);	//sumPrix
+            hm.put("idOrder", s[1]);	//idOrder
+            hm.put("idServeur", s[2]);	//idServeur
+            hm.put("date", s[3]);		//date
+            hm.put("pourcentage", s[4]);	//pourboire
+            listehm.add(hm);
+        }
+ 		return listehm;
+ 	}
 }

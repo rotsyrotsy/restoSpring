@@ -20,5 +20,9 @@ public interface PlatRepository extends JpaRepository<Plat,String>{
 
 	@Query(nativeQuery = true, value ="select * from prixRevient")
 	List<Object[]> getPrixAllPlats();
+	
+
+	@Query(nativeQuery = true, value ="select * from prixDeVente")
+	List<Object[]> getPrixDeVente();
   
 }

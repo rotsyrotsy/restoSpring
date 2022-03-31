@@ -12,4 +12,8 @@ import org.springframework.stereotype.Repository;
 public interface DetailsOrderRepository extends JpaRepository<DetailsOrder,String>{
 	@Query(nativeQuery = true, value ="select * from detailsOrder where idServeur=?1 and daty>?2 and daty<=?3 order by idorder")
 	List<Object[]> dateOrderDetails(String idServeur,Date date1, Date date2);
+	
+
+	@Query(nativeQuery = true, value ="select * from prixOrderServeur where idServeur=?1 and date>?2 and date<=?3 order by idOrder")
+	List<Object[]> prixOrderServeur(String idServeur,Date date1, Date date2);
 }

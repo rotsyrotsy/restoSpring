@@ -10,7 +10,7 @@
     </h2>
 </section>
 <div class="section-signup bg1-pattern p-t-85 p-b-85">
-    <form class="flex-c-m flex-w flex-col-c-m-lg p-l-5 p-r-5" action="${baseURL}/detailsOrders/choixServeur">
+    <form class="flex-c-m flex-w flex-col-c-m-lg p-l-5 p-r-5" action="${baseURL}/detailsOrders/choixServeurBase">
         <span class="txt5 m-10">
             Id Serveur
         </span>

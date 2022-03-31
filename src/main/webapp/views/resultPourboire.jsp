@@ -14,7 +14,8 @@
 <div class="section-signup bg1-pattern p-t-85 p-b-85">
         <h1>Liste Pourboire</h1>
     <div class="col-md-3"></div>
-    <table class="table col-md-6">
+    <p>ID Serveur: ${listOrder[0].idServeur} </p>
+    <table class="table">
         <thead>
             <tr>
                 <th>#</th>

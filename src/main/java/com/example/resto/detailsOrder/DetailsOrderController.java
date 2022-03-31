@@ -62,4 +62,25 @@ public class DetailsOrderController {
 	    model.addAttribute("view", "resultPourboire");
 	    return new ModelAndView("template");
 	 }
+	
+	@GetMapping("/choixServeurBase")
+	public ModelAndView resultServeur2(Model model, 
+			@RequestParam(required = true) String serveur,
+			 @RequestParam(required = true) String date1,
+			 @RequestParam(required = true) String date2) throws ParseException{
+		Date d1 = new SimpleDateFormat("dd/MM/yyyy").parse(date1);
+		Date d2 = new SimpleDateFormat("dd/MM/yyyy").parse(date2);
+		
+		List<HashMap<String,Object>> liste = service.getPrixOrderServeur(serveur, d1, d2);
+		
+		Double sum = 0.0;
+		for(int i=0; i<liste.size(); i++) {
+			HashMap<String,Object> temp = liste.get(i);
+			sum += (Double)temp.get("pourcentage");
+		}
+		model.addAttribute("sum",sum);
+	    model.addAttribute("listOrder", liste);
+	    model.addAttribute("view", "resultPourboire");
+	    return new ModelAndView("template");
+	 }
 }
