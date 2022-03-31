@@ -84,6 +84,7 @@ public class DetailsOrderController {
 	    model.addAttribute("view", "resultPourboire");
 	    return new ModelAndView("template");
 	 }
+	
     @PostMapping(path="/insert")
     public ModelAndView ajout(Model model,@RequestParam String idPlat,@RequestParam String idServeur) throws Exception{
         service.insertDetailsOrder(idPlat,idServeur);

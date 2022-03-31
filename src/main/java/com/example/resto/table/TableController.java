@@ -33,8 +33,10 @@ public class TableController {
 	 
 	 @GetMapping
 	 public ModelAndView getAllTableOrder(Model models){
-		 List<HashMap<String,Object>> listTable = service.lastOrderByTable();
-		 
+		 List<HashMap<String,Object>> listTable = service.selectFromIdTable();
+		 List<HashMap<String,Object>> listTableOrder = service.lastOrderByTable();
+
+		models.addAttribute("listTableOrder", listTableOrder);
 		models.addAttribute("listTable", listTable);
                 models.addAttribute("view", "selectTable");
                 return new ModelAndView("template");

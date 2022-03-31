@@ -37,4 +37,21 @@ public class TableService {
         }
  		return listehm;
  	}
+    
+
+    public List<HashMap<String, Object>> selectFromIdTable (){
+ 		List<Object[]> liste = repository.selectFromIdTable();
+    	List<HashMap<String, Object>> listehm = new ArrayList<HashMap<String, Object>>();
+
+        for (int i = 0; i < liste.size(); i++) {
+            HashMap<String, Object> hm = new HashMap<String, Object>();
+            Object[] s = (Object[]) liste.get(i);
+
+            hm.put("id", s[0]);	//id
+            hm.put("numero", s[1]);	//numero
+            
+            listehm.add(hm);
+        }
+ 		return listehm;
+ 	}
 }

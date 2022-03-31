@@ -13,4 +13,8 @@ public interface TableRepository extends JpaRepository<IdTable,String>{
 	@Query(nativeQuery = true, value ="select * from lastOrderByTable")
 	List<Object[]> lastOrderByTable();
 	
+
+	@Query(nativeQuery = true, value ="select * from idTable")
+	List<Object[]> selectFromIdTable();
+	
 }
