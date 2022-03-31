@@ -9,6 +9,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -83,4 +84,13 @@ public class DetailsOrderController {
 	    model.addAttribute("view", "resultPourboire");
 	    return new ModelAndView("template");
 	 }
+    @PostMapping(path="/insert")
+    public ModelAndView ajout(Model model,@RequestParam String idPlat,@RequestParam String idServeur) throws Exception{
+        service.insertDetailsOrder(idPlat,idServeur);
+    	ModelAndView mv = new ModelAndView("template");
+        model.addAttribute("view", "order");
+        return mv;
+    }    
+	
+	
 }

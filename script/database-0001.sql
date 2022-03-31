@@ -1,14 +1,4 @@
 
-create view prixAchatPlat as
-	select idPlat,sum(quantity*price) as price from platIngredient pi
-		join ingredient i on i.id = pi.idIngredient
-		group by idPlat; 
-
-create view prixRevient as
-	select idPlat,label,p.price as prixVente,pap.price as prixDeRevient from prixAchatPlat pap
-		 join plat p on pap.idPlat = p.id;
-
-
 create table ingredient
 (
 	id varchar(15) primary key,
@@ -24,6 +14,16 @@ create table platIngredient
 	idIngredient varchar(15),
 	quantity double precision
 );
+
+create view prixAchatPlat as
+	select idPlat,sum(quantity*price) as price from platIngredient pi
+		join ingredient i on i.id = pi.idIngredient
+		group by idPlat; 
+
+create view prixRevient as
+	select idPlat,label,p.price as prixVente,pap.price as prixDeRevient from prixAchatPlat pap
+		 join plat p on pap.idPlat = p.id;
+
 
 
 -- create table platIngredientPlat
