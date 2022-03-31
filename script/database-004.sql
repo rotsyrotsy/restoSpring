@@ -18,15 +18,31 @@ insert into tables values ('1',1);
 insert into tables values ('2',2);
 insert into tables values ('3',3);
 
+create view prixPlatOrder2 as
+	select dt.id,dt.idOrder as idOrder,dt.idPlat,pv.label as plat,dt.idServeur,dt.daty as date,prixVente, o.idTable from detailsOrder dt 
+		join prixDeVente pv on dt.idPlat = pv.id 
+		join orderr o on o.id = dt.idOrder;
+
 
 
 ALTER TABLE orderr
 ALTER COLUMN daty TYPE timestamp;
 
 
-
 ALTER TABLE detailsOrder
 ADD COLUMN etat varchar(15);
 
 
-create view lastOrder as select id from orderr where daty=(select max(daty) from orderr)
+create view lastOrder as select id from orderr where daty=(select max(daty) from orderr);
+
+
+create view lastOrderByTable as
+ select o.id,t.numero from orderr o join idTable t on o.idTable = t.id where daty=(select max(daty) from orderr od where od.idTable = o.idTable)
+
+
+create view qteParPlatParIngredient as
+	select idPlat,p.label,quantity,labelUnity as unite from platIngredient pi
+		join ingredient i on i.id = pi.idIngredient
+		join plat p on p.id = idPlat; 
+
+
