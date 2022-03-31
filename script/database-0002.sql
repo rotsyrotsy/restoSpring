@@ -4,7 +4,7 @@ CREATE TABLE serveur
 	nom varchar(50)
 );
 
-CREATE TABLE idTable
+CREATE TABLE table
 (
 	id varchar(15) primary key,
 	numero float	

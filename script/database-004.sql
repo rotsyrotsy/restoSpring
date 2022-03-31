@@ -12,3 +12,8 @@ create view prixDeVente as (
 create view prixOrderServeur as
 	select sum(prixVente) as sommePrix,idOrder,idServeur,date,sum(prixVente)*0.02 as pourboire from prixPlatOrder
 		group by idOrder,idServeur,date;
+
+
+insert into tables values ('1',1);
+insert into tables values ('2',2);
+insert into tables values ('3',3);

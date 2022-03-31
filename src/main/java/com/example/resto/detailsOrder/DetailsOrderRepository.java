@@ -16,4 +16,8 @@ public interface DetailsOrderRepository extends JpaRepository<DetailsOrder,Strin
 
 	@Query(nativeQuery = true, value ="select * from prixOrderServeur where idServeur=?1 and date>?2 and date<=?3 order by idOrder")
 	List<Object[]> prixOrderServeur(String idServeur,Date date1, Date date2);
+	
+	
+	@Query(nativeQuery = true, value ="select * from prixPlatOrder where idServeur=?1 ")
+	List<Object[]> prixPlatOrder(String idServeur,Date date1, Date date2);
 }
