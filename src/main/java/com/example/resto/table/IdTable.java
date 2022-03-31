@@ -6,7 +6,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table
-public class Tables {
+public class IdTable {
 	@Id
 	String id;
     String numero;

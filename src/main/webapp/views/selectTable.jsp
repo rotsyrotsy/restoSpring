@@ -20,7 +20,7 @@
                
                 <option value="">Choisir...</option>
                 <c:forEach  items="${listTable}" var ="table">
-					<option value="${table.idOrder}">${table.label}</option>
+					<option value="${table.idOrder}">${table.numero}</option>
             </c:forEach>
 
 
@@ -44,7 +44,7 @@
                
                 <option value="">Choisir...</option>
                 <c:forEach  items="${listTable}" var ="table">
-					<option value="${table.idOrder}">${table.label}</option>
+					<option value="${table.idOrder}">${table.numero}</option>
             </c:forEach>
 
 

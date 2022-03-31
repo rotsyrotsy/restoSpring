@@ -1,5 +1,6 @@
 package com.example.resto.table;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +22,18 @@ public class TableController {
 	    }
 	
 	
-	 @GetMapping
+	 @GetMapping("/allTables")
 	 public ModelAndView getAllTable(Model models){
-		 List<Tables> listTable = service.getAllTable();
+		 List<IdTable> listTable = service.getAllTable();
+		 
+		models.addAttribute("listTable", listTable);
+                models.addAttribute("view", "selectTable");
+                return new ModelAndView("template");
+         }
+	 
+	 @GetMapping
+	 public ModelAndView getAllTableOrder(Model models){
+		 List<HashMap<String,Object>> listTable = service.lastOrderByTable();
 		 
 		models.addAttribute("listTable", listTable);
                 models.addAttribute("view", "selectTable");
