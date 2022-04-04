@@ -45,10 +45,10 @@ public class OrderrController {
 	        this.service = service;
 	    }
     @PostMapping(path="/insert")
-    public ModelAndView ajout(Model model,@RequestParam String idTable, 
+    public ModelAndView ajout(Model model,@RequestParam String idTable, @RequestParam String idServeur, 
     		@RequestParam(required = false) String categorie
     		,ServletRequest request) throws Exception{
-        String idOrder = service.insertOrder(idTable);
+        String idOrder = service.insertOrder(idTable,idServeur);
         
         
     	ModelAndView mv = new ModelAndView("template");
@@ -85,10 +85,11 @@ public class OrderrController {
 		String idOrder = null;
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpSession session = req.getSession();
-        if (session.getAttribute("sessionOrder")==null) {
+        if (session.getAttribute("sessionOrder")!=null) {
         	idOrder = (String) session.getAttribute("sessionOrder");
+        	doservice.validerCommande(idOrder);
         }
-		doservice.validerCommande(idOrder);
+		
 		List<HashMap<String,Object>> liste = doservice.getprixPlatOrderByIdOrder(idOrder);
 		
 	    model.addAttribute("platCommande", liste);

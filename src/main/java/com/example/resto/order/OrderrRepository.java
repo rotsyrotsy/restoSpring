@@ -10,4 +10,8 @@ public interface OrderrRepository extends JpaRepository<Orderr,String>{
 
 	@Query(nativeQuery = true, value ="select nextval('seqOrderr')")
 	String getIdOrder();
+	
+
+	@Query(nativeQuery = true, value ="select idServeur from orderr where id=?1")
+	String getIdServeurFromOrder(String idOrder);
 }

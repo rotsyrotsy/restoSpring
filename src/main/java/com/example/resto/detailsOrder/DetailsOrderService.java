@@ -11,20 +11,35 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.support.TransactionTemplate;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.example.resto.order.OrderrRepository;
+import com.example.resto.order.OrderrService;
 import com.example.resto.plat.PlatService;
 import com.example.resto.serveur.Serveur;
 
 
 @Service
 public class DetailsOrderService {
+	
+	@PersistenceContext
+    private EntityManager eentityManager;
+    private  TransactionTemplate transactionTemplate;
+    
+    @Autowired
+    private PlatformTransactionManager transactionManager;
+    
 	private final DetailsOrderRepository repository;
 	@Autowired
 	private  PlatService platServ;
+	
+	@Autowired
+	private  OrderrRepository ordServ;
 	
     @Autowired
     public DetailsOrderService(DetailsOrderRepository repository) {
@@ -142,18 +157,22 @@ public class DetailsOrderService {
 
 	 @Transactional
 	   public void validerCommande(String idOrder) {
-		 	try {
-		     	 entityManager.createNativeQuery("UPDATE DetailsOrder SET etat='valide' where idOrder=?")
-		     	 .setParameter(1, idOrder)
-		          .executeUpdate(); 	
-		     	}
-		     catch(Exception e) {e.printStackTrace();}
-		     
-
-	    }
+		 System.out.println("IDORDEER: "+idOrder);
+	        try {
+	        	 entityManager.createNativeQuery("UPDATE detailsOrder SET etat='valide' where idOrder=?")
+	        	 .setParameter(1, idOrder)
+	             .executeUpdate(); 	
+	        	}
+	        catch(Exception e) {e.printStackTrace();}
+	        
+	 
+	 }
+	        	
+	 
     
  	 @Transactional
-     public void insertDetailsOrder(String idPlat,String idServeur, String idOrder) {
+     public void insertDetailsOrder(String idPlat, String idOrder) {
+ 		String idServeur = ordServ.getIdServeurFromOrder(idOrder);
      try {
      	 entityManager.createNativeQuery("INSERT INTO detailsOrder VALUES (nextval('seqDetailsOrder'),?,?,now(),?,'non valide')")
      	 .setParameter(1, idOrder)

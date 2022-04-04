@@ -97,8 +97,8 @@ public class DetailsOrderController {
 	    return new ModelAndView("template");
 	 }
 	
-    @PostMapping(path="/insert")
-    public ModelAndView ajout(Model model,@RequestParam String idPlat,@RequestParam String idServeur
+    @GetMapping(path="/insert")
+    public ModelAndView ajout(Model model,@RequestParam String idPlat
     		,ServletRequest request) throws Exception{
     	
     	String idOrder = null;
@@ -108,7 +108,7 @@ public class DetailsOrderController {
         	idOrder = (String) session.getAttribute("sessionOrder");
         }
     	
-    	service.insertDetailsOrder(idPlat,idServeur, idOrder);
+    	service.insertDetailsOrder(idPlat, idOrder);
         List<HashMap<String, Object>> listPlat = platservice.getAllPlats();
 		 
 		 

@@ -12,7 +12,7 @@
 
 
 	<section class="section-lunch bgwhite">
-
+		<h1>Tous les plats commandés</h1>
 		<div class="container">
 			<div class="row p-t-108 p-b-70">
 				<c:forEach items="${platCommande}" var ="plat">

@@ -25,13 +25,14 @@ public class OrderrService {
     }
 
     @Transactional
-    public String insertOrder(String idTable) {
+    public String insertOrder(String idTable,String idServeur) {
     	
     	String seq = orderRepository.getIdOrder();
     	try {
-    	 entityManager.createNativeQuery("INSERT INTO orderr VALUES (?,?,'S1',now())")
+    	 entityManager.createNativeQuery("INSERT INTO orderr VALUES (?,?,?,now())")
     	 .setParameter(1, seq)
     	 .setParameter(2, idTable)
+    	 .setParameter(3, idServeur)
     	 .executeUpdate();
     	}
     catch(Exception e) {e.printStackTrace();}

@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.example.resto.serveur.Serveur;
+import com.example.resto.serveur.ServeurService;
+
 
 @RestController
 @RequestMapping(path = "/tables")
@@ -21,11 +24,16 @@ public class TableController {
 	        this.service = service;
 	    }
 	
+
+	@Autowired
+	private  ServeurService servservice;
 	
 	 @GetMapping("/allTables")
 	 public ModelAndView getAllTable(Model models){
 		 List<IdTable> listTable = service.getAllTable();
-		 
+		 List<Serveur> listeServeurs = servservice.getAllServeurs();
+			
+		    models.addAttribute("listServeur", listeServeurs);
 		models.addAttribute("listTable", listTable);
                 models.addAttribute("view", "selectTable");
                 return new ModelAndView("template");
@@ -33,9 +41,12 @@ public class TableController {
 	 
 	 @GetMapping
 	 public ModelAndView getAllTableOrder(Model models){
+		 List<Serveur> listeServeurs = servservice.getAllServeurs();
+			
 		 List<HashMap<String,Object>> listTable = service.selectFromIdTable();
 		 List<HashMap<String,Object>> listTableOrder = service.lastOrderByTable();
 
+		    models.addAttribute("listServeur", listeServeurs);
 		models.addAttribute("listTableOrder", listTableOrder);
 		models.addAttribute("listTable", listTable);
                 models.addAttribute("view", "selectTable");

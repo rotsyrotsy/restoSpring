@@ -56,7 +56,7 @@
 			<div class="alert alert-success" role="alert">
 			  ${succes }
 			</div>
-			<a href="${baseURL}/order/validerCommande"  class="btn3 flex-c-m size18 txt11 trans-0-4 m-10">
+			<a href="${baseURL}/order/validerCommande"  class="btn3 flex-c-m size30 txt11 trans-0-4 m-10">
                   Valider la commande
             </a>
 		</c:if>
@@ -82,7 +82,7 @@
 									${plat.price}
 								</span>
 							</div>
-							<a href="${baseURL}/detailsOrders/commande?idPlat=${plat.id}"  class="btn3 flex-c-m size18 txt11 trans-0-4 m-10">
+							<a href="${baseURL}/detailsOrders/insert?idPlat=${plat.id}"  class="btn3 flex-c-m size18 txt11 trans-0-4 m-10">
                                       Commander
                                  </a>
                                                                 

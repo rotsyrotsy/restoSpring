@@ -18,7 +18,7 @@
         <div class="wrap-input-signup size17 bo2 bo-rad-10 bgwhite pos-relative txt10 m-10">
             <select class="selection-1 select2-hidden-accessible" tabindex="-1" aria-hidden="true" name="idOrder">
                
-                <option value="">Choisir...</option>
+                <option value="">Table...</option>
                 <c:forEach  items="${listTableOrder}" var ="table">
 					<option value="${table.idOrder}">${table.numero}</option>
             </c:forEach>
@@ -40,15 +40,25 @@
         </span>
 
         <div class="wrap-input-signup size17 bo2 bo-rad-10 bgwhite pos-relative txt10 m-10">
-            <select class="selection-1 select2-hidden-accessible" tabindex="-1" aria-hidden="true" name="idTable">
+            <p><select class="selection-1 select2-hidden-accessible" tabindex="-1" aria-hidden="true" name="idTable">
                
-                <option value="">Choisir...</option>
+                <option value="">Table...</option>
                 <c:forEach  items="${listTable}" var ="table">
 					<option value="${table.id}">${table.numero}</option>
             </c:forEach>
 
 
-            </select>
+            </select></p>
+            <p>
+            <select class="selection-1 select2-hidden-accessible" tabindex="-1" aria-hidden="true" name="idServeur">
+               
+                <option value="">Serveur...</option>
+                <c:forEach  items="${listServeur}" var ="serveur">
+					<option value="${serveur.id}">${serveur.nom}</option>
+            </c:forEach>
+
+
+            </select></p>
         </div>
         
        
