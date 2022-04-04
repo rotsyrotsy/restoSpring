@@ -19,16 +19,15 @@
             <tr>
                 <th>#</th>
                 <th>label</th>
-                <th>Qte</th>
-                <th>Unité</th>
+                <th>Quantite</th>
             </tr>
         </thead>
         <tbody>
               <c:forEach  items="${platIngredient}" var="platIng" varStatus="i">
             <tr>
                 <td>${i.index+1}</td>
-                <td>${platIng.quantity}</td>
-                <td>${platIng.unite}</td>
+                <td>${platIng.nomIngredient}</td>
+                <td>${platIng.quantity} ${platIng.unite}</td>
             </tr>
             </c:forEach>
            <tr>
@@ -39,7 +38,7 @@
             </tr>
             
         </tbody>
-    </table>unite
+    </table>
     <div class="col-md-3"></div>
 </div>
 

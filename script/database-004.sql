@@ -41,7 +41,7 @@ create view lastOrderByTable as
 
 
 create view qteParPlatParIngredient as
-	select idPlat,p.label,quantity,labelUnity as unite from platIngredient pi
+	select idPlat,p.label,quantity,labelUnity as unite, i.label as nomIngredient from platIngredient pi
 		join ingredient i on i.id = pi.idIngredient
 		join plat p on p.id = idPlat; 
 

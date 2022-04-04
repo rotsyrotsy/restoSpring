@@ -52,6 +52,14 @@
 	<section class="section-lunch bgwhite">
 
 		<div class="container">
+		<c:if test="${succes != null}">
+			<div class="alert alert-success" role="alert">
+			  ${succes }
+			</div>
+			<a href="${baseURL}/order/validerCommande"  class="btn3 flex-c-m size18 txt11 trans-0-4 m-10">
+                  Valider la commande
+            </a>
+		</c:if>
 			<div class="row p-t-108 p-b-70">
 				<c:forEach items="${listPlat}" var ="plat">
 					<div class="col-md-8 col-lg-6 m-l-r-auto">
@@ -74,12 +82,13 @@
 									${plat.price}
 								</span>
 							</div>
-                                                                <button type="submit" class="btn3 flex-c-m size18 txt11 trans-0-4 m-10">
-                                                                    Commander
-                                                                </button>
-                                                                <button type="submit" class="btn3 flex-c-m size18 txt11 trans-0-4 m-10">
+							<a href="${baseURL}/detailsOrders/commande?idPlat=${plat.id}"  class="btn3 flex-c-m size18 txt11 trans-0-4 m-10">
+                                      Commander
+                                 </a>
+                                                                
+                                                                <a href="${baseURL}/plats/getPlatIngredient?idPlat=${plat.id}"  class="btn3 flex-c-m size18 txt11 trans-0-4 m-10">
                                                                     Voir Ingredient
-                                                                </button>
+                                                                </a>
 						</div>
 					</div>
 				</c:forEach>

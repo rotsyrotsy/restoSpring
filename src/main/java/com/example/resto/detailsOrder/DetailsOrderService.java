@@ -141,19 +141,19 @@ public class DetailsOrderService {
 
 	 @Transactional
 	   public void validerCommande(String idOrder) {
-		 	List<DetailsOrder> listedo = repository.getDetailsOrderByIdOrder(idOrder);
-		 	for(int i=0; i<listedo.size(); i++) {
-		 		DetailsOrder temp = listedo.get(i);
-		 		temp.setEtat("valide");
-		 		repository.save(temp);
-		 	}
+		 	try {
+		     	 entityManager.createNativeQuery("UPDATE DetailsOrder SET etat='valide' where idOrder=?")
+		     	 .setParameter(1, idOrder)
+		          .executeUpdate(); 	
+		     	}
+		     catch(Exception e) {e.printStackTrace();}
+		     
 
 	    }
     
  	 @Transactional
-     public void insertDetailsOrder(String idPlat,String idServeur) {
+     public void insertDetailsOrder(String idPlat,String idServeur, String idOrder) {
      try {
-     	String idOrder = repository.getCurrOrder();
      	 entityManager.createNativeQuery("INSERT INTO detailsOrder VALUES (nextval('seqDetailsOrder'),?,?,now(),?,'non valide')")
      	 .setParameter(1, idOrder)
      	 .setParameter(2, idPlat)
