@@ -138,6 +138,17 @@ public class DetailsOrderController {
 	    model.addAttribute("view", "detailsOrderValide");
 	    return new ModelAndView("template");
 	 }
+        
+      @GetMapping(path="/changeToEnPreparation")
+	public ModelAndView selectDetailsOrderValide(Model model,@RequestParam String idDetailOrder){
+            service.changeToEnPreparation(idDetailOrder);
+		
+            
+            List<HashMap<String, Object>> listedo = service.getDetailsOrderValide();
+	    model.addAttribute("listedetailsOrderValide", listedo);
+	    model.addAttribute("view", "detailsOrderValide");
+	    return new ModelAndView("template");
+	 }
     
 	
 	

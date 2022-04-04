@@ -183,5 +183,15 @@ public class DetailsOrderService {
         }
  		return listehm;
  	}
+
+    @Transactional
+    void changeToEnPreparation(String idDetailOrder) {
+         try {
+     	 entityManager.createNativeQuery("UPDATE detailsOrder SET etat = 'en preparation' WHERE id = ?")
+     	 .setParameter(1, idDetailOrder)
+          .executeUpdate(); 	
+     	}
+     catch(Exception e) {e.printStackTrace();}
+    }
     
 }
