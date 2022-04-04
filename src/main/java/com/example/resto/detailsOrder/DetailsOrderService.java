@@ -191,7 +191,6 @@ public class DetailsOrderService {
         for (int i = 0; i < liste.size(); i++) {
             HashMap<String, Object> hm = new HashMap<String, Object>();
             Object[] s = (Object[]) liste.get(i);
-
             hm.put("id", s[0]);
             hm.put("idOrder", s[1]);	
             hm.put("idPlat", s[2]);

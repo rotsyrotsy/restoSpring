@@ -120,17 +120,8 @@ public class DetailsOrderController {
 	    return new ModelAndView("template");
     }    
     
-    @GetMapping(path="/commande")
-	public ModelAndView faireCommande(Model model,@RequestParam String idPlat){
-		List<Serveur> listeServeurs = servservice.getAllServeurs();
-		
-	    model.addAttribute("listServeur", listeServeurs);
-	    model.addAttribute("idPlat", idPlat);
-	    model.addAttribute("view", "commandeTable");
-	    return new ModelAndView("template");
-	 }
         
-     @GetMapping(path="/valide")
+     @GetMapping(path="/validat")
 	public ModelAndView selectDetailsOrderValide(Model model){
 		List<HashMap<String, Object>> listedo = service.getDetailsOrderValide();
 		

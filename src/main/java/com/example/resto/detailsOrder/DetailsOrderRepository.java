@@ -27,8 +27,6 @@ public interface DetailsOrderRepository extends JpaRepository<DetailsOrder,Strin
 	@Query(nativeQuery = true, value ="select * from detailsOrder  where idOrder=?1 ")
 	List<Object[]> getDetailsOrderByIdOrder(String idOrder);
 	
-	
-	
 
 	@Query(nativeQuery = true, value ="select * from prixPlatOrder where idOrder=?1 ")
 	List<Object[]> getprixPlatOrderByIdOrder(String idOrder);
@@ -39,4 +37,7 @@ public interface DetailsOrderRepository extends JpaRepository<DetailsOrder,Strin
 
         @Query(nativeQuery = true, value ="select * from platValider where etat = 'valide'")
         List<Object[]> getDetailsOrderValide();
+
+    	@Query(nativeQuery = true, value ="select p.* from prixPlatOrder p join detailsOrder d on d.id=p.id where etat='valide' and p.idorder=?1")
+    	List<Object[]> getPlatsValider(String idOrder);
 }

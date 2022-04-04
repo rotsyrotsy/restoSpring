@@ -1,0 +1,1 @@
+ALTER TABLE detailsOrder ADD lieulivraison VARCHAR(255);
