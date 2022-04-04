@@ -129,6 +129,15 @@ public class DetailsOrderController {
 	    model.addAttribute("view", "commandeTable");
 	    return new ModelAndView("template");
 	 }
+        
+     @GetMapping(path="/valide")
+	public ModelAndView selectDetailsOrderValide(Model model){
+		List<HashMap<String, Object>> listedo = service.getDetailsOrderValide();
+		
+	    model.addAttribute("listedetailsOrderValide", listedo);
+	    model.addAttribute("view", "detailsOrderValide");
+	    return new ModelAndView("template");
+	 }
     
 	
 	

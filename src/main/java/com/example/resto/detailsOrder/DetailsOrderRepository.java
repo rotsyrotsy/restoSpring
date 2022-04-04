@@ -1,6 +1,8 @@
 package com.example.resto.detailsOrder;
 
+import com.example.resto.serveur.Serveur;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -32,4 +34,7 @@ public interface DetailsOrderRepository extends JpaRepository<DetailsOrder,Strin
 
 	@Query(nativeQuery = true, value ="select id from lastOrder")
 	String getCurrOrder();
+
+        @Query(nativeQuery = true, value ="select * from platValider where etat = 'valide'")
+        List<Object[]> getDetailsOrderValide();
 }
