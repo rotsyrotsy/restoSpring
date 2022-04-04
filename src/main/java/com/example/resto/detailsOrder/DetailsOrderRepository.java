@@ -25,6 +25,8 @@ public interface DetailsOrderRepository extends JpaRepository<DetailsOrder,Strin
 	@Query(nativeQuery = true, value ="select * from detailsOrder  where idOrder=?1 ")
 	List<Object[]> getDetailsOrderByIdOrder(String idOrder);
 	
+	
+	
 
 	@Query(nativeQuery = true, value ="select * from prixPlatOrder where idOrder=?1 ")
 	List<Object[]> getprixPlatOrderByIdOrder(String idOrder);
