@@ -183,6 +183,26 @@ public class DetailsOrderService {
         }
  		return listehm;
  	}
+    public List<HashMap<String, Object>> getDetailsOrderPrep() {
+        	List<Object[]> liste = repository.getDetailsOrderEnPrep();
+    	List<HashMap<String, Object>> listehm = new ArrayList<HashMap<String, Object>>();
+
+        for (int i = 0; i < liste.size(); i++) {
+            HashMap<String, Object> hm = new HashMap<String, Object>();
+            Object[] s = (Object[]) liste.get(i);
+
+            hm.put("id", s[0]);
+            hm.put("idOrder", s[1]);	
+            hm.put("idPlat", s[2]);
+            hm.put("etat", s[3]);
+            hm.put("label", s[4]);		
+            
+            listehm.add(hm);
+        }
+ 		return listehm;
+ 	
+    }
+    
 
     @Transactional
     void changeToEnPreparation(String idDetailOrder) {
@@ -193,5 +213,15 @@ public class DetailsOrderService {
      	}
      catch(Exception e) {e.printStackTrace();}
     }
-    
+
+    void changeToPret(String idDetailOrder) {
+           try {
+     	 entityManager.createNativeQuery("UPDATE detailsOrder SET etat = 'pret' WHERE id = ?")
+     	 .setParameter(1, idDetailOrder)
+          .executeUpdate(); 	
+     	}
+     catch(Exception e) {e.printStackTrace();}
+    }
+
+   
 }
