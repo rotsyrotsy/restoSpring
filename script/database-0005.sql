@@ -3,6 +3,6 @@ create or replace view prixOrder as
 
     ALTER TABLE detailsOrder ADD lieulivraison VARCHAR(255);
 
-create view as etatPlat 
-select do.*,p.label from detailsOrder do
-join plat p on p.id=do.idOrder;
+create view  etatPlat as
+select d.*,p.label from detailsOrder d
+join plat p on p.id=d.idOrder;
