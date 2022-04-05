@@ -11,6 +11,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface IngredientRepository extends JpaRepository<Ingredient,String>{
 
-	@Query(nativeQuery = true, value ="select * from qteIngredientParORder where  and daty>?1 and daty<=?2 ")
+	@Query(nativeQuery = true, value ="select nomIngredient, sum(quantity) as quantity,unite\r\n" + 
+			" from qteIngredientParOrder where daty>?1\r\n" + 
+			"and daty<?2 group by nomIngredient,unite")
 	List<Object[]> quantiteIngredientConsommer(Date date1, Date date2);
 }
