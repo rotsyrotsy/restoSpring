@@ -27,8 +27,7 @@ public class IngredientController {
 	private  IngredientService ingservice;
 	
 	@GetMapping("/resultDate")
-	public ModelAndView resultServeur(Model model, 
-		@RequestParam(required = true) String serveur,
+	public ModelAndView resultDateIngredient(Model model, 
 			@RequestParam(required = true) String date1,
 			@RequestParam(required = true) String date2) throws ParseException{
 		Date d1 = new SimpleDateFormat("dd/MM/yyyy").parse(date1);
@@ -37,6 +36,8 @@ public class IngredientController {
 		List<HashMap<String,Object>> liste = ingservice.getIngredientConsomer(d1, d2);
 		
 		model.addAttribute("listIngredient", liste);
+		model.addAttribute("date1",date1);
+		model.addAttribute("date2",date2);
 		model.addAttribute("view", "resultDateIngredient");
 		return new ModelAndView("template");
 	}

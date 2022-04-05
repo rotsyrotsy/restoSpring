@@ -26,10 +26,9 @@ public class IngredientService {
             HashMap<String, Object> hm = new HashMap<String, Object>();
             Object[] s = (Object[]) liste.get(i);
 
-            hm.put("valeurOrder", s[0]);	//sumPrix
-            hm.put("label", s[1]);	//idOrder
-            hm.put("quantite", s[2]);	//idServeur
-            hm.put("unite", s[3]);		//date
+            hm.put("label", s[0]);	//idOrder
+            hm.put("quantite", s[1]);	//idServeur
+            hm.put("unite", s[2]);		//date
             listehm.add(hm);
         }
  		return listehm;

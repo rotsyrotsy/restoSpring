@@ -27,8 +27,8 @@
               <c:forEach  items="${listIngredient}" var="ing" varStatus="i">
             <tr>
                 <td>${i.index+1}</td>
-                <td>${ing.nom}</td>
-                <td>${ing.qte}</td>
+                <td>${ing.label}</td>
+                <td>${ing.quantite}</td>
                 <td>${ing.unite}</td>
             </tr>
             </c:forEach>
