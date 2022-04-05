@@ -40,3 +40,14 @@ create table inventaireDetails
     qte double precision
 
 );
+
+create view mouvementStockApresInventaire as
+	select idIngredient,sum(valeur),tab.id as idInventaire from stock s join
+	(select * from inventaire where date = (select max(date) from inventaire)) as tab on s.date >= tab.date group by idIngredient,tab.id
+
+
+create view stockRestant as
+	select mouv.idingredient,i.label,i.labelUnity,sum+qte as reste from mouvementStockApresInventaire mouv join inventaireDetails ivd
+		on mouv.idInventaire = ivd.idInventaire
+		join ingredient i on mouv.idIngredient = i.id
+
