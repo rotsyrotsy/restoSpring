@@ -56,7 +56,22 @@ create sequence seqStock;
 
 
 create view ingredientPlat as
-	select idPlat,p.label,quantity,labelUnity as unite, i.label as nomIngredient, i.id as idIngredient
-     from platIngredient pi
+	select idPlat,p.label,quantity,labelUnity as unite, i.label as nomIngredient,i.id as idIngredient from platIngredient pi
 		join ingredient i on i.id = pi.idIngredient
 		join plat p on p.id = idPlat; 
+
+
+
+
+insert into inventaire values('INV1','2022-04-03');
+
+insert into inventaireDetails values('INVD1','INV1','1',300);
+insert into inventaireDetails values('INVD2','INV1','2',500);
+insert into inventaireDetails values('INVD3','INV1','3',600);
+
+insert into stock values('ST1','1',130,'2022-04-05');
+insert into stock values('ST2','1',13,'2022-04-05');
+insert into stock values('ST3','2',12,'2022-04-05');
+insert into stock values('ST4','3',150,'2022-04-05');
+insert into stock values('ST5','3',-12,'2022-04-05');
+insert into stock values('ST6','1',-20,'2022-04-05');
