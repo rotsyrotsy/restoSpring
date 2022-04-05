@@ -4,3 +4,6 @@ create view qteIngredientParOrder as (
     order by idOrder
 );
 
+select nomIngredient, sum(quantity) as quantity,unite
+ from qteIngredientParOrder where daty>'2022-04-03'
+and daty<'2022-04-05' group by nomIngredient,unite
