@@ -121,7 +121,7 @@ public class DetailsOrderController {
     }    
     
         
-     @GetMapping(path="/validat")
+     @GetMapping(path="/valider")
 	public ModelAndView selectDetailsOrderValide(Model model){
 		List<HashMap<String, Object>> listedo = service.getDetailsOrderValide();
 		

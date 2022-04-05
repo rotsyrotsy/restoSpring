@@ -35,9 +35,9 @@ public interface DetailsOrderRepository extends JpaRepository<DetailsOrder,Strin
 	@Query(nativeQuery = true, value ="select id from lastOrder")
 	String getCurrOrder();
 
-        @Query(nativeQuery = true, value ="select * from platValider where etat = 'valide'")
+        @Query(nativeQuery = true, value ="select * from etatPlat where etat = 'valide'")
         List<Object[]> getDetailsOrderValide();
 
-        @Query(nativeQuery = true, value ="select * from platValider where etat = 'en preparation'")
+        @Query(nativeQuery = true, value ="select * from etatPlat where etat = 'en preparation'")
         List<Object[]> getDetailsOrderEnPrep();
 }
