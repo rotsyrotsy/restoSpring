@@ -51,3 +51,18 @@ create view stockRestant as
 		on mouv.idInventaire = ivd.idInventaire
 		join ingredient i on mouv.idIngredient = i.id
 
+
+
+
+insert into inventaire values('INV1','2022-04-03');
+
+insert into inventaire values('INVD1','INV1','1',300);
+insert into inventaire values('INVD2','INV1','2',500);
+insert into inventaire values('INVD3','INV1','3',600);
+
+insert into stock values('ST1','1',130,'2022-04-05');
+insert into stock values('ST2','1',13,'2022-04-05');
+insert into stock values('ST3','2',12,'2022-04-05');
+insert into stock values('ST4','3',150,'2022-04-05');
+insert into stock values('ST5','3',-12,'2022-04-05');
+insert into stock values('ST6','1',-20,'2022-04-05');
