@@ -48,7 +48,7 @@ create view mouvementStockApresInventaire as
 
 create view stockRestant as
 	select mouv.idingredient,i.label,i.labelUnity,sum+qte as reste from mouvementStockApresInventaire mouv join inventaireDetails ivd
-		on mouv.idInventaire = ivd.idInventaire
+		on mouv.idInventaire = ivd.idInventaire and ivd.idIngredient = mouv.idIngredient
 		join ingredient i on mouv.idIngredient = i.id
 
 
