@@ -67,7 +67,7 @@
 								</li>
 
 								<li>
-									<a href="reservation.html">Reservation</a>
+									<a href="reservation.html">Stock</a>
 								</li>
 
 								<li>
