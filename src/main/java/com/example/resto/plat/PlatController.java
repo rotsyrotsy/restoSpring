@@ -76,7 +76,7 @@ public class PlatController {
     	 List<HashMap<String, Object>> listIng = service.getAllIngredient(idPlat);
     	 
     	 model.addAttribute("platIngredient",listIng);
-    	 model.addAttribute("view","detailsPlat");
+    	 model.addAttribute("view","detailPlat");
     	 return new ModelAndView("template");
      }
        

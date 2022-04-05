@@ -112,7 +112,7 @@ public class PlatService {
             hm.put("idPlat", platIng[0]);
             hm.put("nomPlat", platIng[1]);
             hm.put("label", platIng[2]);
-            hm.put("quantite",platIng[3]);
+            hm.put("quantity",platIng[3]);
             hm.put("unite", platIng[4]);
             listehm.add(hm);
         }

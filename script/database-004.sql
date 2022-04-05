@@ -46,3 +46,18 @@ create view qteParPlatParIngredient as
 		join plat p on p.id = idPlat; 
 
 
+create table ingredient
+(
+	id varchar(15) primary key,
+	label varchar(50),
+	labelUnity varchar(20),
+	price double precision
+);
+
+create sequence seqIngredient;
+
+insert into ingredient values(nextval('seqIngredient'),'poulet laque','kg',10000);
+insert into ingredient values(nextval('seqIngredient'),'riz blanc','kg',3000);
+insert into ingredient values(nextval('seqIngredient'),'sucre','kg',3500);
+insert into ingredient values(nextval('seqIngredient'),'farine','kg',3000);
+insert into ingredient values(nextval('seqIngredient'),'lait','l',4500);

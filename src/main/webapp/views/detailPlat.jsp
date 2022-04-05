@@ -12,14 +12,14 @@
     </h2>
 </section>
 <div class="section-signup bg1-pattern p-t-85 p-b-85">
-        <h1>Detail Plat ${platIngredient[0].label}</h1>
+        <h1>Detail Plat ${platIngredient[0].nomPlat}</h1>
     <div class="col-md-3"></div>
     <table class="table">
         <thead>
             <tr>
                 <th>#</th>
-                <th>label</th>
-                <th>Qte</th>
+                <th>Ingredient</th>
+                <th>Quantite</th>
                 <th>Unité</th>
             </tr>
         </thead>
@@ -27,6 +27,7 @@
               <c:forEach  items="${platIngredient}" var="platIng" varStatus="i">
             <tr>
                 <td>${i.index+1}</td>
+                <td>${platIng.label}</td>
                 <td>${platIng.quantity}</td>
                 <td>${platIng.unite}</td>
             </tr>
