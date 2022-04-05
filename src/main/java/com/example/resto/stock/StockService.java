@@ -1,7 +1,7 @@
 package com.example.resto.stock;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -40,8 +40,8 @@ public class StockService {
 
             hm.put("id", platRestant[0]);
             hm.put("nomIngredient", platRestant[1]);
-            hm.put("qte",platRestant[2]);
-            hm.put("unite", platRestant[3]);
+            hm.put("unite", platRestant[2]);
+            hm.put("qte",platRestant[3]);
             listehm.add(hm);
         }
         return listehm;
@@ -50,15 +50,14 @@ public class StockService {
 	@Transactional
 	public void insertStock(String idPlat)
 	{
-		List<HashMap<String, Object>> listAllIngredient = platService.getAllIngredient(idPlat);
+		List<HashMap<String, Object>> listAllIngredient = platService.ingredientPlat(idPlat);
 		for(HashMap<String, Object> hm : listAllIngredient )
 		{
 			try {
 				Double valeur = -(Double)hm.get("quantity");
-		     	 entityManager.createNativeQuery("INSERT INTO stock VALUES (nextval('seqStock'),?,?,?)")
+		     	 entityManager.createNativeQuery("INSERT INTO stock VALUES (nextval('seqStock'),?,?,NOW())")
 		     	 .setParameter(1, (String)hm.get("idIngredient"))
 		     	 .setParameter(2, valeur)
-		          .setParameter(3, (Date)hm.get("date"))
 		          .executeUpdate(); 	
 		     	}
 		     catch(Exception e) {e.printStackTrace();}

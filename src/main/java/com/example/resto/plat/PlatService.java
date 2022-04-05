@@ -118,4 +118,22 @@ public class PlatService {
         }
         return listehm;
 	}
+	
+	public List<HashMap<String, Object>> ingredientPlat(String idPlat){
+		List<HashMap<String, Object>> listehm = new ArrayList<HashMap<String, Object>>();
+		List<Object[]> liste = repository.ingredientPlat(idPlat);
+        for (int i = 0; i < liste.size(); i++) {
+            HashMap<String, Object> hm = new HashMap<String, Object>();
+            Object[] platIng = (Object[]) liste.get(i);
+
+            hm.put("idPlat", platIng[0]);
+            hm.put("label", platIng[1]);
+            hm.put("quantity",platIng[2]);
+            hm.put("unite", platIng[3]);
+            hm.put("nomIngredient", platIng[4]);
+            hm.put("idIngredient", platIng[5]);
+            listehm.add(hm);
+        }
+        return listehm;
+	}
 }

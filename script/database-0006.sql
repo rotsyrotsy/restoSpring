@@ -43,11 +43,20 @@ create table inventaireDetails
 
 create view mouvementStockApresInventaire as
 	select idIngredient,sum(valeur),tab.id as idInventaire from stock s join
-	(select * from inventaire where date = (select max(date) from inventaire)) as tab on s.date >= tab.date group by idIngredient,tab.id
+	(select * from inventaire where date = (select max(date) from inventaire)) as tab on s.date >= tab.date group by idIngredient,tab.id;
 
 
 create view stockRestant as
 	select mouv.idingredient,i.label,i.labelUnity,sum+qte as reste from mouvementStockApresInventaire mouv join inventaireDetails ivd
 		on mouv.idInventaire = ivd.idInventaire
-		join ingredient i on mouv.idIngredient = i.id
+		join ingredient i on mouv.idIngredient = i.id;
 
+create sequence seqStock;
+
+
+
+create view ingredientPlat as
+	select idPlat,p.label,quantity,labelUnity as unite, i.label as nomIngredient, i.id as idIngredient
+     from platIngredient pi
+		join ingredient i on i.id = pi.idIngredient
+		join plat p on p.id = idPlat; 
