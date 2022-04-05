@@ -56,9 +56,9 @@ create view stockRestant as
 
 insert into inventaire values('INV1','2022-04-03');
 
-insert into inventaire values('INVD1','INV1','1',300);
-insert into inventaire values('INVD2','INV1','2',500);
-insert into inventaire values('INVD3','INV1','3',600);
+insert into inventaireDetails values('INVD1','INV1','1',300);
+insert into inventaireDetails values('INVD2','INV1','2',500);
+insert into inventaireDetails values('INVD3','INV1','3',600);
 
 insert into stock values('ST1','1',130,'2022-04-05');
 insert into stock values('ST2','1',13,'2022-04-05');
