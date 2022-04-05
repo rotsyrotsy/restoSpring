@@ -160,6 +160,7 @@ public class DetailsOrderController {
 	    model.addAttribute("view", "platsEnPreparation");
 	    return new ModelAndView("template");
 	 }
+        
     
 	
 	
