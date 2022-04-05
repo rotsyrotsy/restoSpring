@@ -37,11 +37,12 @@ create view lastOrder as select id from orderr where daty=(select max(daty) from
 
 
 create view lastOrderByTable as
- select o.id,t.numero from orderr o join idTable t on o.idTable = t.id where daty=(select max(daty) from orderr od where od.idTable = o.idTable)
+ select o.id,t.numero from orderr o join idTable t on o.idTable = t.id where daty=(select max(daty) from orderr od where od.idTable = o.idTable);
+
 
 
 create view qteParPlatParIngredient as
-	select idPlat,p.label,quantity,labelUnity as unite from platIngredient pi
+	select idPlat,p.label,quantity,labelUnity as unite, i.label as nomIngredient from platIngredient pi
 		join ingredient i on i.id = pi.idIngredient
 		join plat p on p.id = idPlat; 
 

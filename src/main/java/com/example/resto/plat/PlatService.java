@@ -110,10 +110,10 @@ public class PlatService {
             Object[] platIng = (Object[]) liste.get(i);
 
             hm.put("idPlat", platIng[0]);
-            hm.put("nomPlat", platIng[1]);
-            hm.put("label", platIng[2]);
-            hm.put("quantity",platIng[3]);
-            hm.put("unite", platIng[4]);
+            hm.put("label", platIng[1]);
+            hm.put("quantity",platIng[2]);
+            hm.put("unite", platIng[3]);
+            hm.put("nomIngredient", platIng[4]);
             listehm.add(hm);
         }
         return listehm;

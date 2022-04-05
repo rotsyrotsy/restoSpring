@@ -1,5 +1,6 @@
-package com.example.resto.orderr;
+package com.example.resto.order;
 
+import java.sql.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -10,10 +11,10 @@ import javax.persistence.Table;
 public class Orderr {
 	@Id
 	String id;
-	String idTable;
-	String idServeur;
-	String daty;
-	
+    String idTable;
+    String idServeur;
+    Date daty;
+    
 	public String getId() {
 		return id;
 	}
@@ -32,10 +33,11 @@ public class Orderr {
 	public void setIdServeur(String idServeur) {
 		this.idServeur = idServeur;
 	}
-	public String getDaty() {
+	public Date getDaty() {
 		return daty;
 	}
-	public void setDaty(String daty) {
+	public void setDaty(Date daty) {
 		this.daty = daty;
 	}
+    
 }

@@ -1,8 +1,6 @@
-package com.example.resto.orderr;
+package com.example.resto.order;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -13,5 +11,11 @@ import org.springframework.stereotype.Repository;
 public interface OrderrRepository extends JpaRepository<Orderr,String>{
 
 	@Query(nativeQuery = true, value ="select nextval('seqOrderr')")
-	String getSeqOrder();
+	String getIdOrder();
+	
+
+	@Query(nativeQuery = true, value ="select idServeur from orderr where id=?1")
+	String getIdServeurFromOrder(String idOrder);
+	
+
 }

@@ -1,6 +1,8 @@
 package com.example.resto.detailsOrder;
 
+import com.example.resto.serveur.Serveur;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -20,7 +22,22 @@ public interface DetailsOrderRepository extends JpaRepository<DetailsOrder,Strin
 	
 	@Query(nativeQuery = true, value ="select * from prixPlatOrder where idServeur=?1 ")
 	List<Object[]> prixPlatOrder(String idServeur,Date date1, Date date2);
+	
+
+	@Query(nativeQuery = true, value ="select * from detailsOrder  where idOrder=?1 ")
+	List<Object[]> getDetailsOrderByIdOrder(String idOrder);
+	
+
+	@Query(nativeQuery = true, value ="select * from prixPlatOrder where idOrder=?1 ")
+	List<Object[]> getprixPlatOrderByIdOrder(String idOrder);
+	
 
 	@Query(nativeQuery = true, value ="select id from lastOrder")
 	String getCurrOrder();
+
+        @Query(nativeQuery = true, value ="select * from platValider where etat = 'valide'")
+        List<Object[]> getDetailsOrderValide();
+
+        @Query(nativeQuery = true, value ="select * from platValider where etat = 'en preparation'")
+        List<Object[]> getDetailsOrderEnPrep();
 }

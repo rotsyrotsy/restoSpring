@@ -17,7 +17,21 @@ public class DetailsOrder{
     String idPlat;
     Date daty;
     String idServeur;
+    String etat;
+    String lieulivraison;
     
+	public String getLieulivraison() {
+		return lieulivraison;
+	}
+	public void setLieulivraison(String lieulivraison) {
+		this.lieulivraison = lieulivraison;
+	}
+	public String getEtat() {
+		return etat;
+	}
+	public void setEtat(String etat) {
+		this.etat = etat;
+	}
 	public Date getDaty() {
 		return daty;
 	}

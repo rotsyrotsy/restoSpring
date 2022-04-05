@@ -1,18 +1,21 @@
-package com.example.resto.orderr;
+package com.example.resto.order;
+
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import com.example.resto.plat.PlatRepository;
+import com.example.resto.detailsOrder.DetailsOrder;
+import com.example.resto.detailsOrder.DetailsOrderRepository;
+import com.example.resto.order.OrderrRepository;
 
 @Service
 public class OrderrService {
-
-    @PersistenceContext
+	@PersistenceContext
     private EntityManager entityManager;
     private final OrderrRepository orderRepository;
     
@@ -22,17 +25,19 @@ public class OrderrService {
     }
 
     @Transactional
-    public String insertOrder(String idTable) {
-    	String seq = orderRepository.getSeqOrder();
-
+    public String insertOrder(String idTable,String idServeur) {
+    	
+    	String seq = orderRepository.getIdOrder();
     	try {
     	 entityManager.createNativeQuery("INSERT INTO orderr VALUES (?,?,?,now())")
     	 .setParameter(1, seq)
     	 .setParameter(2, idTable)
-         .setParameter(3, "S1")
-         .executeUpdate();
+    	 .setParameter(3, idServeur)
+    	 .executeUpdate();
     	}
     catch(Exception e) {e.printStackTrace();}
+    	
     	return seq;
     }
+	
 }
