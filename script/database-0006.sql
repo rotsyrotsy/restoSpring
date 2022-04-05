@@ -16,3 +16,29 @@ select tab.*, i.price as pu, quantity*i.price as prixTotal from(
 ) as tab join ingredient i on i.label = tab.nomIngredient
 
 
+-- RESAKA STOCK
+
+create table stock
+(
+	id varchar(15) primary key,
+	idIngredient varchar(15),
+	valeur double precision,
+	date date
+);
+
+create table inventaire
+(
+    id varchar(15) primary key,
+    idIngredient varchar(15),
+    date date
+);
+
+create table inventaireDetails
+(
+    id varchar(15) primary key,
+    idInventaire varchar(15),
+    idIngredient varchar(15),
+    qte double precision,
+    date date
+
+);
