@@ -20,7 +20,8 @@
                 <th>#</th>
                 <th>Nom Ingredient</th>
                 <th>Quantité</th>
-                <th>Unité</th>
+                <th>Prix unitaire (Ar)</th>
+                <th>Prix total (Ar)</th>
             </tr>
         </thead>
        <tbody>
@@ -28,11 +29,18 @@
             <tr>
                 <td>${i.index+1}</td>
                 <td>${ing.label}</td>
-                <td>${ing.quantite}</td>
-                <td>${ing.unite}</td>
+                <td>${ing.quantite} ${ing.unite}</td>
+                <td>${ing.pu}</td>
+                <td>${ing.prixTotal}</td>
             </tr>
             </c:forEach>
-      
+      		<tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>TOTAL</td>
+                <td>${sumPrix}</td>
+            </tr>
             
         </tbody>
     </table>

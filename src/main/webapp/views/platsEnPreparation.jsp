@@ -1,4 +1,3 @@
-
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="scheme" value="${pageContext.request.scheme}"/>
 <c:set var="serverName" value="${pageContext.request.serverName}"/>
@@ -23,11 +22,11 @@
 					</tr>
 					</thead>
 					<tbody>
-					<c:forEach  items="${platsValide}" var ="plat" varStatus="i">
+					<c:forEach  items="${platsEnPreparation}" var ="plat" varStatus="i">
 					<tr>
 						<td>${i.index+1}</td>
 						<td>${plat.label}</td>
-						<td><a href="${baseURL}/detailsOrders/changeToEnPreparation?idDetailOrder=${plat.id}" class="btn3 flex-c-m size30 txt11 trans-0-4 m-10">preparer</a></td>
+						<td><a href="${baseURL}/detailsOrders/changeToPret?idDetailOrder=${plat.id}" class="btn3 flex-c-m size30 txt11 trans-0-4 m-10">terminer</a></td>
 					</tr>
 				    </c:forEach>
 					</tbody>

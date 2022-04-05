@@ -26,9 +26,11 @@ public class IngredientService {
             HashMap<String, Object> hm = new HashMap<String, Object>();
             Object[] s = (Object[]) liste.get(i);
 
-            hm.put("label", s[0]);	//idOrder
-            hm.put("quantite", s[1]);	//idServeur
-            hm.put("unite", s[2]);		//date
+            hm.put("label", s[0]);	
+            hm.put("quantite", s[1]);	
+            hm.put("unite", s[2]);	
+            hm.put("pu", s[3]);		
+            hm.put("prixTotal", s[4]);			
             listehm.add(hm);
         }
  		return listehm;

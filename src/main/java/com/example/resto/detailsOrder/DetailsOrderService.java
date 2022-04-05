@@ -7,11 +7,10 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.TransactionTemplate;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,13 +26,6 @@ import com.example.resto.serveur.Serveur;
 @Service
 public class DetailsOrderService {
 	
-	@PersistenceContext
-    private EntityManager eentityManager;
-    private  TransactionTemplate transactionTemplate;
-    
-    @Autowired
-    private PlatformTransactionManager transactionManager;
-    
 	private final DetailsOrderRepository repository;
 	@Autowired
 	private  PlatService platServ;
@@ -193,9 +185,12 @@ public class DetailsOrderService {
             Object[] s = (Object[]) liste.get(i);
             hm.put("id", s[0]);
             hm.put("idOrder", s[1]);	
-            hm.put("idPlat", s[2]);
-            hm.put("etat", s[3]);
-            hm.put("label", s[4]);		
+            hm.put("idPlat", s[2]);	
+            hm.put("daty", s[3]);	
+            hm.put("idServeur", s[4]);
+            hm.put("etat", s[5]);
+            hm.put("lieuLivraison", s[6]);
+            hm.put("label", s[7]);		
             
             listehm.add(hm);
         }
@@ -211,9 +206,12 @@ public class DetailsOrderService {
 
             hm.put("id", s[0]);
             hm.put("idOrder", s[1]);	
-            hm.put("idPlat", s[2]);
-            hm.put("etat", s[3]);
-            hm.put("label", s[4]);		
+            hm.put("idPlat", s[2]);	
+            hm.put("daty", s[3]);	
+            hm.put("idServeur", s[4]);
+            hm.put("etat", s[5]);
+            hm.put("lieuLivraison", s[6]);
+            hm.put("label", s[7]);	
             
             listehm.add(hm);
         }
@@ -221,9 +219,10 @@ public class DetailsOrderService {
  	
     }
     
-
+    
     @Transactional
-    void changeToEnPreparation(String idDetailOrder) {
+    public void changeToEnPreparation(String idDetailOrder) {
+    	System.out.println("IDDETTTTT: "+idDetailOrder);
          try {
      	 entityManager.createNativeQuery("UPDATE detailsOrder SET etat = 'en preparation' WHERE id = ?")
      	 .setParameter(1, idDetailOrder)
@@ -232,7 +231,8 @@ public class DetailsOrderService {
      catch(Exception e) {e.printStackTrace();}
     }
 
-    void changeToPret(String idDetailOrder) {
+    @Transactional
+    public void changeToPret(String idDetailOrder) {
            try {
      	 entityManager.createNativeQuery("UPDATE detailsOrder SET etat = 'pret' WHERE id = ?")
      	 .setParameter(1, idDetailOrder)

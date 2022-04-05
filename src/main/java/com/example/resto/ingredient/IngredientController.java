@@ -35,6 +35,13 @@ public class IngredientController {
 		
 		List<HashMap<String,Object>> liste = ingservice.getIngredientConsomer(d1, d2);
 		
+		Double sum = 0.0;
+		for(int i=0; i<liste.size(); i++) {
+			HashMap<String,Object> temp = liste.get(i);
+			sum += (Double)temp.get("prixTotal");
+		}
+
+		model.addAttribute("sumPrix", sum);
 		model.addAttribute("listIngredient", liste);
 		model.addAttribute("date1",date1);
 		model.addAttribute("date2",date2);
