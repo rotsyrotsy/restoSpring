@@ -12,6 +12,8 @@
     </h2>
 </section>
 <div class="section-signup bg1-pattern p-t-85 p-b-85">
+	${message}
+
         <h1>Consommation Ingredient entre ${date1 } et ${date2 }</h1>
     <div class="col-md-3"></div>
     <table class="table">
