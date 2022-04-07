@@ -20,5 +20,4 @@ public class ServeurController {
 	public List<Serveur> getAllServeurs() {
 		return service.getAllServeurs();
 	}
-	
 }
