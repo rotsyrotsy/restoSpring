@@ -3,7 +3,7 @@ package com.example.resto.payement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.sql.Date;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -17,21 +17,25 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 @RestController
-@RequestMapping(path = "/paiements")
+@RequestMapping(path = "/payement")
 public class PayementController {
 	@Autowired
 	private  PayementService service;
 	public PayementController(PayementService service) {
 	        this.service = service;
 	    }
-	
 	@GetMapping
-	public ModelAndView choixDate(Model model,
+	public ModelAndView selectPaiement(Model model) {
+		model.addAttribute("view","selectPayementByDate");
+		return new ModelAndView("template");
+	}
+	@GetMapping("/resultDate")
+	public ModelAndView paiementsEntre2Dates(Model model,
 			@RequestParam(required = true) String date1,
 			 @RequestParam(required = true) String date2) throws ParseException{
 		
-		Date d1 = (Date) new SimpleDateFormat("dd/MM/yyyy").parse(date1);
-		Date d2 = (Date) new SimpleDateFormat("dd/MM/yyyy").parse(date2);
+		Date d1 =  new SimpleDateFormat("dd/MM/yyyy").parse(date1);
+		Date d2 =  new SimpleDateFormat("dd/MM/yyyy").parse(date2);
 		
 		List<Payement> liste = service.findBetween(d1, d2);
 		List<Payement> cheque = new ArrayList<Payement>();
@@ -47,6 +51,8 @@ public class PayementController {
 		double sumEspece = service.sumPayement(espece);
 		double sumCheque = service.sumPayement(cheque);
 
+		model.addAttribute("date1",date1);
+		model.addAttribute("date2",date2);
 		model.addAttribute("sumEspece",sumEspece);
 		model.addAttribute("sumCheque",sumCheque);
 		model.addAttribute("cheque",cheque);

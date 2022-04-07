@@ -14,8 +14,9 @@
 <div class="section-signup bg1-pattern p-t-85 p-b-85">
         <h1>Payement entre ${date1 } et ${date2 }</h1>
     <div class="col-md-3"></div>
-    <h3>Payement par chèque</h3>
-	<h4>Somme total des payements: ${sumTotal}</h4>
+	<h2>Somme total des payements: ${sumTotal}</h2>
+	
+    <h4>Payement par chèque : ${sumCheque }</h4>
     <table class="table">
         <thead>
             <tr>
@@ -36,7 +37,7 @@
       		</tr>
         </tbody>
     </table>
-    <h3>Payement par espèce</h3>
+    <h4>Payement par espèce :  ${sumEspece }</h4>
     <table class="table">
         <thead>
             <tr>
