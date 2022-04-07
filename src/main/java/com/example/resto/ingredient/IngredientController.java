@@ -40,7 +40,8 @@ public class IngredientController {
                 catch(Exception e)
                 {
                     e.printStackTrace();
-                    model.addAttribute("message",e.getMessage());
+                    String erreur="<div class=\"alert alert-danger\">"+e.getMessage()+"</div>";
+                    model.addAttribute("message",erreur);
                     model.addAttribute("view","resultDateIngredient");
                     return new ModelAndView("template");
                 }

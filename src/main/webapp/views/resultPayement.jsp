@@ -12,16 +12,16 @@
     </h2>
 </section>
 <div class="section-signup bg1-pattern p-t-85 p-b-85">
+	${message }
         <h1>Payement entre ${date1 } et ${date2 }</h1>
     <div class="col-md-3"></div>
-	<h2>Somme total des payements: ${sumTotal}</h2>
 	
-    <h4>Payement par chèque : ${sumCheque }</h4>
+    <h4>Payement par chèque : ${sumCheque } Ar</h4>
     <table class="table">
         <thead>
             <tr>
                 <th>#</th>
-                <th>Valeur</th>
+                <th>Valeur (Ar)</th>
             </tr>
         </thead>
        <tbody>
@@ -37,12 +37,12 @@
       		</tr>
         </tbody>
     </table>
-    <h4>Payement par espèce :  ${sumEspece }</h4>
+    <h4>Payement par espèce :  ${sumEspece } Ar</h4>
     <table class="table">
         <thead>
             <tr>
                 <th>#</th>
-                <th>Valeur</th>
+                <th>Valeur (Ar)</th>
             </tr>
         </thead>
        <tbody>
@@ -58,6 +58,8 @@
       		</tr>
         </tbody>
     </table>
+    
+	<h2>Somme total des payements: ${sumTotal} Ar</h2>
     <div class="col-md-3"></div>
 </div>
 
