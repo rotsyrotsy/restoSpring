@@ -21,6 +21,7 @@ import com.example.resto.order.OrderrRepository;
 import com.example.resto.order.OrderrService;
 import com.example.resto.plat.PlatService;
 import com.example.resto.serveur.Serveur;
+import com.example.resto.stock.StockService;
 
 
 @Service
@@ -29,6 +30,8 @@ public class DetailsOrderService {
 	private final DetailsOrderRepository repository;
 	@Autowired
 	private  PlatService platServ;
+	
+	
 	
 	@Autowired
 	private  OrderrRepository ordServ;
@@ -233,12 +236,18 @@ public class DetailsOrderService {
 
     @Transactional
     public void changeToPret(String idDetailOrder) {
+    	
            try {
      	 entityManager.createNativeQuery("UPDATE detailsOrder SET etat = 'pret' WHERE id = ?")
      	 .setParameter(1, idDetailOrder)
           .executeUpdate(); 	
      	}
      catch(Exception e) {e.printStackTrace();}
+    }
+    
+    public String getIdPlat(String idDetailOrder) {
+    	return repository.getIdPlat(idDetailOrder);
+    	
     }
 
    

@@ -12,25 +12,50 @@
     </h2>
 </section>
 <div class="section-signup bg1-pattern p-t-85 p-b-85">
-        <h1>Detail Plat ${platIngredient[0].nomPlat}</h1>
+        <h1>Payement entre ${date1 } et ${date2 }</h1>
     <div class="col-md-3"></div>
+	<h2>Somme total des payements: ${sumTotal}</h2>
+	
+    <h4>Payement par chèque : ${sumCheque }</h4>
     <table class="table">
         <thead>
             <tr>
                 <th>#</th>
-                <th>label</th>
-                <th>Quantite</th>
+                <th>Valeur</th>
             </tr>
         </thead>
-        <tbody>
-              <c:forEach  items="${platIngredient}" var="platIng" varStatus="i">
+       <tbody>
+              <c:forEach  items="${cheque}" var="che" varStatus="i">
             <tr>
                 <td>${i.index+1}</td>
-                <td>${platIng.nomIngredient}</td>
-                <td>${platIng.quantity} ${platIng.unite}</td>
+                <td>${che.valeur}</td>
             </tr>
             </c:forEach>
-          
+      		<tr>
+      			<td>Somme</td>
+      			<td>${sumCheque}</td>
+      		</tr>
+        </tbody>
+    </table>
+    <h4>Payement par espèce :  ${sumEspece }</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Valeur</th>
+            </tr>
+        </thead>
+       <tbody>
+              <c:forEach  items="${espece}" var="esp" varStatus="i">
+            <tr>
+                <td>${i.index+1}</td>
+                <td>${esp.valeur}</td>
+            </tr>
+            </c:forEach>
+      		<tr>
+      			<td>Somme</td>
+      			<td>${sumEspece}</td>
+      		</tr>
         </tbody>
     </table>
     <div class="col-md-3"></div>

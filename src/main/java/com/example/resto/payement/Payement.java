@@ -1,32 +1,31 @@
-package com.example.resto.stock;
+package com.example.resto.payement;
 
 import java.sql.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
 @Entity
 @Table
-public class Stock {
+public class Payement {
 	@Id
 	String id;
-	String idIngredient;
+	String idOrder;
 	Double valeur;
 	Date date;
-	
-	public String getIdIngredient() {
-		return idIngredient;
-	}
-	public void setIdIngredient(String idIngredient) {
-		this.idIngredient = idIngredient;
-	}
+	String type;
 	
 	public String getId() {
 		return id;
 	}
 	public void setId(String id) {
 		this.id = id;
+	}
+	public String getIdOrder() {
+		return idOrder;
+	}
+	public void setIdOrder(String idOrder) {
+		this.idOrder = idOrder;
 	}
 	public Double getValeur() {
 		return valeur;
@@ -39,5 +38,11 @@ public class Stock {
 	}
 	public void setDate(Date date) {
 		this.date = date;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
 	}
 }

@@ -24,11 +24,13 @@ import com.example.resto.categorie.CategorieService;
 import com.example.resto.plat.PlatService;
 import com.example.resto.serveur.Serveur;
 import com.example.resto.serveur.ServeurService;
+import com.example.resto.stock.StockService;
 
 @RestController
 @RequestMapping(path = "/detailsOrders")
 public class DetailsOrderController {
-
+	@Autowired
+	private  StockService stockService;
 	@Autowired
 	private  CategorieService catservice;
 	
@@ -153,6 +155,8 @@ public class DetailsOrderController {
       @GetMapping(path="/changeToPret")
 	public ModelAndView changePret(Model model,@RequestParam String idDetailOrder){
             service.changeToPret(idDetailOrder);
+            String idPlat = service.getIdPlat(idDetailOrder);
+        	stockService.insertStock(idPlat);
 		
             
             List<HashMap<String, Object>> listedo = service.getDetailsOrderPrep();
