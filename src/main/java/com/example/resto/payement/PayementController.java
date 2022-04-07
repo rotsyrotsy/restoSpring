@@ -1,5 +1,6 @@
 package com.example.resto.payement;
 
+import com.example.resto.controlle.Controle;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -38,6 +39,19 @@ public class PayementController {
 		
 		Date d1 =  new SimpleDateFormat("dd/MM/yyyy").parse(date1);
 		Date d2 =  new SimpleDateFormat("dd/MM/yyyy").parse(date2);
+                
+                try{
+                     Controle.controleDate(d1, d2);
+                }
+                catch(Exception e)
+                {
+                    e.printStackTrace();
+                    String erreur="<div class=\"alert alert-danger\">"+e.getMessage()+"</div>";
+                    model.addAttribute("message",erreur);
+                    model.addAttribute("view","resultPayement");
+                    return new ModelAndView("template");
+                }
+               
 		
 		List<Payement> liste = service.findBetween(d1, d2);
 		List<Payement> cheque = new ArrayList<Payement>();

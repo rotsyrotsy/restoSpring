@@ -5,10 +5,24 @@
  */
 package com.example.resto.controlle;
 
+import java.util.Date;
+
 /**
  *
  * @author ratsi
  */
 public class Controle {
-    //public 
+    public static void controleDate(Date date1,Date date2) throws IllegalStateException
+    {
+        if(date1.compareTo(date2)>0)
+        {
+            throw new IllegalStateException("Date Début supérieur à Date Fin");
+        }
+    }
+    public static void nombreNegatif(double nb) throws IllegalStateException {
+    	if (nb<0) {
+    		throw new IllegalStateException("Le chiffre que vous avez inséré est invalide,"
+    				+ "veuillez insérer un chiffre positif");
+    	}
+    }
 }

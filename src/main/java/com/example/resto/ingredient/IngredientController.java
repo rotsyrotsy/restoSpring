@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.example.resto.categorie.CategorieService;
 import com.example.resto.formattage.Formattage;
+import com.example.resto.controlle.Controle;
 
 @RestController
 @RequestMapping(path = "/ingredients")
@@ -33,6 +34,18 @@ public class IngredientController {
 			@RequestParam(required = true) String date2) throws ParseException{
 		Date d1 = new SimpleDateFormat("dd/MM/yyyy").parse(date1);
 		Date d2 = new SimpleDateFormat("dd/MM/yyyy").parse(date2);
+                
+                 try{
+                     Controle.controleDate(d1, d2);
+                }
+                catch(Exception e)
+                {
+                    e.printStackTrace();
+                    String erreur="<div class=\"alert alert-danger\">"+e.getMessage()+"</div>";
+                    model.addAttribute("message",erreur);
+                    model.addAttribute("view","resultDateIngredient");
+                    return new ModelAndView("template");
+                }
 		
 		List<HashMap<String,Object>> liste = ingservice.getIngredientConsomer(d1, d2);
 		
