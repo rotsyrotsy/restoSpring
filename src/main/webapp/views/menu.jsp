@@ -52,6 +52,14 @@
 	<section class="section-lunch bgwhite">
 
 		<div class="container">
+		<c:if test="${succes != null}">
+			<div class="alert alert-success" role="alert">
+			  ${succes }
+			</div>
+			<a href="${baseURL}/order/validerCommande"  class="btn3 flex-c-m size30 txt11 trans-0-4 m-10">
+                  Valider la commande
+            </a>
+		</c:if>
 			<div class="row p-t-108 p-b-70">
 				<c:forEach items="${listPlat}" var ="plat">
 					<div class="col-md-8 col-lg-6 m-l-r-auto">
@@ -74,12 +82,13 @@
 									${plat.price}
 								</span>
 							</div>
-                                                                <button type="submit" class="btn3 flex-c-m size18 txt11 trans-0-4 m-10">
-                                                                    Commander
-                                                                </button>
-                                                                <button type="submit" class="btn3 flex-c-m size18 txt11 trans-0-4 m-10">
+							<a href="${baseURL}/detailsOrders/insert?idPlat=${plat.id}"  class="btn3 flex-c-m size18 txt11 trans-0-4 m-10">
+                                      Commander
+                                 </a>
+                                                                
+                                                                <a href="${baseURL}/plats/getPlatIngredient?idPlat=${plat.id}"  class="btn3 flex-c-m size18 txt11 trans-0-4 m-10">
                                                                     Voir Ingredient
-                                                                </button>
+                                                                </a>
 						</div>
 					</div>
 				</c:forEach>
@@ -92,7 +101,7 @@
 	<div class="section-signup bg1-pattern p-t-85 p-b-85">
 		<form class="flex-c-m flex-w flex-col-c-m-lg p-l-5 p-r-5" action="${baseURL}/plats">
 			<span class="txt5 m-10">
-				Tri par catégorie
+				Tri par catï¿½gorie
 			</span>
 
 			<div class="wrap-input-signup size17 bo2 bo-rad-10 bgwhite pos-relative txt10 m-10">

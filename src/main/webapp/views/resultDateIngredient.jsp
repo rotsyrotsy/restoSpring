@@ -12,28 +12,30 @@
     </h2>
 </section>
 <div class="section-signup bg1-pattern p-t-85 p-b-85">
-        <h1>Detail Plat ${platIngredient[0].label}</h1>
+        <h1>Consommation Ingredient entre ${date1 } et ${date2 }</h1>
     <div class="col-md-3"></div>
     <table class="table">
         <thead>
             <tr>
                 <th>#</th>
-                <th>label</th>
-                <th>Qte</th>
+                <th>Nom Ingredient</th>
+                <th>Quantité</th>
                 <th>Unité</th>
             </tr>
         </thead>
-        <tbody>
-              <c:forEach  items="${platIngredient}" var="platIng" varStatus="i">
+       <tbody>
+              <c:forEach  items="${listIngredient}" var="ing" varStatus="i">
             <tr>
                 <td>${i.index+1}</td>
-                <td>${platIng.quantity}</td>
-                <td>${platIng.unite}</td>
+                <td>${ing.label}</td>
+                <td>${ing.quantite}</td>
+                <td>${ing.unite}</td>
             </tr>
             </c:forEach>
-          
+      
+            
         </tbody>
-    </table>unite
+    </table>
     <div class="col-md-3"></div>
 </div>
 

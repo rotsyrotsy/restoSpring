@@ -1,4 +1,4 @@
-package com.example.resto.serveur;
+package com.example.resto.stock;
 
 import java.util.List;
 
@@ -8,16 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(path = "/serveurs")
-public class ServeurController {
+@RequestMapping(path = "/stock")
+public class StockController {
 	@Autowired
-	private  ServeurService service;
-	public ServeurController(ServeurService service) {
+	private  StockService service;
+	public StockController(StockService service) {
 	        this.service = service;
 	    }
-	
-	@GetMapping
-	public List<Serveur> getAllServeurs() {
-		return service.getAllServeurs();
-	}
 }

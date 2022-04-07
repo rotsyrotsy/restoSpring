@@ -5,22 +5,48 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.support.TransactionTemplate;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.example.resto.order.OrderrRepository;
+import com.example.resto.order.OrderrService;
 import com.example.resto.plat.PlatService;
+import com.example.resto.serveur.Serveur;
 
 
 @Service
 public class DetailsOrderService {
+	
+	@PersistenceContext
+    private EntityManager eentityManager;
+    private  TransactionTemplate transactionTemplate;
+    
+    @Autowired
+    private PlatformTransactionManager transactionManager;
+    
 	private final DetailsOrderRepository repository;
 	@Autowired
 	private  PlatService platServ;
+	
+	@Autowired
+	private  OrderrRepository ordServ;
 	
     @Autowired
     public DetailsOrderService(DetailsOrderRepository repository) {
         this.repository = repository;
     }
+    @PersistenceContext
+    private EntityManager entityManager;
     
     public List<HashMap<String, Object>> getDateOrderDetails (String idServeur, Date date, Date date2){
     	List<Object[]> liste = repository.dateOrderDetails( idServeur,  date,  date2);
@@ -107,4 +133,113 @@ public class DetailsOrderService {
         }
  		return listehm;
  	}
+ 	
+ 	public List<HashMap<String, Object>> getprixPlatOrderByIdOrder (String idOrder){
+ 		List<Object[]> liste = repository.getprixPlatOrderByIdOrder( idOrder);
+    	List<HashMap<String, Object>> listehm = new ArrayList<HashMap<String, Object>>();
+
+        for (int i = 0; i < liste.size(); i++) {
+            HashMap<String, Object> hm = new HashMap<String, Object>();
+            Object[] s = (Object[]) liste.get(i);
+
+            hm.put("id", s[0]);	//sumPrix
+            hm.put("idOrder", s[1]);	//idOrder
+            hm.put("idPlat", s[2]);	//idServeur
+            hm.put("plat", s[3]);		
+            hm.put("idServeur", s[4]);	
+            hm.put("date", s[5]);
+            hm.put("prixVente", s[6]);
+            listehm.add(hm);
+        }
+ 		return listehm;
+ 	}
+ 	
+
+	 @Transactional
+	   public void validerCommande(String idOrder) {
+		 System.out.println("IDORDEER: "+idOrder);
+	        try {
+	        	 entityManager.createNativeQuery("UPDATE detailsOrder SET etat='valide' where idOrder=?")
+	        	 .setParameter(1, idOrder)
+	             .executeUpdate(); 	
+	        	}
+	        catch(Exception e) {e.printStackTrace();}
+	        
+	 
+	 }
+	        	
+	 
+    
+ 	 @Transactional
+     public void insertDetailsOrder(String idPlat, String idOrder) {
+ 		String idServeur = ordServ.getIdServeurFromOrder(idOrder);
+     try {
+     	 entityManager.createNativeQuery("INSERT INTO detailsOrder VALUES (nextval('seqDetailsOrder'),?,?,now(),?,'non valide')")
+     	 .setParameter(1, idOrder)
+     	 .setParameter(2, idPlat)
+          .setParameter(3, idServeur)
+          .executeUpdate(); 	
+     	}
+     catch(Exception e) {e.printStackTrace();}
+     }
+
+    public List<HashMap<String, Object>> getDetailsOrderValide() {
+        
+        	List<Object[]> liste = repository.getDetailsOrderValide();
+    	List<HashMap<String, Object>> listehm = new ArrayList<HashMap<String, Object>>();
+
+        for (int i = 0; i < liste.size(); i++) {
+            HashMap<String, Object> hm = new HashMap<String, Object>();
+            Object[] s = (Object[]) liste.get(i);
+            hm.put("id", s[0]);
+            hm.put("idOrder", s[1]);	
+            hm.put("idPlat", s[2]);
+            hm.put("etat", s[3]);
+            hm.put("label", s[4]);		
+            
+            listehm.add(hm);
+        }
+ 		return listehm;
+ 	}
+    public List<HashMap<String, Object>> getDetailsOrderPrep() {
+        	List<Object[]> liste = repository.getDetailsOrderEnPrep();
+    	List<HashMap<String, Object>> listehm = new ArrayList<HashMap<String, Object>>();
+
+        for (int i = 0; i < liste.size(); i++) {
+            HashMap<String, Object> hm = new HashMap<String, Object>();
+            Object[] s = (Object[]) liste.get(i);
+
+            hm.put("id", s[0]);
+            hm.put("idOrder", s[1]);	
+            hm.put("idPlat", s[2]);
+            hm.put("etat", s[3]);
+            hm.put("label", s[4]);		
+            
+            listehm.add(hm);
+        }
+ 		return listehm;
+ 	
+    }
+    
+
+    @Transactional
+    void changeToEnPreparation(String idDetailOrder) {
+         try {
+     	 entityManager.createNativeQuery("UPDATE detailsOrder SET etat = 'en preparation' WHERE id = ?")
+     	 .setParameter(1, idDetailOrder)
+          .executeUpdate(); 	
+     	}
+     catch(Exception e) {e.printStackTrace();}
+    }
+
+    void changeToPret(String idDetailOrder) {
+           try {
+     	 entityManager.createNativeQuery("UPDATE detailsOrder SET etat = 'pret' WHERE id = ?")
+     	 .setParameter(1, idDetailOrder)
+          .executeUpdate(); 	
+     	}
+     catch(Exception e) {e.printStackTrace();}
+    }
+
+   
 }
