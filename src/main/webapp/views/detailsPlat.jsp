@@ -30,13 +30,7 @@
                 <td>${platIng.quantity} ${platIng.unite}</td>
             </tr>
             </c:forEach>
-           <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-               
-            </tr>
-            
+          
         </tbody>
     </table>
     <div class="col-md-3"></div>
