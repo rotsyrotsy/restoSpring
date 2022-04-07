@@ -19,4 +19,10 @@ public class Controle {
             throw new IllegalStateException("Date Début supérieur à Date Fin");
         }
     }
+    public static void nombreNegatif(double nb) throws IllegalStateException {
+    	if (nb<0) {
+    		throw new IllegalStateException("Le chiffre que vous avez inséré est invalide,"
+    				+ "veuillez insérer un chiffre positif");
+    	}
+    }
 }
