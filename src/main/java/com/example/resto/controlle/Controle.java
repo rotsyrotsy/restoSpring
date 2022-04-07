@@ -10,10 +10,10 @@ package com.example.resto.controlle;
  * @author ratsi
  */
 public class Controle {
-    public void nombreNegatif(double nb) throws IllegalStateException {
+    public static void nombreNegatif(double nb) throws IllegalStateException {
     	if (nb<0) {
-    		throw new IllegalStateException("Le nombre que vous avez inséré est invalide,"
-    				+ "veuillez insérere un nombre positif");
+    		throw new IllegalStateException("Le chiffre que vous avez inséré est invalide,"
+    				+ "veuillez insérer un chiffre positif");
     	}
     }
 }
