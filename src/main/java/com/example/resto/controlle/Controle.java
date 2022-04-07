@@ -10,5 +10,9 @@ package com.example.resto.controlle;
  * @author ratsi
  */
 public class Controle {
-    public 
+    public void nombreNegatif(double nb) throws Exception {
+    	if (nb<0) {
+    		throw new Exception("Le nombre que vous avez inséré est invalide");
+    	}
+    }
 }
