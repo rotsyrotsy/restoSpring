@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.resto.categorie.CategorieService;
+import com.example.resto.formattage.Formattage;
 
 @RestController
 @RequestMapping(path = "/ingredients")
@@ -41,7 +42,7 @@ public class IngredientController {
 			sum += (Double)temp.get("prixTotal");
 		}
 
-		model.addAttribute("sumPrix", sum);
+		model.addAttribute("sumPrix", Formattage.formatePrice(sum));
 		model.addAttribute("listIngredient", liste);
 		model.addAttribute("date1",date1);
 		model.addAttribute("date2",date2);

@@ -10,5 +10,5 @@ package com.example.resto.controlle;
  * @author ratsi
  */
 public class Controle {
-    public 
+    //public 
 }

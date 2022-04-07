@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.example.resto.formattage.Formattage;
+
 
 @RestController
 @RequestMapping(path = "/payement")
@@ -53,11 +55,11 @@ public class PayementController {
 
 		model.addAttribute("date1",date1);
 		model.addAttribute("date2",date2);
-		model.addAttribute("sumEspece",sumEspece);
-		model.addAttribute("sumCheque",sumCheque);
+		model.addAttribute("sumEspece",Formattage.formatePrice(sumEspece));
+		model.addAttribute("sumCheque",Formattage.formatePrice(sumCheque));
 		model.addAttribute("cheque",cheque);
 		model.addAttribute("espece",espece);
-		model.addAttribute("sumTotal",sumEspece+sumCheque);
+		model.addAttribute("sumTotal",Formattage.formatePrice(sumEspece+sumCheque));
 		model.addAttribute("view","resultPayement");
 				return new ModelAndView("template");
 	}

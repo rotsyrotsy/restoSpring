@@ -28,7 +28,7 @@
               <c:forEach  items="${cheque}" var="che" varStatus="i">
             <tr>
                 <td>${i.index+1}</td>
-                <td>${che.valeur}</td>
+                <td>${che.idOrder}</td>
             </tr>
             </c:forEach>
       		<tr>
@@ -49,7 +49,7 @@
               <c:forEach  items="${espece}" var="esp" varStatus="i">
             <tr>
                 <td>${i.index+1}</td>
-                <td>${esp.valeur}</td>
+                <td>${esp.idOrder}</td>
             </tr>
             </c:forEach>
       		<tr>
