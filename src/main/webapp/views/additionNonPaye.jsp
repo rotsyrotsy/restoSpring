@@ -20,6 +20,7 @@
         <thead>
             <tr>
                 <th>#</th>
+                <th>Table</th>
                 <th>Date</th>
                 <th>Montant total</th>
                 <th>Déja payé</th>
@@ -30,6 +31,7 @@
               <c:forEach  items="${addition}" var="ad" varStatus="i">
             <tr>
                 <td>${i.index+1}</td>
+                <td>${ad.numero}</td>
                 <td>${ad.date}</td>
                 <td>${ad.total}</td>
                 <td>${ad.dejapayer}</td>
