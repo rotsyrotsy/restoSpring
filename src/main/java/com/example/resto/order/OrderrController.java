@@ -96,5 +96,14 @@ public class OrderrController {
 	    model.addAttribute("view", "platCommande");
 	    return new ModelAndView("template");
 	 }
+        
+        @GetMapping("/additionNonPaye")
+	public ModelAndView additionNonPaye(Model model){
+		List<HashMap<String,Object>> liste = service.getAdditionNonPaye();
+		
+	    model.addAttribute("addition", liste);
+	    model.addAttribute("view", "additionNonPaye");
+	    return new ModelAndView("template");
+	 }
 	
 }

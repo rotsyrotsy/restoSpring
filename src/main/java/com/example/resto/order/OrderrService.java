@@ -12,6 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.example.resto.detailsOrder.DetailsOrder;
 import com.example.resto.detailsOrder.DetailsOrderRepository;
 import com.example.resto.order.OrderrRepository;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 @Service
 public class OrderrService {
@@ -38,6 +40,25 @@ public class OrderrService {
     catch(Exception e) {e.printStackTrace();}
     	
     	return seq;
+    }
+
+    public List<HashMap<String, Object>> getAdditionNonPaye() {
+       	List<Object[]> liste = orderRepository.getAdditionNonPaye();
+    	List<HashMap<String, Object>> listehm = new ArrayList<HashMap<String, Object>>();
+
+        for (int i = 0; i < liste.size(); i++) {
+            HashMap<String, Object> hm = new HashMap<String, Object>();
+            Object[] s = (Object[]) liste.get(i);
+
+            hm.put("date", s[0]);	
+            hm.put("total", s[1]);	
+            hm.put("dejapayer", s[2]);	
+            hm.put("restant", s[3]);
+            hm.put("numero", s[4]);	
+            listehm.add(hm);
+        }
+ 		return listehm;
+ 	
     }
 	
 }
