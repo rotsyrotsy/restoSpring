@@ -32,7 +32,7 @@
                 <td>${i.index+1}</td>
                 <td>${ad.date}</td>
                 <td>${ad.total}</td>
-                <td>${ad.dejaPayer}</td>
+                <td>${ad.dejapayer}</td>
                 <td>${ad.restant}</td>
             </tr>
             </c:forEach>
