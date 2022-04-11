@@ -53,7 +53,8 @@ public class OrderrService {
             hm.put("date", s[0]);	
             hm.put("total", s[1]);	
             hm.put("dejapayer", s[2]);	
-            hm.put("restant", s[3]);			
+            hm.put("restant", s[3]);
+            hm.put("numero", s[4]);	
             listehm.add(hm);
         }
  		return listehm;
