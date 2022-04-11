@@ -16,6 +16,9 @@ public interface OrderrRepository extends JpaRepository<Orderr,String>{
 
 	@Query(nativeQuery = true, value ="select idServeur from orderr where id=?1")
 	String getIdServeurFromOrder(String idOrder);
+
+        @Query(nativeQuery = true, value ="select * from additionNonPaye")
+        List<Object[]> getAdditionNonPaye();
 	
 
 }
