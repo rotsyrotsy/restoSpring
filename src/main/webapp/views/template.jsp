@@ -58,74 +58,43 @@
 					<div class="wrap_menu p-l-45 p-l-0-xl">
 						<nav class="menu">
 							<ul class="main_menu">
-								<li>
-									<a href="index.html">Home</a>
-								</li>
 
 								<li>
 									<a href="${baseURL}/plats">Menu</a>
 								</li>
-
+								
 								<li>
-									<a href="reservation.html">Stock</a>
+									<a href="${baseURL}/stock">Stock</a>
 								</li>
 
 								<li>
-									<a href="gallery.html">Gallery</a>
+									<a href="${baseURL}/detailsOrders/choixServeurPourboire">Pourboires</a>
 								</li>
 
 								<li>
-									<a href="about.html">About</a>
+									<a href="${baseURL }/ingredients/choixDate">Consommation</a>
 								</li>
 
 								<li>
-									<a href="blog.html">Blog</a>
+									<a href="${baseURL }/order/additionNonPaye">Additions en cours</a>
 								</li>
 
 								<li>
-									<a href="contact.html">Contact</a>
+									<a href="${baseURL }/payement">Paie</a>
 								</li>
+
+								<li>
+									<a href="${baseURL }/plats/prix-plat-base">Prix de revient</a>
+								</li>
+								
 							</ul>
 						</nav>
 					</div>
-					
-<div class="ps-cart">
-<a class="ps-cart__toggle" href="#"><span><i>20</i></span><i class="bi bi-basket" aria-hidden="true"></i></a>
-              <div class="ps-cart__listing">
-                <div class="ps-cart__content">
-                  <div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
-                    <div class="ps-cart-item__thumbnail"><a href="product-detail.html"></a><img src="${baseURL}/views/images/lunch-01.jpg" alt="IMG-MENU"></div>
-                    <div class="ps-cart-item__content"><a class="ps-cart-item__title" href="product-detail.html">Amazin’ Glazin’</a>
-                      <p><span>Quantity:<i>12</i></span><span>Total:<i>£176</i></span></p>
-                    </div>
-                  </div>
-                  <div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
-                    <div class="ps-cart-item__thumbnail"><a href="product-detail.html"></a><img src="${baseURL}/views/images/lunch-01.jpg" alt="IMG-MENU"></div>
-                    <div class="ps-cart-item__content"><a class="ps-cart-item__title" href="product-detail.html">The Crusty Croissant</a>
-                      <p><span>Quantity:<i>12</i></span><span>Total:<i>£176</i></span></p>
-                    </div>
-                  </div>
-                  <div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
-                    <div class="ps-cart-item__thumbnail"><a href="product-detail.html"></a><img src="${baseURL}/views/images/lunch-01.jpg" alt="IMG-MENU"></div>
-                    <div class="ps-cart-item__content"><a class="ps-cart-item__title" href="product-detail.html">The Rolling Pin</a>
-                      <p><span>Quantity:<i>12</i></span><span>Total:<i>£176</i></span></p>
-                    </div>
-                  </div>
-                </div>
-                <div class="ps-cart__total">
-                  <p>Number of items:<span>36</span></p>
-                  <p>Item Total:<span>£528.00</span></p>
-                </div>
-                <div class="ps-cart__footer"><a class="ps-btn" href="cart.html">Check out<i class="bi bi-arrow-right" aria-hidden="true"></i></a></div>
-              </div>
-            </div>
+				
             
             
 					<!-- Social -->
 					<div class="social flex-w flex-l-m p-r-20">
-						<a href="#"><i class="fa fa-tripadvisor" aria-hidden="true"></i></a>
-						<a href="#"><i class="fa fa-facebook m-l-21" aria-hidden="true"></i></a>
-						<a href="#"><i class="fa fa-twitter m-l-21" aria-hidden="true"></i></a>
 
 						<button class="btn-show-sidebar m-l-33 trans-0-4"></button>
 					</div>
@@ -140,39 +109,7 @@
 		<button class="btn-hide-sidebar ti-close color0-hov trans-0-4"></button>
 
 		<!-- - -->
-		<ul class="menu-sidebar p-t-95 p-b-70">
-			<li class="t-center m-b-13">
-				<a href="index.html" class="txt19">Home</a>
-			</li>
-
-			<li class="t-center m-b-13">
-				<a href="menu.html" class="txt19">Menu</a>
-			</li>
-
-			<li class="t-center m-b-13">
-				<a href="gallery.html" class="txt19">Gallery</a>
-			</li>
-
-			<li class="t-center m-b-13">
-				<a href="about.html" class="txt19">About</a>
-			</li>
-
-			<li class="t-center m-b-13">
-				<a href="blog.html" class="txt19">Blog</a>
-			</li>
-
-			<li class="t-center m-b-33">
-				<a href="contact.html" class="txt19">Contact</a>
-			</li>
-
-			<li class="t-center">
-				<!-- Button3 -->
-				<a href="reservation.html" class="btn3 flex-c-m size13 txt11 trans-0-4 m-l-r-auto">
-					Reservation
-				</a>
-			</li>
-		</ul>
-
+		
 		<!-- - -->
 		<div class="gallery-sidebar t-center p-l-60 p-r-60 p-b-40">
 			<!-- - -->

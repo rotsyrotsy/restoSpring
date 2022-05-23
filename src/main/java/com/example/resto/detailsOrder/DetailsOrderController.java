@@ -47,7 +47,7 @@ public class DetailsOrderController {
 	        this.service = service;
 	    }
 	
-	@GetMapping
+	@GetMapping("/choixServeurPourboire")
 	public ModelAndView selectServeur(Model model){
 		List<Serveur> listeServeurs = servservice.getAllServeurs();
 		
