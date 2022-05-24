@@ -12,7 +12,7 @@
 <!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="${baseURL}/views/images/icons/favicon.png"/>
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="${baseURL}/views/vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="${baseURL}/views/assets/vendor/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="${baseURL}/views/assets/vendor/bootstrap-icons/bootstrap-icons.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="${baseURL}/views/fonts/font-awesome-4.7.0/css/font-awesome.min.css">

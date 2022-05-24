@@ -74,7 +74,6 @@ public class PlatController {
      @GetMapping("/getPlatIngredient")
      public ModelAndView getSignalementById(Model model, @RequestParam String idPlat) {
     	 List<HashMap<String, Object>> listIng = service.getAllIngredient(idPlat);
-    	 
     	 model.addAttribute("platIngredient",listIng);
     	 model.addAttribute("view","detailsPlat");
     	 return new ModelAndView("template");
