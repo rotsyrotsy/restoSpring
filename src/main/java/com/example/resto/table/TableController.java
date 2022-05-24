@@ -28,17 +28,6 @@ public class TableController {
 	@Autowired
 	private  ServeurService servservice;
 	
-	 @GetMapping("/allTables")
-	 public ModelAndView getAllTable(Model models){
-		 List<IdTable> listTable = service.getAllTable();
-		 List<Serveur> listeServeurs = servservice.getAllServeurs();
-			
-		    models.addAttribute("listServeur", listeServeurs);
-		models.addAttribute("listTable", listTable);
-                models.addAttribute("view", "selectTable");
-                return new ModelAndView("template");
-         }
-	 
 	 @GetMapping
 	 public ModelAndView getAllTableOrder(Model models){
 		 List<Serveur> listeServeurs = servservice.getAllServeurs();

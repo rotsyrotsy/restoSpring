@@ -76,7 +76,29 @@ public class OrderrController {
         
         model.addAttribute("view", "menu");
         return mv;
-    }    
+    }  
+    
+    @GetMapping()
+    public ModelAndView getAddition(Model model,@RequestParam String idOrder,ServletRequest request) throws Exception{
+    
+    	ModelAndView mv = new ModelAndView("template");
+    	
+    	List<HashMap<String, Object>> listPlat = platservice.getAllPlats();
+		 
+        List<Categorie> listCategorie = catService.getAllCategories();
+		model.addAttribute("listPlat", listPlat);
+	    model.addAttribute("listCategorie", listCategorie);
+	    
+        model.addAttribute("sessionOrder", idOrder);
+        
+		HttpServletRequest req = (HttpServletRequest) request;
+		HttpSession session = req.getSession();
+		session.setAttribute("sessionOrder", idOrder);
+        
+        
+        model.addAttribute("view", "menu");
+        return mv;
+    }  
     
 	@GetMapping("/validerCommande")
 	public ModelAndView resultServeur(Model model, 

@@ -64,6 +64,10 @@
 								</li>
 								
 								<li>
+									<a href="${baseURL}/tables">Commandes d'une table</a>
+								</li>
+								
+								<li>
 									<a href="${baseURL}/stock">Stock</a>
 								</li>
 
