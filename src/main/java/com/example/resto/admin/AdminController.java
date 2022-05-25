@@ -43,7 +43,7 @@ public class AdminController {
 				
 				model.addAttribute("admin", val);
 				
-        	    model.addAttribute("view","bo_stock");
+        	    model.addAttribute("view","bo_selectDateIngredient");
         	    return new ModelAndView("back/bo_template");
         	        
 			}catch(Exception e) {

@@ -30,24 +30,21 @@ public class IngredientController {
 	
 	@GetMapping("/resultDate")
 	public ModelAndView resultDateIngredient(Model model, 
-			@RequestParam(required = true) String date1,
-			@RequestParam(required = true) String date2) throws ParseException{
-		Date d1 = new SimpleDateFormat("dd/MM/yyyy").parse(date1);
-		Date d2 = new SimpleDateFormat("dd/MM/yyyy").parse(date2);
-                
+			@RequestParam(required = true) java.sql.Date date1,
+			@RequestParam(required = true) java.sql.Date date2) throws ParseException{
                  try{
-                     Controle.controleDate(d1, d2);
+                     Controle.controleDate(date1, date2);
                 }
                 catch(Exception e)
                 {
                     e.printStackTrace();
                     String erreur="<div class=\"alert alert-danger\">"+e.getMessage()+"</div>";
                     model.addAttribute("message",erreur);
-                    model.addAttribute("view","resultDateIngredient");
-                    return new ModelAndView("template");
+                    model.addAttribute("view","bo_resultConsomIngredient");
+                    return new ModelAndView("back/bo_template");
                 }
 		
-		List<HashMap<String,Object>> liste = ingservice.getIngredientConsomer(d1, d2);
+		List<HashMap<String,Object>> liste = ingservice.getIngredientConsomer(date2, date2);
 		
 		Double sum = 0.0;
 		for(int i=0; i<liste.size(); i++) {
@@ -59,15 +56,15 @@ public class IngredientController {
 		model.addAttribute("listIngredient", liste);
 		model.addAttribute("date1",date1);
 		model.addAttribute("date2",date2);
-		model.addAttribute("view", "resultDateIngredient");
-		return new ModelAndView("template");
+		model.addAttribute("view", "bo_resultConsomIngredient");
+		return new ModelAndView("back/bo_template");
 	}
 
 	@GetMapping("/choixDate")
 	public ModelAndView choixDate(Model model){
 		
-	model.addAttribute("view","selectDateIngredient");
-				return new ModelAndView("template");
+	model.addAttribute("view","bo_selectConsomIngredient");
+				return new ModelAndView("back/bo_template");
 	}
 
         
