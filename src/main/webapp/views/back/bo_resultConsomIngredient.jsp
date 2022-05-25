@@ -1,3 +1,8 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="scheme" value="${pageContext.request.scheme}"/>
+<c:set var="serverName" value="${pageContext.request.serverName}"/>
+<c:set var="serverPort" value="${pageContext.request.serverPort}"/>
+<c:set var="baseURL" value="${scheme}://${serverName}:${serverPort}"/>
 
 
     <div class="pagetitle">
@@ -19,7 +24,17 @@
               <h5 class="card-title">Consommation des ingrédients entre ${date1 } et ${date2 }</h5>
 
               <!-- Table with stripped rows -->
-              <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns"><div class="dataTable-top"><div class="dataTable-dropdown"><label><select class="dataTable-selector"><option value="5">5</option><option value="10" selected="">10</option><option value="15">15</option><option value="20">20</option><option value="25">25</option></select> entries per page</label></div><div class="dataTable-search"><input class="dataTable-input" placeholder="Search..." type="text"></div></div><div class="dataTable-container"><table class="table datatable dataTable-table">
+              <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
+              <div class="dataTable-top">
+              <div class="dataTable-dropdown"><label>
+              <select class="dataTable-selector">
+              <option value="5">5</option><option value="10" selected="">10</option>
+              <option value="15">15</option><option value="20">20</option><option value="25">25</option>
+              </select> entries per page</label></div><div class="dataTable-search">
+              <input class="dataTable-input" placeholder="Search..." type="text"></div></div>
+              <div class="dataTable-container">
+              
+              <table class="table datatable dataTable-table">
                 <thead>
                   <tr>
                 

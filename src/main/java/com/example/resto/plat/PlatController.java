@@ -3,6 +3,8 @@ package com.example.resto.plat;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.ServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.example.resto.categorie.Categorie;
 import com.example.resto.categorie.CategorieService;
+import com.example.resto.controlle.Controle;
 
 @RestController
 @RequestMapping(path = "/plats")
@@ -63,12 +66,15 @@ public class PlatController {
 	 }
      
      @GetMapping("prix-plat-base")
-	 public ModelAndView getPrixAllPlatsBase(Model model){
+	 public ModelAndView getPrixAllPlatsBase(Model model,ServletRequest request){
+			if (!Controle.isAdmin(request)) {
+				return new ModelAndView("error500");
+			}
 		 List<HashMap<String, Object>> listPlat = service.getPrixAllPlatsBase();
 		 
 		model.addAttribute("prixDeRevientPlat", listPlat);
-	    model.addAttribute("view", "listPrixDeRevient");
-	    return new ModelAndView("template");
+	    model.addAttribute("view", "bo_listPrixDeRevient");
+	    return new ModelAndView("back/bo_template");
 	 }
          
      @GetMapping("/getPlatIngredient")

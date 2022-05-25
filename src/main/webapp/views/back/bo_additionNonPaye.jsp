@@ -6,7 +6,7 @@
 
 
     <div class="pagetitle">
-      <h1>Stock des ingrédients</h1>
+      <h1>Liste des additions non payés</h1>
       
     </div><!-- End Page Title -->
 
@@ -16,7 +16,7 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Stock</h5>
+              <h5 class="card-title">Les commandes non encore payés</h5>
 
               <!-- Table with stripped rows -->
               <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
@@ -32,24 +32,29 @@
               <table class="table datatable dataTable-table">
                 <thead>
                   <tr>
-                
-	                  <th scope="col" data-sortable="" style="width: 5.6902%;">
-	                  <a href="#" class="dataTable-sorter">#</a>
-	                  </th>
-	                  <th scope="col" data-sortable="" style="width: 28.0295%;">
-	                  <a href="#" class="dataTable-sorter">Nom</a>
-	                  </th>
-	                  <th scope="col" data-sortable="" style="width: 37.7239%;">
-	                  <a href="#" class="dataTable-sorter">Quantité</a>
-	                  </th>
+	                  <th scope="col" data-sortable="" style="width: 10%;">
+	                  <a href="#" class="dataTable-sorter">#</a></th>
+	                  <th scope="col" data-sortable="" style="width: 18%;">
+	                  <a href="#" class="dataTable-sorter">Table</a></th>
+	                  <th scope="col" data-sortable="" style="width: 18%;">
+	                  <a href="#" class="dataTable-sorter">Date</a></th>
+	                  <th scope="col" data-sortable="" style="width: 18%;">
+	                  <a href="#" class="dataTable-sorter">A payer</a></th>
+	                  <th scope="col" data-sortable="" style="width: 18%;">
+	                  <a href="#" class="dataTable-sorter">Payé</a></th>
+	                  <th scope="col" data-sortable="" style="width: 18%;">
+	                  <a href="#" class="dataTable-sorter">Restant</a></th>
                   </tr>
                 </thead>
                 <tbody>
-                 <c:forEach  items="${ingredients}" var="ingredient" varStatus="i">
+                 <c:forEach  items="${addition}" var="ad" varStatus="i">
 	                <tr>
 		                <th scope="row">${i.index+1}</th>
-		                <td>${ingredient.nomIngredient}</td>
-		                <td>${ingredient.qte} ${ingredient.unite}</td>
+		                <td>${ad.numero}</td>
+		                <td>${ad.date}</td>
+		                <td>${ad.total}</td>
+		                <td>${ad.dejapayer}</td>
+		                <td>${ad.restant}</td>
 	                <tr>
 	             </c:forEach>
 	            

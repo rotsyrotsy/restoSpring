@@ -1,3 +1,9 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="scheme" value="${pageContext.request.scheme}"/>
+<c:set var="serverName" value="${pageContext.request.serverName}"/>
+<c:set var="serverPort" value="${pageContext.request.serverPort}"/>
+<c:set var="baseURL" value="${scheme}://${serverName}:${serverPort}"/>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -141,7 +147,7 @@
       </li><!-- End Forms Nav -->
 	
 	<li class="nav-item">
-        <a class="nav-link collapsed" href="${baseURL }/order/additionNonPaye">
+        <a class="nav-link collapsed" href="${baseURL }/order/boAdditionNonPaye">
           <i class="bi bi-grid"></i>
           <span>Additions non payés</span>
         </a>

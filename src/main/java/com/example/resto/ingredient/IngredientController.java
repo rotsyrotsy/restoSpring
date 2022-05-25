@@ -31,7 +31,12 @@ public class IngredientController {
 	@GetMapping("/resultDate")
 	public ModelAndView resultDateIngredient(Model model, 
 			@RequestParam(required = true) java.sql.Date date1,
-			@RequestParam(required = true) java.sql.Date date2) throws ParseException{
+			@RequestParam(required = true) java.sql.Date date2,ServletRequest request) throws ParseException{
+
+			if (!Controle.isAdmin(request)) {
+				return new ModelAndView("error500");
+			}
+		
                  try{
                      Controle.controleDate(date1, date2);
                 }
@@ -44,7 +49,7 @@ public class IngredientController {
                     return new ModelAndView("back/bo_template");
                 }
 		
-		List<HashMap<String,Object>> liste = ingservice.getIngredientConsomer(date2, date2);
+		List<HashMap<String,Object>> liste = ingservice.getIngredientConsomer(date1, date2);
 		
 		Double sum = 0.0;
 		for(int i=0; i<liste.size(); i++) {
@@ -61,10 +66,15 @@ public class IngredientController {
 	}
 
 	@GetMapping("/choixDate")
-	public ModelAndView choixDate(Model model){
+	public ModelAndView choixDate(Model model,ServletRequest request){
+		if (!Controle.isAdmin(request)) {
+			return new ModelAndView("error500");
+		}
 		
-	model.addAttribute("view","bo_selectConsomIngredient");
-				return new ModelAndView("back/bo_template");
+			model.addAttribute("view","bo_selectConsomIngredient");
+			return new ModelAndView("back/bo_template");
+		
+	
 	}
 
         

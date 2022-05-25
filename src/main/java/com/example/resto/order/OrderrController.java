@@ -24,6 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.example.resto.categorie.Categorie;
 import com.example.resto.categorie.CategorieService;
+import com.example.resto.controlle.Controle;
 import com.example.resto.detailsOrder.DetailsOrderService;
 import com.example.resto.plat.PlatService;
 @RestController
@@ -127,5 +128,17 @@ public class OrderrController {
 	    model.addAttribute("view", "additionNonPaye");
 	    return new ModelAndView("template");
 	 }
+        
+        @GetMapping("/boAdditionNonPaye")
+    	public ModelAndView boAdditionNonPaye(Model model,ServletRequest request){
+    		if (!Controle.isAdmin(request)) {
+    			return new ModelAndView("error500");
+    		}
+    		List<HashMap<String,Object>> liste = service.getAdditionNonPaye();
+    		
+    	    model.addAttribute("addition", liste);
+    	    model.addAttribute("view", "bo_additionNonPaye");
+    	    return new ModelAndView("back/bo_template");
+    	 }
 	
 }

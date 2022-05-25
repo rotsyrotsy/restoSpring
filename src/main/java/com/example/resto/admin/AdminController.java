@@ -23,8 +23,8 @@ public class AdminController {
 	public AdminController(AdminService service) {
 		this.service = service;
 	}
+	 
 	
-
 	 @GetMapping
 	 public ModelAndView login(Model model){
 	    return new ModelAndView("back/bo_login");
@@ -43,7 +43,7 @@ public class AdminController {
 				
 				model.addAttribute("admin", val);
 				
-        	    model.addAttribute("view","bo_selectDateIngredient");
+        	    model.addAttribute("view","bo_selectConsomIngredient");
         	    return new ModelAndView("back/bo_template");
         	        
 			}catch(Exception e) {
@@ -58,7 +58,7 @@ public class AdminController {
     	HttpServletRequest req = (HttpServletRequest) request;
 		HttpSession session = req.getSession();
 		session.invalidate();
-		return new ModelAndView(" back/bo_login");
+		return new ModelAndView("back/bo_login");
      }
      
 }

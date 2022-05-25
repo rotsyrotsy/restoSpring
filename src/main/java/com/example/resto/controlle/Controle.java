@@ -7,6 +7,10 @@ package com.example.resto.controlle;
 
 import java.util.Date;
 
+import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 /**
  *
  * @author ratsi
@@ -24,5 +28,14 @@ public class Controle {
     		throw new IllegalStateException("Le chiffre que vous avez inséré est invalide,"
     				+ "veuillez insérer un chiffre positif");
     	}
+    }
+    public static boolean isAdmin(ServletRequest request) {
+    	HttpServletRequest req = (HttpServletRequest) request;
+		HttpSession session = req.getSession();
+		if (session.getAttribute("sessionAdministrateur")!=null) {
+			return true;
+		}
+		return false;
+		
     }
 }

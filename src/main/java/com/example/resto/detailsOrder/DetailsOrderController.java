@@ -21,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.example.resto.categorie.Categorie;
 import com.example.resto.categorie.CategorieService;
+import com.example.resto.controlle.Controle;
 import com.example.resto.plat.PlatService;
 import com.example.resto.serveur.Serveur;
 import com.example.resto.serveur.ServeurService;
@@ -48,15 +49,18 @@ public class DetailsOrderController {
 	    }
 	
 	@GetMapping("/choixServeurPourboire")
-	public ModelAndView selectServeur(Model model){
+	public ModelAndView selectServeur(Model model,ServletRequest request){
+		if (!Controle.isAdmin(request)) {
+			return new ModelAndView("error500");
+		}
 		List<Serveur> listeServeurs = servservice.getAllServeurs();
 		
 	    model.addAttribute("listServeur", listeServeurs);
-	    model.addAttribute("view", "selectPourboire");
-	    return new ModelAndView("template");
+	    model.addAttribute("view", "bo_selectPourboire");
+	    return new ModelAndView("back/bo_template");
 	 }
 	
-
+/*
 	@GetMapping("/choixServeur")
 	public ModelAndView resultServeur(Model model, 
 			@RequestParam(required = true) String serveur,
@@ -74,19 +78,20 @@ public class DetailsOrderController {
 		}
 		model.addAttribute("sum",sum);
 	    model.addAttribute("listOrder", liste);
-	    model.addAttribute("view", "resultPourboire");
-	    return new ModelAndView("template");
-	 }
+	    model.addAttribute("view", "bo_resultPourboire");
+	    return new ModelAndView("back/bo_template");
+	 }*/
 	
 	@GetMapping("/choixServeurBase")
 	public ModelAndView resultServeur2(Model model, 
 			@RequestParam(required = true) String serveur,
-			 @RequestParam(required = true) String date1,
-			 @RequestParam(required = true) String date2) throws ParseException{
-		Date d1 = new SimpleDateFormat("dd/MM/yyyy").parse(date1);
-		Date d2 = new SimpleDateFormat("dd/MM/yyyy").parse(date2);
+			 @RequestParam(required = true) java.sql.Date date1 ,
+			 @RequestParam(required = true) java.sql.Date date2,ServletRequest request) throws ParseException{
+		if (!Controle.isAdmin(request)) {
+			return new ModelAndView("error500");
+		} 
 		
-		List<HashMap<String,Object>> liste = service.getPrixOrderServeur(serveur, d1, d2);
+		List<HashMap<String,Object>> liste = service.getPrixOrderServeur(serveur, date1, date2);
 		
 		Double sum = 0.0;
 		for(int i=0; i<liste.size(); i++) {
@@ -95,8 +100,8 @@ public class DetailsOrderController {
 		}
 		model.addAttribute("sum",sum);
 	    model.addAttribute("listOrder", liste);
-	    model.addAttribute("view", "resultPourboire");
-	    return new ModelAndView("template");
+	    model.addAttribute("view", "bo_resultPourboire");
+	    return new ModelAndView("back/bo_template");
 	 }
 	
     @GetMapping(path="/insert")

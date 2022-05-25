@@ -8,6 +8,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.ServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,32 +30,35 @@ public class PayementController {
 	        this.service = service;
 	    }
 	@GetMapping
-	public ModelAndView selectPaiement(Model model) {
-		model.addAttribute("view","selectPayementByDate");
-		return new ModelAndView("template");
+	public ModelAndView selectPaiement(Model model,ServletRequest request){
+		if (!Controle.isAdmin(request)) {
+			return new ModelAndView("error500");
+		}
+		model.addAttribute("view","bo_selectPayementByDate");
+		return new ModelAndView("back/bo_template");
 	}
 	@GetMapping("/resultDate")
 	public ModelAndView paiementsEntre2Dates(Model model,
-			@RequestParam(required = true) String date1,
-			 @RequestParam(required = true) String date2) throws ParseException{
+			@RequestParam(required = true) java.sql.Date date1,
+			 @RequestParam(required = true) java.sql.Date date2,ServletRequest request)  throws ParseException{
+		if (!Controle.isAdmin(request)) {
+			return new ModelAndView("error500");
+		}
 		
-		Date d1 =  new SimpleDateFormat("dd/MM/yyyy").parse(date1);
-		Date d2 =  new SimpleDateFormat("dd/MM/yyyy").parse(date2);
-                
                 try{
-                     Controle.controleDate(d1, d2);
+                     Controle.controleDate(date1, date2);
                 }
                 catch(Exception e)
                 {
                     e.printStackTrace();
                     String erreur="<div class=\"alert alert-danger\">"+e.getMessage()+"</div>";
                     model.addAttribute("message",erreur);
-                    model.addAttribute("view","resultPayement");
-                    return new ModelAndView("template");
+                    model.addAttribute("view","bo_resultPayement");
+                    return new ModelAndView("back/bo_template");
                 }
                
 		
-		List<Payement> liste = service.findBetween(d1, d2);
+		List<Payement> liste = service.findBetween(date1, date2);
 		List<Payement> cheque = new ArrayList<Payement>();
 		List<Payement> espece = new ArrayList<Payement>();
 		for(Payement paie: liste) {
@@ -74,7 +79,7 @@ public class PayementController {
 		model.addAttribute("cheque",cheque);
 		model.addAttribute("espece",espece);
 		model.addAttribute("sumTotal",Formattage.formatePrice(sumEspece+sumCheque));
-		model.addAttribute("view","resultPayement");
-				return new ModelAndView("template");
+		model.addAttribute("view","bo_resultPayement");
+				return new ModelAndView("back/bo_template");
 	}
 }
