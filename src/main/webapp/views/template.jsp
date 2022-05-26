@@ -45,10 +45,10 @@
 	<header>
 		<!-- Header desktop -->
 		<div class="wrap-menu-header gradient1 trans-0-4">
-			<div class="container h-full">
-				<div class="wrap_header trans-0-3">
+			<div class="container-fluid">
+				<div class="wrap_header trans-0-3" style="margin-top:1%;">
 					<!-- Logo -->
-					<div class="logo">
+					<div class="logo" style="margin-top:1%;">
 						<a href="index.html">
 							<img src="${baseURL}/views/images/icons/logo.png" alt="IMG-LOGO" data-logofixed="${baseURL}/views/images/icons/logo2.png">
 						</a>
@@ -100,7 +100,7 @@
 					<!-- Social -->
 					<div class="social flex-w flex-l-m p-r-20">
 
-						<button class="btn-show-sidebar m-l-33 trans-0-4"></button>
+						<button class="btn-show-sidebar m-l-33 trans-0-4" style="margin-left:20%;"></button>
 					</div>
 				</div>
 			</div>

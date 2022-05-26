@@ -506,6 +506,10 @@ input[type="date" i] {
   align-items: center;
 }
 
+.wrap_header a{
+	text-decoration:none;
+}
+
 .header-fixed .wrap-menu-header {
   position: fixed;
   height: 100px;
