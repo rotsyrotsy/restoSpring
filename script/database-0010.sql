@@ -1,0 +1,1 @@
+ alter table plat add column image varchar(255);
