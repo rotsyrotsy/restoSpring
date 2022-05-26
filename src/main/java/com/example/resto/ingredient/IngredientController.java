@@ -31,12 +31,8 @@ public class IngredientController {
 	@GetMapping("/resultDate")
 	public ModelAndView resultDateIngredient(Model model, 
 			@RequestParam(required = true) java.sql.Date date1,
-			@RequestParam(required = true) java.sql.Date date2,ServletRequest request) throws ParseException{
+			@RequestParam(required = true) java.sql.Date date2) throws ParseException{
 
-			if (!Controle.isAdmin(request)) {
-				return new ModelAndView("error500");
-			}
-		
                  try{
                      Controle.controleDate(date1, date2);
                 }
@@ -66,11 +62,7 @@ public class IngredientController {
 	}
 
 	@GetMapping("/choixDate")
-	public ModelAndView choixDate(Model model,ServletRequest request){
-		if (!Controle.isAdmin(request)) {
-			return new ModelAndView("error500");
-		}
-		
+	public ModelAndView choixDate(Model model){
 			model.addAttribute("view","bo_selectConsomIngredient");
 			return new ModelAndView("back/bo_template");
 		

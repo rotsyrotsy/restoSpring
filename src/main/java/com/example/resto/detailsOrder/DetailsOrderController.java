@@ -49,10 +49,7 @@ public class DetailsOrderController {
 	    }
 	
 	@GetMapping("/choixServeurPourboire")
-	public ModelAndView selectServeur(Model model,ServletRequest request){
-		if (!Controle.isAdmin(request)) {
-			return new ModelAndView("error500");
-		}
+	public ModelAndView selectServeur(Model model){
 		List<Serveur> listeServeurs = servservice.getAllServeurs();
 		
 	    model.addAttribute("listServeur", listeServeurs);
@@ -86,11 +83,7 @@ public class DetailsOrderController {
 	public ModelAndView resultServeur2(Model model, 
 			@RequestParam(required = true) String serveur,
 			 @RequestParam(required = true) java.sql.Date date1 ,
-			 @RequestParam(required = true) java.sql.Date date2,ServletRequest request) throws ParseException{
-		if (!Controle.isAdmin(request)) {
-			return new ModelAndView("error500");
-		} 
-		
+			 @RequestParam(required = true) java.sql.Date date2) throws ParseException{
 		List<HashMap<String,Object>> liste = service.getPrixOrderServeur(serveur, date1, date2);
 		
 		Double sum = 0.0;

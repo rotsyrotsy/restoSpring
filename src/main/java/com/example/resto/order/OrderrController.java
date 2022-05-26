@@ -130,10 +130,7 @@ public class OrderrController {
 	 }
         
         @GetMapping("/boAdditionNonPaye")
-    	public ModelAndView boAdditionNonPaye(Model model,ServletRequest request){
-    		if (!Controle.isAdmin(request)) {
-    			return new ModelAndView("error500");
-    		}
+    	public ModelAndView boAdditionNonPaye(Model model){
     		List<HashMap<String,Object>> liste = service.getAdditionNonPaye();
     		
     	    model.addAttribute("addition", liste);
