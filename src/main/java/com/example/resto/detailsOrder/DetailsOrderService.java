@@ -9,19 +9,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.transaction.support.TransactionTemplate;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
-
 import com.example.resto.order.OrderrRepository;
-import com.example.resto.order.OrderrService;
 import com.example.resto.plat.PlatService;
-import com.example.resto.serveur.Serveur;
-import com.example.resto.stock.StockService;
 
 
 @Service

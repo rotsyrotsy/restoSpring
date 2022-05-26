@@ -29,3 +29,24 @@ AS SELECT dt.id,
    FROM detailsorder dt
      JOIN prixdevente pv ON dt.idplat::text = pv.id::text
      join plat p on pv.id = p.id;
+
+create or replace view prixdevente as
+SELECT p.id,
+    p.label,
+    pa.price + pa.price * m.pourcentage / 100::double precision AS prixvente,
+    m.pourcentage,
+    pa.price AS prixderevient
+   FROM prixachatplat pa
+     JOIN marge m ON pa.price >= m.minimum AND pa.price < m.maximum
+     JOIN plat p ON p.id::text = pa.idplat::text;
+
+
+
+create or replace view stockRestant as
+SELECT mouv.idingredient,
+    i.label,
+    i.labelunity,
+    mouv.sum + ivd.qte AS reste
+   FROM mouvementstockapresinventaire mouv
+     JOIN inventairedetails ivd ON mouv.idingredient = ivd.idingredient
+     JOIN ingredient i ON mouv.idingredient::text = i.id::text;
