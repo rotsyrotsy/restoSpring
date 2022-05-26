@@ -33,6 +33,7 @@ public class PlatService {
             HashMap<String, Object> hm = new HashMap<String, Object>();
             Object[] s = (Object[]) liste.get(i);
             hm.put("id", s[0]);
+            System.out.println("Id Plat : "+s[0]);
             hm.put("label", s[1]);
             hm.put("price", s[2]);
             hm.put("categorie", s[3]);

@@ -66,7 +66,7 @@
 					<!-- Block3 -->
 						<div class="blo3 flex-w flex-col-l-sm m-b-30">
 							<div class="pic-blo3 size20 bo-rad-10 hov-img-zoom m-r-28">
-								<a href="#"><img src="${baseURL}/views/images/lunch-01.jpg" alt="IMG-MENU"></a>
+								<a href="#"><img src="${baseURL}/views/images/${plat.id}.jpg" alt="IMG-MENU"></a>
 							</div>
 	
 							<div class="text-blo3 size21 flex-col-l-m">
