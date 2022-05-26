@@ -87,6 +87,8 @@
               <h6><c:out value="${sessionScope.sessionAdministrateur.login}" /></h6>
               <span>Admin</span>
             </li>
+            
+            
             <li>
               <hr class="dropdown-divider">
             </li>

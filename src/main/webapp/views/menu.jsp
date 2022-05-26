@@ -3,6 +3,7 @@
 <c:set var="serverName" value="${pageContext.request.serverName}"/>
 <c:set var="serverPort" value="${pageContext.request.serverPort}"/>
 <c:set var="baseURL" value="${scheme}://${serverName}:${serverPort}"/>
+
 	<!-- Title Page -->
 	<section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url(${baseURL}/views/images/bg-title-page-01.jpg);">
 		<h2 class="tit6 t-center">
@@ -52,13 +53,25 @@
 	<section class="section-lunch bgwhite">
 
 		<div class="container">
+		
 		<c:if test="${succes != null}">
+		<div>
 			<div class="alert alert-success" role="alert">
 			  ${succes }
 			</div>
 			<a href="${baseURL}/order/validerCommande"  class="btn3 flex-c-m size30 txt11 trans-0-4 m-10">
                   Valider la commande
             </a>
+		</div>
+			
+		</c:if>
+		<c:if test="${sessionScope.sessionOrder != null}">
+			<p>
+				Commande de la table ${sessionScope.sessionOrder.numero}
+			</p>
+			<p style="font-size: 14px; color:grey;">
+				Date et heure: ${sessionScope.sessionOrder.date}
+			</p>
 		</c:if>
 			<div class="row p-t-108 p-b-70">
 				<c:forEach items="${listPlat}" var ="plat">
@@ -66,7 +79,7 @@
 					<!-- Block3 -->
 						<div class="blo3 flex-w flex-col-l-sm m-b-30">
 							<div class="pic-blo3 size20 bo-rad-10 hov-img-zoom m-r-28">
-								<a href="#"><img src="${baseURL}/views/images/${plat.id}.jpg" alt="IMG-MENU"></a>
+								<a href="#"><img src="${baseURL}/views/images/${plat.image}" alt="IMG-MENU"></a>
 							</div>
 	
 							<div class="text-blo3 size21 flex-col-l-m">
@@ -82,13 +95,15 @@
 									${plat.price}
 								</span>
 							</div>
-							<a href="${baseURL}/detailsOrders/insert?idPlat=${plat.id}"  class="btn3 flex-c-m size18 txt11 trans-0-4 m-10">
-                                      Commander
-                                 </a>
+							<c:if test="${sessionScope.sessionOrder != null}">
+								<a href="${baseURL}/detailsOrders/insert?idPlat=${plat.id}"  class="btn3 flex-c-m size18 txt11 trans-0-4 m-10">
+	                                  Commander
+	                            </a>
+	                        </c:if>
                                                                 
-                                                                <a href="${baseURL}/plats/getPlatIngredient?idPlat=${plat.id}"  class="btn3 flex-c-m size18 txt11 trans-0-4 m-10">
-                                                                    Voir Ingredient
-                                                                </a>
+                             <a href="${baseURL}/plats/getPlatIngredient?idPlat=${plat.id}"  class="btn3 flex-c-m size18 txt11 trans-0-4 m-10">
+                                  Voir Ingredient
+                             </a>
 						</div>
 					</div>
 				</c:forEach>

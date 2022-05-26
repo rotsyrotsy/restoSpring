@@ -105,10 +105,14 @@ public class DetailsOrderController {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpSession session = req.getSession();
         if (session.getAttribute("sessionOrder")!=null) {
-        	idOrder = (String) session.getAttribute("sessionOrder");
+        	HashMap<String,Object> order = (HashMap<String,Object>)session.getAttribute("sessionOrder");
+        	
+        	idOrder = (String) order.get("idOrder");
         }
     	
-    	service.insertDetailsOrder(idPlat, idOrder);
+        service.insertDetailsOrder(idPlat, idOrder);
+        
+    	
         List<HashMap<String, Object>> listPlat = platservice.getAllPlats();
 		 
 		 

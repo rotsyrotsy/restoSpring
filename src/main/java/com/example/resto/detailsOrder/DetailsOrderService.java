@@ -144,6 +144,7 @@ public class DetailsOrderService {
             hm.put("idServeur", s[4]);	
             hm.put("date", s[5]);
             hm.put("prixVente", s[6]);
+            hm.put("image", s[7]);
             listehm.add(hm);
         }
  		return listehm;
@@ -167,6 +168,7 @@ public class DetailsOrderService {
     
  	 @Transactional
      public void insertDetailsOrder(String idPlat, String idOrder) {
+ 		System.out.println("IDPLAT: "+idPlat+", IDORDER: "+idOrder);
  		String idServeur = ordServ.getIdServeurFromOrder(idOrder);
      try {
      	 entityManager.createNativeQuery("INSERT INTO detailsOrder VALUES (nextval('seqDetailsOrder'),?,?,now(),?,'non valide')")

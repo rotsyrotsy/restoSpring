@@ -10,7 +10,7 @@ public class Plat {
 	@Id
 	String id;
     String label;
-    String price;
+    Double price;
     String idCategorie;
     String image;
 
@@ -46,11 +46,11 @@ public class Plat {
         this.label = label;
     }
 
-    public String getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 }

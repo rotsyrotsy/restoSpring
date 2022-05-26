@@ -27,15 +27,23 @@ import com.example.resto.categorie.CategorieService;
 import com.example.resto.controlle.Controle;
 import com.example.resto.detailsOrder.DetailsOrderService;
 import com.example.resto.plat.PlatService;
+import com.example.resto.table.TableController;
+import com.example.resto.table.TableService;
 @RestController
 @RequestMapping(path = "/order")
 public class OrderrController {
 
+	@Autowired 
+	private TableController tableController; 
+	
 	@Autowired
 	private  PlatService platservice;
 	
 	@Autowired
 	private  CategorieService catService;
+
+	@Autowired
+	private  TableService tabService;
 	
 	@Autowired
 	private  DetailsOrderService doservice;
@@ -49,7 +57,7 @@ public class OrderrController {
     public ModelAndView ajout(Model model,@RequestParam String idTable, @RequestParam String idServeur, 
     		@RequestParam(required = false) String categorie
     		,ServletRequest request) throws Exception{
-        String idOrder = service.insertOrder(idTable,idServeur);
+    	HashMap<String, Object> idOrder = service.insertOrder(idTable,idServeur);
         
         
     	ModelAndView mv = new ModelAndView("template");
@@ -80,26 +88,46 @@ public class OrderrController {
     }  
     
     @GetMapping()
-    public ModelAndView getAddition(Model model,@RequestParam String idOrder,ServletRequest request) throws Exception{
+    public ModelAndView getAddition(Model model,@RequestParam String idTable,ServletRequest request) throws Exception{
     
     	ModelAndView mv = new ModelAndView("template");
     	
+    	HashMap<String, Object> lastOrder =  service.lastOrderByTable(idTable);
     	List<HashMap<String, Object>> listPlat = platservice.getAllPlats();
 		 
         List<Categorie> listCategorie = catService.getAllCategories();
 		model.addAttribute("listPlat", listPlat);
 	    model.addAttribute("listCategorie", listCategorie);
 	    
-        model.addAttribute("sessionOrder", idOrder);
+        model.addAttribute("sessionOrder", lastOrder);
         
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpSession session = req.getSession();
-		session.setAttribute("sessionOrder", idOrder);
+		session.setAttribute("sessionOrder", lastOrder);
         
         
         model.addAttribute("view", "menu");
         return mv;
     }  
+    
+
+	@GetMapping("/commandeEnCours")
+	public ModelAndView commandeEnCours(Model model, 
+			ServletRequest request) throws ParseException{
+		
+		String idOrder = null;
+		HttpServletRequest req = (HttpServletRequest) request;
+		HttpSession session = req.getSession();
+        if (session.getAttribute("sessionOrder")!=null) {
+        	HashMap<String, Object> order = (HashMap<String, Object>)session.getAttribute("sessionOrder");
+        	idOrder = (String)order.get("idOrder");
+        }
+		List<HashMap<String,Object>> liste = service.commandeEnCoursParOrder(idOrder);
+		
+	    model.addAttribute("liste", liste);
+	    model.addAttribute("view", "commandeEnCours");
+	    return new ModelAndView("template");
+	 }
     
 	@GetMapping("/validerCommande")
 	public ModelAndView resultServeur(Model model, 
@@ -109,7 +137,8 @@ public class OrderrController {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpSession session = req.getSession();
         if (session.getAttribute("sessionOrder")!=null) {
-        	idOrder = (String) session.getAttribute("sessionOrder");
+        	HashMap<String, Object> order = (HashMap<String, Object>)session.getAttribute("sessionOrder");
+        	idOrder = (String)order.get("idOrder");
         	doservice.validerCommande(idOrder);
         }
 		
@@ -137,5 +166,14 @@ public class OrderrController {
     	    model.addAttribute("view", "bo_additionNonPaye");
     	    return new ModelAndView("back/bo_template");
     	 }
-	
+        
+        
+        @GetMapping("/logoutIdOrder")
+        public ModelAndView logoutIdOrder(Model model,ServletRequest request)
+        {
+	       	HttpServletRequest req = (HttpServletRequest) request;
+	   		HttpSession session = req.getSession();
+	   		session.invalidate();
+	   		return tableController.getAllTableOrder(model);
+        }
 }
