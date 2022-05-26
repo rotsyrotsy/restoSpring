@@ -12,8 +12,17 @@ public class Plat {
     String label;
     String price;
     String idCategorie;
+    String image;
 
-    public String getIdCategorie() {
+    public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	public String getIdCategorie() {
 		return idCategorie;
 	}
 
