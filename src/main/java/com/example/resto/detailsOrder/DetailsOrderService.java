@@ -220,6 +220,30 @@ public class DetailsOrderService {
         }
  		return listehm;
  	
+                
+    }
+    
+        public List<HashMap<String, Object>> getDetailsOrderPret() {
+        	List<Object[]> liste = repository.getDetailsOrderPret();
+    	List<HashMap<String, Object>> listehm = new ArrayList<HashMap<String, Object>>();
+
+        for (int i = 0; i < liste.size(); i++) {
+            HashMap<String, Object> hm = new HashMap<String, Object>();
+            Object[] s = (Object[]) liste.get(i);
+
+            hm.put("id", s[0]);
+            hm.put("idOrder", s[1]);	
+            hm.put("idPlat", s[2]);	
+            hm.put("daty", s[3]);	
+            hm.put("idServeur", s[4]);
+            hm.put("etat", s[5]);
+            hm.put("lieuLivraison", s[6]);
+            hm.put("label", s[7]);	
+            
+            listehm.add(hm);
+        }
+ 		return listehm;
+ 	
     }
     
     

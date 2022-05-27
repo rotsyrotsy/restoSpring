@@ -47,14 +47,14 @@
                   </tr>
                 </thead>
                 <tbody>
-                 <c:forEach  items="${platsValide}" var="comm" varStatus="i">
+                 <c:forEach  items="${platsEnPreparation}" var="comm" varStatus="i">
 	                <tr>
 		                <th scope="row">${i.index+1}</th>
 		                <td>${comm.label}</td>
 		                <td>${comm.daty}</td>
 		                <td>${comm.idOrder}</td>
 		                <td>${comm.idServeur}</td>
-                                <td><a href="${baseURL}/detailsOrders/changeEnPrep?idDetailOrder=${plat.id}" class="btn3 flex-c-m size30 txt11 trans-0-4 m-10">Preparer</a></td>
+                                <td><a href="${baseURL}/detailsOrders/changeToPret?idDetailOrder=${comm.id}" class="btn3 flex-c-m size30 txt11 trans-0-4 m-10">Alerter comme Pret</a></td>
 		            
 	                <tr>
 	             </c:forEach>

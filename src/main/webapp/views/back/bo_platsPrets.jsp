@@ -7,7 +7,7 @@
 
 
     <div class="pagetitle">
-      <h1>Tous les plats validés</h1>
+      <h1>Tous les plats Prets</h1>
       
     </div><!-- End Page Title -->
 
@@ -17,7 +17,7 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Les commandes validés</h5>
+              <h5 class="card-title">Les commandes Finis qui sont Prets</h5>
 
               <!-- Table with stripped rows -->
               <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
@@ -47,15 +47,14 @@
                   </tr>
                 </thead>
                 <tbody>
-                 <c:forEach  items="${platsValide}" var="comm" varStatus="i">
+                 <c:forEach  items="${platsPrets}" var="comm" varStatus="i">
 	                <tr>
 		                <th scope="row">${i.index+1}</th>
 		                <td>${comm.label}</td>
 		                <td>${comm.daty}</td>
 		                <td>${comm.idOrder}</td>
 		                <td>${comm.idServeur}</td>
-                                <td><a href="${baseURL}/detailsOrders/changeToEnPreparation?idDetailOrder=${comm.id}" class="btn3 flex-c-m size30 txt11 trans-0-4 m-10">Preparer</a></td>
-		            
+                          
 	                <tr>
 	             </c:forEach>
 	            
