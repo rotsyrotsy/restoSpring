@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.resto.detailsOrder.DetailsOrder;
 import com.example.resto.detailsOrder.DetailsOrderRepository;
+import com.example.resto.formattage.Formattage;
 import com.example.resto.order.OrderrRepository;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -43,7 +44,7 @@ public class OrderrService {
 
          hm.put("idOrder", s[0]);	
          hm.put("idServeur", s[1]);	
-         hm.put("date", s[2]);	
+         hm.put("date", Formattage.formateDate(s[2]));	
          hm.put("idTable", s[3]);	
          hm.put("numero", s[4]);	
          
@@ -62,10 +63,10 @@ public class OrderrService {
             HashMap<String, Object> hm = new HashMap<String, Object>();
             Object[] s = (Object[]) liste.get(i);
 
-            hm.put("date", s[0]);	
-            hm.put("total", s[1]);	
-            hm.put("dejapayer", s[2]);	
-            hm.put("restant", s[3]);
+            hm.put("date", Formattage.formateDate(s[0]));	
+            hm.put("total", Formattage.formatePrice((Double)s[1]));	
+            hm.put("dejapayer", Formattage.formatePrice((Double)s[2]));	
+            hm.put("restant", Formattage.formatePrice((Double)s[3]));
             hm.put("numero", s[4]);	
             listehm.add(hm);
         }
@@ -73,18 +74,18 @@ public class OrderrService {
  	
     }
     
-    public List<HashMap<String, Object>> getAdditionParTable(String idOrder) {
-       	List<Object[]> liste = orderRepository.getAdditionParTable(idOrder);
+    public List<HashMap<String, Object>> getAdditionByOrder(String idOrder) {
+       	List<Object[]> liste = orderRepository.getAdditionByOrder(idOrder);
     	List<HashMap<String, Object>> listehm = new ArrayList<HashMap<String, Object>>();
 
         for (int i = 0; i < liste.size(); i++) {
             HashMap<String, Object> hm = new HashMap<String, Object>();
             Object[] s = (Object[]) liste.get(i);
 
-            hm.put("date", s[0]);	
-            hm.put("total", s[1]);	
-            hm.put("dejapayer", s[2]);	
-            hm.put("restant", s[3]);
+            hm.put("date", Formattage.formateDate(s[0]));	
+            hm.put("total", Formattage.formatePrice((Double)s[1]));	
+            hm.put("dejapayer", Formattage.formatePrice((Double)s[2]));	
+            hm.put("restant", Formattage.formatePrice((Double)s[3]));
             hm.put("numero", s[4]);	
             listehm.add(hm);
         }
@@ -102,7 +103,7 @@ public class OrderrService {
             	Object[] s = liste.get(0);
                 hm.put("idOrder", s[0]);	
                 hm.put("idServeur", s[1]);	
-                hm.put("date", s[2]);	
+                hm.put("date", Formattage.formateDate(s[2]));	
                 hm.put("idTable", s[3]);	
                 hm.put("numero", s[4]);	
             }
@@ -123,7 +124,7 @@ public class OrderrService {
 
             hm.put("idPlat", s[0]);	
             hm.put("label", s[1]);	
-            hm.put("montant", s[2]);	
+            hm.put("montant", Formattage.formatePrice((Double)s[2]));	
             hm.put("image", s[3]);
             hm.put("iOrder", s[4]);
             hm.put("etat", s[5]);

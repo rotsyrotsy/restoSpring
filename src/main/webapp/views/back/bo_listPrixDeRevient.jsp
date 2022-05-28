@@ -21,7 +21,7 @@
           <div class="col-lg-4">
           
           <div class="card">
-            <img src="${baseURL }/views/assets/img/card.jpg" class="card-img-top" alt="...">
+            <img src="${baseURL}/views/images/${plat.image}" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">${plat.label} </h5>
               <p class="card-text">Prix vente: ${plat.prixVente} Ar</p>

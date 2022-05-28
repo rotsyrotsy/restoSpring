@@ -4,7 +4,7 @@
 <c:set var="serverPort" value="${pageContext.request.serverPort}"/>
 <c:set var="baseURL" value="${scheme}://${serverName}:${serverPort}"/>
 	<!-- Title Page -->
-	<section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url(${baseURL}/views/images/bg-title-page-01.jpg);">
+	<section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url(${baseURL}/views/images/bg-title-page-02.jpg);">
 		<h2 class="tit6 t-center">
 			Commande en cours
 		</h2>
@@ -12,10 +12,15 @@
 
 
 	<section class="section-lunch bgwhite">
-		<h1>Table ${sessionScope.sessionOrder.numero} le  ${sessionScope.sessionOrder.date} </h1>
+		<h2>Table ${sessionScope.sessionOrder.numero} le  ${sessionScope.sessionOrder.date} </h2>
+		
 		<div class="container">
 			<div class="row">
-			<h2>Commandes non encore validées</h2>
+			<div class="t-center">
+				<span class="tit2 t-center">
+					Commandes non encore validées
+				</span>
+			</div>
 				<c:forEach items="${nonvalide}" var ="plat">
 					<div class="col-md-8 col-lg-6 m-l-r-auto">
 					<!-- Block3 -->
@@ -53,7 +58,11 @@
 				</hr>
 			
 			<div class="row">
-			<h2>Commandes validées et en attente de livraison </h2>
+			<div class="t-center">
+				<span class="tit2 t-center">
+					Commandes validées et en attente de livraison
+				</span>
+			</div>
 				<c:forEach items="${valide}" var ="plat">
 					<div class="col-md-8 col-lg-6 m-l-r-auto">
 					<!-- Block3 -->
@@ -78,7 +87,11 @@
 			</div>
 			</hr>
 			<div class="row">
-			<h2>Commandes prêtent à être livrées </h2>
+			<div class="t-center">
+				<span class="tit2 t-center">
+					Commandes prêtent à être livrées
+				</span>
+			</div>
 				<c:forEach items="${pret}" var ="plat">
 					<div class="col-md-8 col-lg-6 m-l-r-auto">
 					<!-- Block3 -->
@@ -104,7 +117,7 @@
 			</div>
 			<c:if test="${pret.size()>0}">
 			<div>
-					<a href="#" class="btn3 flex-c-m size18 txt11 trans-0-4 m-10">
+					<a href="${baseURL }/order/additionNonPaye" class="btn3 flex-c-m size18 txt11 trans-0-4 m-10">
 						Payer
 					</a>
 			</div>

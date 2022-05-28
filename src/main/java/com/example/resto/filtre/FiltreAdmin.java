@@ -47,20 +47,21 @@ public class FiltreAdmin implements Filter {
 	      = new FilterRegistrationBean<>();
 	        
 	    registrationBean.setFilter(new FiltreAdmin());
-	    registrationBean.addUrlPatterns("/detailsOrder/choixServeurPourboire");
-	    registrationBean.addUrlPatterns("/detailsOrder/choixServeurBase");
+	    registrationBean.addUrlPatterns("/detailsOrders/choixServeurPourboire");
+	    registrationBean.addUrlPatterns("/detailsOrders/choixServeurBase");
 	    registrationBean.addUrlPatterns("/ingredients/resultDate");
 	    registrationBean.addUrlPatterns("/ingredients/choixDate");
 	    registrationBean.addUrlPatterns("/order/boAdditionNonPaye");
-	    registrationBean.addUrlPatterns("/payement/*");
+	    registrationBean.addUrlPatterns("/payement/select");
+	    registrationBean.addUrlPatterns("/payement/resultDate");
 	    registrationBean.addUrlPatterns("/plats/prix-plat-base");
 	    registrationBean.addUrlPatterns("/plats/prix-plat");
 	    registrationBean.addUrlPatterns("/stock/*");
-	    registrationBean.addUrlPatterns("/detailsOrder/valider");
-	    registrationBean.addUrlPatterns("/detailsOrder/enPreparation");
-	    registrationBean.addUrlPatterns("/detailsOrder/prets");
-	    registrationBean.addUrlPatterns("/detailsOrder/changeToEnPreparation");
-	    registrationBean.addUrlPatterns("/detailsOrder/changeToPret");
+	    registrationBean.addUrlPatterns("/detailsOrders/valider");
+	    registrationBean.addUrlPatterns("/detailsOrders/enPreparation");
+	    registrationBean.addUrlPatterns("/detailsOrders/prets");
+	    registrationBean.addUrlPatterns("/detailsOrders/changeToEnPreparation");
+	    registrationBean.addUrlPatterns("/detailsOrders/changeToPret");
 	    registrationBean.setOrder(1);
 	        
 	    return registrationBean;    

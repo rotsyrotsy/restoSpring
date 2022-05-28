@@ -103,4 +103,32 @@ INSERT INTO platingredient (id,idplat,idingredient,quantity) VALUES (87,'46','I2
 INSERT INTO platingredient (id,idplat,idingredient,quantity) VALUES (99,'46','I5',0.2);
 INSERT INTO platingredient (id,idplat,idingredient,quantity) VALUES (100,'46','I3',1);
 
+CREATE OR REPLACE VIEW additionnonpaye 
+AS
+ SELECT o.daty AS date,
+    po.prix AS total,
+    case 
+    	when pe.prix is null then 0
+    	else pe.prix 
+    end dejapayer,
+     case 
+    	when pe.prix is null then po.prix
+    	else po.prix - pe.prix 
+    end restant,
+    it.numero,
+    o.id AS idorder
+   from prixorder po 
+     LEFT JOIN payementeffectue pe ON po.idorder::text = pe.idorder::text  
+     JOIN orderr o ON o.id::text = po.idorder::text
+     JOIN idtable it ON it.id::text = o.idtable::text;
 
+CREATE OR REPLACE VIEW public.prixdevente
+AS SELECT p.id,
+    p.label,
+    pa.price + pa.price * m.pourcentage / 100::double precision AS prixvente,
+    m.pourcentage,
+    pa.price AS prixderevient,
+    p.image 
+   FROM prixachatplat pa
+     JOIN marge m ON pa.price >= m.minimum AND pa.price < m.maximum
+     JOIN plat p ON p.id::text = pa.idplat::text;

@@ -8,6 +8,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.resto.formattage.Formattage;
 import com.example.resto.marge.Marge;
 import com.example.resto.marge.MargeRepository;
 import com.example.resto.marge.MargeService;
@@ -34,7 +35,7 @@ public class PlatService {
             Object[] s = (Object[]) liste.get(i);
             hm.put("id", s[0]);
             hm.put("label", s[1]);
-            hm.put("price", s[2]);
+            hm.put("price",Formattage.formatePrice( s[2]));
             hm.put("categorie", s[3]);
             hm.put("image", s[4]);
             listehm.add(hm);
@@ -62,9 +63,10 @@ public class PlatService {
 
             hm.put("idPlat", s[0]);
             hm.put("label", s[1]);
-            hm.put("prixVente", s[2]);
+            hm.put("prixVente", Formattage.formatePrice((Double)s[2]));
             hm.put("pourcentage", s[3]);
-            hm.put("prixDeRevient", s[4]);
+            hm.put("prixDeRevient", Formattage.formatePrice((Double)s[4]));
+            hm.put("image", s[5]);
             listehm.add(hm);
         }
         return listehm;
@@ -85,9 +87,9 @@ public class PlatService {
             Double pr = (Double)s[3];
             hm.put("idPlat", s[0]);
             hm.put("label", s[1]);
-            hm.put("prixVente", pr+(pr*pourc/100));
+            hm.put("prixVente", Formattage.formatePrice((Double)(pr+(pr*pourc/100))));
             hm.put("pourcentage", pourc);
-            hm.put("prixDeRevient", pr);
+            hm.put("prixDeRevient", Formattage.formatePrice((Double)pr));
             listehm.add(hm);
         }
         return listehm;

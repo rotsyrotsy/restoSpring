@@ -12,13 +12,12 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Pages / Login - NiceAdmin Bootstrap Template</title>
+  <title>Pato | Admin</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="${baseURL}/views/assets/img/favicon.png" rel="icon">
-  <link href="${baseURL}/views/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link rel="icon" type="image/png" href="${baseURL}/views/images/icons/favicon.png"/>
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -56,8 +55,8 @@
 
               <div class="d-flex justify-content-center py-4">
                 <a href="index.html" class="logo d-flex align-items-center w-auto">
-                  <img src="${baseURL}/views/assets/img/logo.png" alt="">
-                  <span class="d-none d-lg-block">Pato</span>
+                  <img src="${baseURL}/views/images/icons/favicon.png" alt="">
+                  <span class="text-danger">Pato</span>
                 </a>
               </div><!-- End Logo -->
 

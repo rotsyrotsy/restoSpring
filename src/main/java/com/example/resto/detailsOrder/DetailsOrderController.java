@@ -23,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.example.resto.categorie.Categorie;
 import com.example.resto.categorie.CategorieService;
 import com.example.resto.controlle.Controle;
+import com.example.resto.formattage.Formattage;
 import com.example.resto.order.OrderrController;
 import com.example.resto.plat.PlatService;
 import com.example.resto.serveur.Serveur;
@@ -74,7 +75,7 @@ public class DetailsOrderController {
 			HashMap<String,Object> temp = liste.get(i);
 			sum += (Double)temp.get("pourcentage");
 		}
-		model.addAttribute("sum",sum);
+		model.addAttribute("sum",Formattage.formatePrice(sum));
 	    model.addAttribute("listOrder", liste);
 	    model.addAttribute("view", "bo_resultPourboire");
 	    return new ModelAndView("back/bo_template");

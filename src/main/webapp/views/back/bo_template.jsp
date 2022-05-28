@@ -16,9 +16,7 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="${baseURL}/views/assets/img/favicon.png" rel="icon">
-  <link href="${baseURL}/views/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
+  <link rel="icon" type="image/png" href="${baseURL}/views/images/icons/favicon.png"/>
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -49,19 +47,12 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo d-flex align-items-center">
-        <img src="${baseURL}/views/assets/img/logo.png" alt="">
-        <span class="d-none d-lg-block">Pato</span>
+      <a href="#" class="logo d-flex align-items-center">
+        <img src="${baseURL}/views/images/icons/favicon.png" alt="">
+        <span class="text-danger">Pato</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
-
-    <div class="search-bar">
-      <form class="search-form d-flex align-items-center" method="POST" action="#">
-        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-      </form>
-    </div><!-- End Search Bar -->
 
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
@@ -163,7 +154,7 @@
       </li>
       
       <li class="nav-item">
-        <a class="nav-link collapsed" href="${baseURL }/payement">
+        <a class="nav-link collapsed" href="${baseURL }/payement/select">
           <i class="bi bi-grid"></i>
           <span>Paiement</span>
         </a>

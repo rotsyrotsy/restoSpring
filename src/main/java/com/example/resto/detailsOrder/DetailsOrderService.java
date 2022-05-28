@@ -10,6 +10,8 @@ import javax.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.example.resto.formattage.Formattage;
 import com.example.resto.order.OrderrRepository;
 import com.example.resto.plat.PlatService;
 
@@ -33,7 +35,7 @@ public class DetailsOrderService {
     @PersistenceContext
     private EntityManager entityManager;
     
-    public List<HashMap<String, Object>> getDateOrderDetails (String idServeur, Date date, Date date2){
+    /*public List<HashMap<String, Object>> getDateOrderDetails (String idServeur, Date date, Date date2){
     	List<Object[]> liste = repository.dateOrderDetails( idServeur,  date,  date2);
     	List<HashMap<String, Object>> listehm = new ArrayList<HashMap<String, Object>>();
 
@@ -99,7 +101,7 @@ public class DetailsOrderService {
 			val.add(first);
 			
  		return val;
- 	}
+ 	}*/
  	
  	public List<HashMap<String, Object>> getPrixOrderServeur (String idServeur, Date date1, Date date2){
  		List<Object[]> liste = repository.prixOrderServeur( idServeur,  date1,  date2);
@@ -109,7 +111,7 @@ public class DetailsOrderService {
             HashMap<String, Object> hm = new HashMap<String, Object>();
             Object[] s = (Object[]) liste.get(i);
 
-            hm.put("valeurOrder", s[0]);	//sumPrix
+            hm.put("valeurOrder", Formattage.formatePrice((Double)s[0]));	//sumPrix
             hm.put("idOrder", s[1]);	//idOrder
             hm.put("idServeur", s[2]);	//idServeur
             hm.put("date", s[3]);		//date
@@ -133,7 +135,7 @@ public class DetailsOrderService {
             hm.put("plat", s[3]);		
             hm.put("idServeur", s[4]);	
             hm.put("date", s[5]);
-            hm.put("prixVente", s[6]);
+            hm.put("prixVente", Formattage.formatePrice((Double)s[6]));
             hm.put("image", s[7]);
             listehm.add(hm);
         }
@@ -243,7 +245,7 @@ public class DetailsOrderService {
     public void changeToEnPreparation(String idDetailOrder) {
     	System.out.println("IDDETTTTT: "+idDetailOrder);
          try {
-     	 entityManager.createNativeQuery("UPDATE detailsOrder SET etat = 'en preparation' WHERE id = ? etat is not null")
+     	 entityManager.createNativeQuery("UPDATE detailsOrder SET etat = 'en preparation' WHERE id = ?  ")
      	 .setParameter(1, idDetailOrder)
           .executeUpdate(); 	
      	}
@@ -254,7 +256,7 @@ public class DetailsOrderService {
     public void changeToPret(String idDetailOrder) {
     	
            try {
-     	 entityManager.createNativeQuery("UPDATE detailsOrder SET etat = 'pret' WHERE id = ? etat is not null")
+     	 entityManager.createNativeQuery("UPDATE detailsOrder SET etat = 'pret' WHERE id = ? ")
      	 .setParameter(1, idDetailOrder)
           .executeUpdate(); 	
      	}

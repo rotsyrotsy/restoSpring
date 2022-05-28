@@ -8,6 +8,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.resto.formattage.Formattage;
+
 
 @Service
 public class IngredientService {
@@ -30,7 +32,7 @@ public class IngredientService {
             hm.put("label", s[0]);	
             hm.put("quantite", s[1]);	
             hm.put("unite", s[2]);	
-            hm.put("pu", s[3]);		
+            hm.put("pu", Formattage.formatePrice(s[3]));		
             hm.put("prixTotal", s[4]);			
             listehm.add(hm);
         }

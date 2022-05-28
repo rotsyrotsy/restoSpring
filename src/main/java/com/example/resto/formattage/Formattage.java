@@ -1,9 +1,16 @@
 package com.example.resto.formattage;
 
+import java.text.DateFormat;
+
 public class Formattage {
-	public static String formatePrice(double nb)
+	public static String formatePrice(Object nb)
 	{
-		Double nombre = nb;
+		Double nombre = 0.0;
+		if (nb instanceof String) {
+			nombre = Double.valueOf((String)nb);
+		}else {
+			nombre = (Double) nb;
+		}
 		String val = nombre.toString();
 		String entiere = val.split("\\.")[0];
 		String apresVirgule = val.split("\\.")[1];
@@ -18,5 +25,14 @@ public class Formattage {
 			count++;
 		}
 		return sb.toString()+"."+apresVirgule;
+	}
+	
+	public static String formateDate(Object date)
+	{
+		DateFormat mediumDateFormat = DateFormat.getDateTimeInstance(
+		        DateFormat.MEDIUM,
+		        DateFormat.MEDIUM);
+		return mediumDateFormat.format(date);
+	
 	}
 }

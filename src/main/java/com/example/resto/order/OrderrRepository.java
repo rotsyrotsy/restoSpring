@@ -25,7 +25,7 @@ public interface OrderrRepository extends JpaRepository<Orderr,String>{
         
 
         @Query(nativeQuery = true, value ="select * from additionNonPaye where idorder=?1")
-        List<Object[]> getAdditionParTable(String idOrder);
+        List<Object[]> getAdditionByOrder(String idOrder);
         
             @Query(nativeQuery = true, value ="SELECT o.id as idorder, o.idserveur , o.daty, t.id as idtable , t.numero \r\n"
             		+ "          FROM orderr o\r\n"

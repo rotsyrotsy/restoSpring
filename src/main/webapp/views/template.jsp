@@ -35,7 +35,6 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="${baseURL}/views/css/util.css">
 	<link rel="stylesheet" type="text/css" href="${baseURL}/views/css/main.css">
-		<link rel="stylesheet" type="text/css" href="${baseURL}/views/css/panier.css">
 	
 <!--===============================================================================================-->
 </head>
@@ -49,7 +48,7 @@
 				<div class="wrap_header trans-0-3" style="margin-top:1%;">
 					<!-- Logo -->
 					<div class="logo" style="margin-top:1%;">
-						<a href="index.html">
+						<a href="#">
 							<img src="${baseURL}/views/images/icons/logo.png" alt="IMG-LOGO" data-logofixed="${baseURL}/views/images/icons/logo2.png">
 						</a>
 					</div>
@@ -69,13 +68,14 @@
 								</li>
 								
 								<li>
-									<a href="${baseURL }/order/additionNonPaye">Additions en cours</a>
+									<a href="${baseURL }/order/additionNonPaye">Additions non payees</a>
 								</li>
 								
 								<c:if test="${sessionScope.sessionOrder != null}">
 									<li>
 										<a href="${baseURL }/order/commandeEnCours">Commande en cours</a>
 									</li>
+									
 								</c:if>
 								
 							</ul>
@@ -161,96 +161,51 @@
 	<footer class="bg1">
 		<div class="container p-t-40 p-b-70">
 			<div class="row">
-				<div class="col-sm-6 col-md-4 p-t-50">
+				<div class="col-sm-6 col-md-6 p-t-50">
 					<!-- - -->
 					<h4 class="txt13 m-b-33">
-						Contact Us
+						Contactez-nous
 					</h4>
 
 					<ul class="m-b-70">
 						<li class="txt14 m-b-14">
 							<i class="fa fa-map-marker fs-16 dis-inline-block size19" aria-hidden="true"></i>
-							8th floor, 379 Hudson St, New York, NY 10018
+							Antananarivo 101, Andoharanofotsy
 						</li>
 
 						<li class="txt14 m-b-14">
 							<i class="fa fa-phone fs-16 dis-inline-block size19" aria-hidden="true"></i>
-							(+1) 96 716 6879
+							(+261) 00 000 00  
 						</li>
 
 						<li class="txt14 m-b-14">
 							<i class="fa fa-envelope fs-13 dis-inline-block size19" aria-hidden="true"></i>
-							contact@site.com
+							pato@site.com
 						</li>
 					</ul>
 
 					<!-- - -->
 					<h4 class="txt13 m-b-32">
-						Opening Times
+						Ouverture
 					</h4>
 
 					<ul>
 						<li class="txt14">
-							09:30 AM â 11:00 PM
+							10:00 AM à 11:00 PM
 						</li>
 
 						<li class="txt14">
-							Every Day
+							Tous les jours
 						</li>
 					</ul>
 				</div>
 
-				<div class="col-sm-6 col-md-4 p-t-50">
-					<!-- - -->
-					<h4 class="txt13 m-b-33">
-						Latest twitter
-					</h4>
+				
 
-					<div class="m-b-25">
-						<span class="fs-13 color2 m-r-5">
-							<i class="fa fa-twitter" aria-hidden="true"></i>
-						</span>
-						<a href="#" class="txt15">
-							@colorlib
-						</a>
-
-						<p class="txt14 m-b-18">
-							Activello is a good option. It has a slider built into that displays the featured image in the slider.
-							<a href="#" class="txt15">
-								https://buff.ly/2zaSfAQ
-							</a>
-						</p>
-
-						<span class="txt16">
-							21 Dec 2017
-						</span>
-					</div>
-
-					<div>
-						<span class="fs-13 color2 m-r-5">
-							<i class="fa fa-twitter" aria-hidden="true"></i>
-						</span>
-						<a href="#" class="txt15">
-							@colorlib
-						</a>
-
-						<p class="txt14 m-b-18">
-							Activello is a good option. It has a slider built into that displays
-							<a href="#" class="txt15">
-								https://buff.ly/2zaSfAQ
-							</a>
-						</p>
-
-						<span class="txt16">
-							21 Dec 2017
-						</span>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4 p-t-50">
+				<div class="col-sm-6 col-md-6 p-t-50">
 					<!-- - -->
 					<h4 class="txt13 m-b-38">
-						Gallery
+						Gallerie
 					</h4>
 
 					<!-- Gallery footer -->

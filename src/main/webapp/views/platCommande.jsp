@@ -12,7 +12,11 @@
 
 
 	<section class="section-lunch bgwhite">
-		<h1>Table ${sessionScope.sessionOrder.numero} le  ${sessionScope.sessionOrder.date} </h1>
+	<div class="t-center">
+		<span class="tit2 t-center">
+			Table ${sessionScope.sessionOrder.numero} le  ${sessionScope.sessionOrder.date}
+		</span>
+	</div>
 		<div class="container">
 			<div class="row p-t-108 p-b-70">
 				<c:forEach items="${platCommande}" var ="plat">

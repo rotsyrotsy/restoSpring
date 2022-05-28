@@ -10,7 +10,7 @@ import javax.persistence.Table;
 public class Payement {
 	@Id
 	String id;
-	String idOrder;
+	String idorder;
 	Double valeur;
 	Date date;
 	String type;
@@ -22,10 +22,10 @@ public class Payement {
 		this.id = id;
 	}
 	public String getIdOrder() {
-		return idOrder;
+		return idorder;
 	}
 	public void setIdOrder(String idOrder) {
-		this.idOrder = idOrder;
+		this.idorder = idOrder;
 	}
 	public Double getValeur() {
 		return valeur;

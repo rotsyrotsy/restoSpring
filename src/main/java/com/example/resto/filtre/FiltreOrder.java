@@ -47,6 +47,7 @@ public class FiltreOrder implements Filter {
 	    registrationBean.addUrlPatterns("/detailsOrder/insert");
 	    registrationBean.addUrlPatterns("/order/commandeEnCours");
 	    registrationBean.addUrlPatterns("/order/validerCommande");
+	    registrationBean.addUrlPatterns("/payement/insert");
 	    registrationBean.setOrder(2);
 	        
 	    return registrationBean;    

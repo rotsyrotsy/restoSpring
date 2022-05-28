@@ -182,7 +182,7 @@ public class OrderrController {
             if (session.getAttribute("sessionOrder")!=null) {
             	HashMap<String, Object> order = (HashMap<String, Object>)session.getAttribute("sessionOrder");
             	String idOrder = (String)order.get("idOrder");
-            	liste = service.getAdditionParTable(idOrder);
+            	liste = service.getAdditionByOrder(idOrder);
             }
             
 		

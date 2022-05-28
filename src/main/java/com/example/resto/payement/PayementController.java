@@ -1,5 +1,6 @@
 package com.example.resto.payement;
 
+import com.example.resto.categorie.Categorie;
 import com.example.resto.controlle.Controle;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -9,16 +10,20 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.resto.formattage.Formattage;
+import com.example.resto.order.OrderrController;
 
 
 @RestController
@@ -26,10 +31,13 @@ import com.example.resto.formattage.Formattage;
 public class PayementController {
 	@Autowired
 	private  PayementService service;
+	@Autowired
+	private OrderrController ordContr;
+	
 	public PayementController(PayementService service) {
 	        this.service = service;
 	    }
-	@GetMapping
+	@GetMapping("/select")
 	public ModelAndView selectPaiement(Model model){
 		model.addAttribute("view","bo_selectPayementByDate");
 		return new ModelAndView("back/bo_template");
@@ -77,4 +85,19 @@ public class PayementController {
 		model.addAttribute("view","bo_resultPayement");
 				return new ModelAndView("back/bo_template");
 	}
+	
+	@PostMapping("/insert")
+    public ModelAndView ajout(Payement paie, Model model,ServletRequest request) throws Exception{
+		HttpServletRequest req = (HttpServletRequest) request;
+		HttpSession session = req.getSession();
+        if (session.getAttribute("sessionOrder")!=null) {
+        	HashMap<String, Object> order = (HashMap<String, Object>)session.getAttribute("sessionOrder");
+        	String idOrder = (String)order.get("idOrder");
+        	paie.setIdOrder(idOrder);
+        }
+        service.insertWithQuery(paie);
+        return ordContr.additionNonPaye(model, request);
+    }  
+	
+	
 }
