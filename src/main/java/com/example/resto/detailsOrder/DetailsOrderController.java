@@ -83,7 +83,7 @@ public class DetailsOrderController {
 
     @GetMapping(path = "/insert")
     public ModelAndView ajout(Model model, @RequestParam String idPlat,
-             ServletRequest request) throws Exception {
+            ServletRequest request) throws Exception {
 
         String idOrder = null;
         HttpServletRequest req = (HttpServletRequest) request;
@@ -98,28 +98,22 @@ public class DetailsOrderController {
 
             service.insertDetailsOrder(idPlat, idOrder);
 
-    model.addAttribute("succes", "Commande du plat id " + idPlat + " réussi");
-        
-            
+            model.addAttribute("succes", "Commande du plat id " + idPlat + " réussi");
 
         } catch (Exception ex) {
             ex.printStackTrace();
-            model.addAttribute("error",ex.getMessage());
-        }
-        finally
-        {
-             List<HashMap<String, Object>> listPlat = platservice.getAllPlats();
-               List<Categorie> listCategorie = catservice.getAllCategories();
-               
-                   model.addAttribute("listPlat", listPlat);
+            model.addAttribute("error", ex.getMessage());
+        } finally {
+            List<HashMap<String, Object>> listPlat = platservice.getAllPlats();
+            List<Categorie> listCategorie = catservice.getAllCategories();
+
+            model.addAttribute("listPlat", listPlat);
             model.addAttribute("listCategorie", listCategorie);
             model.addAttribute("view", "menu");
         }
-        
+
         return new ModelAndView("template");
     }
-    
-    
 
     @GetMapping(path = "/valider")
     public ModelAndView selectDetailsOrderValide(Model model) {

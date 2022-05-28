@@ -61,6 +61,7 @@
 			</div>
 			
 		</div>
+                 </c:if>
                         
                  <c:if test="${error != null}">
 		<div>
@@ -69,8 +70,9 @@
 			</div>
 			
 		</div>
+                   </c:if>
 			
-		</c:if>
+		
 		<c:if test="${sessionScope.sessionOrder != null}">
 			<p>
 				Commande de la table ${sessionScope.sessionOrder.numero}
