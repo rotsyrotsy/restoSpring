@@ -132,3 +132,5 @@ AS SELECT p.id,
    FROM prixachatplat pa
      JOIN marge m ON pa.price >= m.minimum AND pa.price < m.maximum
      JOIN plat p ON p.id::text = pa.idplat::text;
+
+CREATE SEQUENCE seqplatingredient START WITH 1 INCREMENT BY 1;

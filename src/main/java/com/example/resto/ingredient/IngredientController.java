@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.example.resto.categorie.Categorie;
 import com.example.resto.categorie.CategorieService;
 import com.example.resto.formattage.Formattage;
 import com.example.resto.controlle.Controle;
@@ -68,8 +69,6 @@ public class IngredientController {
 		
 	
 	}
-
-        
        
          
 

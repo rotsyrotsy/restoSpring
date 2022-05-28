@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.resto.formattage.Formattage;
+import com.example.resto.plat.Plat;
 
 
 @Service
@@ -19,7 +20,11 @@ public class IngredientService {
     public IngredientService(IngredientRepository repository) {
         this.repository = repository;
     }
-    
+    public List<Ingredient> getIngredients() {
+        
+        return repository.findAll();
+    }
+ 
     public List<HashMap<String, Object>> getIngredientConsomer (Date date1, Date date2){
     	
     	List<Object[]> liste = repository.quantiteIngredientConsommer(date1, date2);

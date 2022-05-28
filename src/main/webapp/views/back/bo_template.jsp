@@ -181,6 +181,21 @@
         </a>
       </li>
       
+        <li class="nav-item">
+        <a class="nav-link collapsed" href="${baseURL }/plats/formulaireAjout">
+          <i class="bi bi-grid"></i>
+          <span>Ajouter un plat</span>
+        </a>
+      </li>
+      
+      
+        <li class="nav-item">
+        <a class="nav-link collapsed" href="${baseURL }/platIngredients">
+          <i class="bi bi-grid"></i>
+          <span>Ajouter un ingrédient au plat</span>
+        </a>
+      </li>
+      
       
       
 
