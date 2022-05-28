@@ -121,8 +121,18 @@
 			</div>
 			
 		</div>
+                 </c:if>
+                        
+                 <c:if test="${error != null}">
+		<div>
+			<div class="alert alert-danger" role="alert">
+			  ${error }
+			</div>
 			
-		</c:if>
+		</div>
+                   </c:if>
+			
+		
 		<c:if test="${sessionScope.sessionOrder != null}">
 			<p>
 				Commande de la table ${sessionScope.sessionOrder.numero}
