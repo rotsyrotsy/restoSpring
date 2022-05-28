@@ -105,46 +105,37 @@
 		<div class="gallery-sidebar t-center p-l-60 p-r-60 p-b-40">
 			<!-- - -->
 			<h4 class="txt20 m-b-33">
-				Gallery
+				OPTIONS
 			</h4>
-
+			<ul>
+				<li>
+					<a href="${baseURL}/plats">Menu</a>
+				</li>
+				<li>
+					<a href="${baseURL}/tables">Commandes d'une table</a>
+				</li>
+				<li>
+					<a href="${baseURL}/stock">Stock</a>
+				</li>
+				<li>
+					<a href="${baseURL}/detailsOrders/choixServeurPourboire">Pourboires</a>
+				</li>
+				<li>
+					<a href="${baseURL }/ingredients/choixDate">Consommation</a>
+				</li>
+				<li>
+					<a href="${baseURL }/order/additionNonPaye">Additions en cours</a>
+				</li>
+				<li>
+					<a href="${baseURL }/payement">Paie</a>
+				</li>
+				<li>
+					<a href="${baseURL }/plats/prix-plat-base">Prix de revient</a>
+				</li>
+			</ul>
 			<!-- Gallery -->
 			<div class="wrap-gallery-sidebar flex-w">
-				<a class="item-gallery-sidebar wrap-pic-w" href="${baseURL}/views/images/photo-gallery-01.jpg" data-lightbox="gallery-footer">
-					<img src="${baseURL}/views/images/photo-gallery-thumb-01.jpg" alt="GALLERY">
-				</a>
-
-				<a class="item-gallery-sidebar wrap-pic-w" href="${baseURL}/views/images/photo-gallery-02.jpg" data-lightbox="gallery-footer">
-					<img src="${baseURL}/views/images/photo-gallery-thumb-02.jpg" alt="GALLERY">
-				</a>
-
-				<a class="item-gallery-sidebar wrap-pic-w" href="${baseURL}/views/images/photo-gallery-03.jpg" data-lightbox="gallery-footer">
-					<img src="${baseURL}/views/images/photo-gallery-thumb-03.jpg" alt="GALLERY">
-				</a>
-
-				<a class="item-gallery-sidebar wrap-pic-w" href="${baseURL}/views/images/photo-gallery-05.jpg" data-lightbox="gallery-footer">
-					<img src="${baseURL}/views/images/photo-gallery-thumb-05.jpg" alt="GALLERY">
-				</a>
-
-				<a class="item-gallery-sidebar wrap-pic-w" href="${baseURL}/views/images/photo-gallery-06.jpg" data-lightbox="gallery-footer">
-					<img src="${baseURL}/views/images/photo-gallery-thumb-06.jpg" alt="GALLERY">
-				</a>
-
-				<a class="item-gallery-sidebar wrap-pic-w" href="${baseURL}/views/images/photo-gallery-07.jpg" data-lightbox="gallery-footer">
-					<img src="${baseURL}/views/images/photo-gallery-thumb-07.jpg" alt="GALLERY">
-				</a>
-
-				<a class="item-gallery-sidebar wrap-pic-w" href="${baseURL}/views/images/photo-gallery-09.jpg" data-lightbox="gallery-footer">
-					<img src="${baseURL}/views/images/photo-gallery-thumb-09.jpg" alt="GALLERY">
-				</a>
-
-				<a class="item-gallery-sidebar wrap-pic-w" href="${baseURL}/views/images/photo-gallery-10.jpg" data-lightbox="gallery-footer">
-					<img src="${baseURL}/views/images/photo-gallery-thumb-10.jpg" alt="GALLERY">
-				</a>
-
-				<a class="item-gallery-sidebar wrap-pic-w" href="${baseURL}/views/images/photo-gallery-11.jpg" data-lightbox="gallery-footer">
-					<img src="${baseURL}/views/images/photo-gallery-thumb-11.jpg" alt="GALLERY">
-				</a>
+				
 			</div>
 		</div>
 	</aside>
