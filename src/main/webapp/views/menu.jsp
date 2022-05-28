@@ -61,6 +61,14 @@
 			</div>
 			
 		</div>
+                        
+                 <c:if test="${error != null}">
+		<div>
+			<div class="alert alert-danger" role="alert">
+			  ${error }
+			</div>
+			
+		</div>
 			
 		</c:if>
 		<c:if test="${sessionScope.sessionOrder != null}">

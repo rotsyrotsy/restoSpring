@@ -137,4 +137,15 @@ public class PlatService {
         }
         return listehm;
 	}
+        
+        public Boolean platIsInStock(String idPlat){
+            // maka ny ingredients an'ilay plat izay ampy anaty stock 
+            List<Object[]> listeIngSuff = repository.getIngredientSuffisant(idPlat);
+            
+            //maka ny ingredients rehetra an'io plat io
+            List<Object[]> ings = repository.getIngredientOfPlat(idPlat);
+            
+             Boolean val = (listeIngSuff.size()==ings.size());  
+             return val;
+	}
 }

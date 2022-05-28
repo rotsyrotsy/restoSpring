@@ -20,6 +20,9 @@ public class DetailsOrderService {
 	private final DetailsOrderRepository repository;
 	@Autowired
 	private  PlatService platServ;
+        
+        
+        
 	
 	
 	
@@ -159,6 +162,12 @@ public class DetailsOrderService {
  	 @Transactional
      public void insertDetailsOrder(String idPlat, String idOrder) {
  		System.out.println("IDPLAT: "+idPlat+", IDORDER: "+idOrder);
+                
+                if(platServ.platIsInStock(idPlat)==false)
+                {
+                    throw new IllegalStateException("Stock insuffisant. Impossible de commander ce plat");
+                }
+                
  		String idServeur = ordServ.getIdServeurFromOrder(idOrder);
      try {
      	 entityManager.createNativeQuery("INSERT INTO detailsOrder VALUES (nextval('seqDetailsOrder'),?,?,now(),?,'non valide')")

@@ -33,4 +33,11 @@ public interface PlatRepository extends JpaRepository<Plat,String>{
 
 	@Query(nativeQuery = true, value ="select * from ingredientPlat where idPlat=:id")
 	List<Object[]> ingredientPlat(@Param("id") String id);
+        
+        
+        @Query(nativeQuery = true, value ="select * from ingredientplat i join stockrestant s on i.idingredient = s.idingredient where idplat =:id and reste > quantity ")
+	List<Object[]> getIngredientSuffisant(@Param("id") String id);
+        
+           @Query(nativeQuery = true, value ="select * from ingredientplat i where idplat =:id")
+	List<Object[]> getIngredientOfPlat(@Param("id") String id);
 }
