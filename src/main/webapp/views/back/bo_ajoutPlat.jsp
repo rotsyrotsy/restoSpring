@@ -59,7 +59,7 @@
 
                 <div class="row mb-3">
                   <div class="col-sm-10">
-                    <button type="submit" class="btn btn-primary">Valider</button>
+                    <button type="submit" class="btn btn-success">Valider</button>
                   </div>
                 </div>
 

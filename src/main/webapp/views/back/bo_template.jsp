@@ -122,6 +122,13 @@
               <i class="bi bi-circle"></i><span>Stock</span>
             </a>
           </li>
+          
+          <li>
+		        <a href="${baseURL }/ingredients/formAchatIngredient">
+		          <i class="bi bi-circle"></i>
+		          <span>Acheter Ingredients</span>
+		        </a>
+		      </li>
         </ul>
       </li><!-- End Components Nav -->
 
@@ -203,12 +210,7 @@
        </ul>
       </li><!-- End Forms Nav -->
       
-          <li class="nav-item">
-        <a class="nav-link collapsed" href="${baseURL }/ingredients/formAchatIngredient">
-          <i class="bi bi-grid"></i>
-          <span>Acheter Ingredients</span>
-        </a>
-      </li>
+          
       
       
       
