@@ -169,6 +169,27 @@
         </a>
       </li>
       
+        <li class="nav-item">
+        <a class="nav-link collapsed" href="${baseURL }/detailsOrders/valider">
+          <i class="bi bi-grid"></i>
+          <span>Plats Valides</span>
+        </a>
+      </li>
+      
+        <li class="nav-item">
+        <a class="nav-link collapsed" href="${baseURL }/detailsOrders/enPreparation">
+          <i class="bi bi-grid"></i>
+          <span>Plats en Preparation</span>
+        </a>
+      </li>
+      
+        <li class="nav-item">
+        <a class="nav-link collapsed" href="${baseURL }/detailsOrders/prets">
+          <i class="bi bi-grid"></i>
+          <span>Plats Prets</span>
+        </a>
+      </li>
+      
       
       
 

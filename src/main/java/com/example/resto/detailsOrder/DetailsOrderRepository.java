@@ -41,6 +41,9 @@ public interface DetailsOrderRepository extends JpaRepository<DetailsOrder,Strin
         @Query(nativeQuery = true, value ="select * from etatPlat where etat = 'en preparation'")
         List<Object[]> getDetailsOrderEnPrep();
         
+        @Query(nativeQuery = true, value ="select * from etatPlat where etat = 'pret'")
+        List<Object[]> getDetailsOrderPret();
+        
 
     	@Query(nativeQuery = true, value ="select idPlat from detailsOrder where id=?1")
     	String getIdPlat(String id);

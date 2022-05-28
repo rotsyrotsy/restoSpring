@@ -131,36 +131,69 @@ public class DetailsOrderController {
     
         
      @GetMapping(path="/valider")
-	public ModelAndView selectDetailsOrderValide(Model model){
+	public ModelAndView selectDetailsOrderValide(Model model,ServletRequest request){
 		List<HashMap<String, Object>> listedo = service.getDetailsOrderValide();
-		
-	    model.addAttribute("platsValide", listedo);
-	    model.addAttribute("view", "platsValider");
-	    return new ModelAndView("template");
+            if (!Controle.isAdmin(request)) {
+			return new ModelAndView("error500");
+		}
+                     model.addAttribute("platsValide", listedo);
+			model.addAttribute("view","bo_platsValider");
+			return new ModelAndView("back/bo_template");
 	 }
       
     @GetMapping(path="/enPreparation")
-	public ModelAndView selectDetailsOrderEnPreparation(Model model){
+	public ModelAndView selectDetailsOrderEnPreparation(Model model,ServletRequest request){
 		List<HashMap<String, Object>> listeprep = service.getDetailsOrderPrep();
+                
+                  if (!Controle.isAdmin(request)) {
+			return new ModelAndView("error500");
+		}
 		
 	    model.addAttribute("platsEnPreparation", listeprep);
-	    model.addAttribute("view", "platsEnPreparation");
-	    return new ModelAndView("template");
+	    model.addAttribute("view", "bo_platsEnPreparation");
+	   return new ModelAndView("back/bo_template");
+            
+            
+	 }
+        
+          @GetMapping(path="/prets")
+	public ModelAndView selectDetailsOrderPret(Model model,ServletRequest request){
+		List<HashMap<String, Object>> listeprep = service.getDetailsOrderPret();
+                
+                  if (!Controle.isAdmin(request)) {
+			return new ModelAndView("error500");
+		}
+		
+	    model.addAttribute("platsPrets", listeprep);
+	    model.addAttribute("view", "bo_platsPrets");
+	   return new ModelAndView("back/bo_template"); 
+            
 	 }
         
       @GetMapping(path="/changeToEnPreparation")
-	public ModelAndView changeEnPrep(Model model,@RequestParam String idDetailOrder){
+	public ModelAndView changeEnPrep(Model model,@RequestParam String idDetailOrder,ServletRequest request){
+            
+              
+                  if (!Controle.isAdmin(request)) {
+			return new ModelAndView("error500");
+		}
             service.changeToEnPreparation(idDetailOrder);
-		
+            
             
             List<HashMap<String, Object>> listedo = service.getDetailsOrderValide();
 	    model.addAttribute("platsValide", listedo);
-	    model.addAttribute("view", "platsValider");
-	    return new ModelAndView("template");
+	    model.addAttribute("view", "bo_platsValider");
+	    return new ModelAndView("back/bo_template");
+            
+            
 	 }
         
       @GetMapping(path="/changeToPret")
-	public ModelAndView changePret(Model model,@RequestParam String idDetailOrder){
+	public ModelAndView changeToPret(Model model,@RequestParam String idDetailOrder,ServletRequest request){
+              
+                  if (!Controle.isAdmin(request)) {
+			return new ModelAndView("error500");
+		}
             service.changeToPret(idDetailOrder);
             String idPlat = service.getIdPlat(idDetailOrder);
         	stockService.insertStock(idPlat);
@@ -168,8 +201,8 @@ public class DetailsOrderController {
             
             List<HashMap<String, Object>> listedo = service.getDetailsOrderPrep();
 	    model.addAttribute("platsEnPreparation", listedo);
-	    model.addAttribute("view", "platsEnPreparation");
-	    return new ModelAndView("template");
+	    model.addAttribute("view", "bo_platsEnPreparation");
+	    return new ModelAndView("back/bo_template");
 	 }
       
       @GetMapping(path = "/annuler/{idDetailOrder}")
