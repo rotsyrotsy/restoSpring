@@ -162,6 +162,14 @@
 								<span class="txt22 m-t-20">
 									${plat.price} Ar
 								</span>
+								
+								<c:if test="${plat.ruptureDeStock == 1}">
+									<span class="txt22 m-t-20 text-danger font-weight-bold" >
+										En rupture de stock
+									</span>
+								</c:if>
+								
+								
 							</div>
 							<c:if test="${sessionScope.sessionOrder != null}">
 								<a href="${baseURL}/detailsOrders/insert?idPlat=${plat.id}"  class="btn3 flex-c-m size18 txt11 trans-0-4 m-10">

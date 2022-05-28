@@ -134,3 +134,28 @@ AS SELECT p.id,
      JOIN plat p ON p.id::text = pa.idplat::text;
 
 CREATE SEQUENCE seqplatingredient START WITH 1 INCREMENT BY 1;
+
+
+CREATE OR REPLACE VIEW public.mouvementstockapresinventaire
+AS SELECT s.idingredient,
+    sum(s.valeur) AS sum,
+    tab.id AS idinventaire
+   FROM stock s
+     left JOIN ( SELECT inventaire.id,
+            inventaire.date
+           FROM inventaire
+          WHERE inventaire.date = (( SELECT max(inventaire_1.date) AS max
+                   FROM inventaire inventaire_1))) tab ON s.date >= tab.date
+  GROUP BY s.idingredient, tab.id;
+
+  CREATE OR REPLACE VIEW public.stockrestant
+AS SELECT mouv.idingredient,
+    i.label,
+    i.labelunity,
+    case
+    	when ivd.qte is null then mouv.sum 
+    	else mouv.sum + ivd.qte
+    end reste
+   FROM mouvementstockapresinventaire mouv
+     left JOIN inventairedetails ivd ON mouv.idingredient::text = ivd.idingredient::text
+     JOIN ingredient i ON mouv.idingredient::text = i.id::text;

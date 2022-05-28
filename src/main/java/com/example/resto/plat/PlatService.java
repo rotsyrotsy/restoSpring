@@ -49,6 +49,11 @@ public class PlatService {
             hm.put("price",Formattage.formatePrice( s[2]));
             hm.put("categorie", s[3]);
             hm.put("image", s[4]);
+            hm.put("ruptureDeStock", 0);
+            if (!this.platIsInStock((String)s[0])) {
+            	hm.replace("ruptureDeStock", 1);
+            }
+            
             listehm.add(hm);
         }
         return listehm;
