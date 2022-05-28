@@ -62,6 +62,10 @@ public class FiltreAdmin implements Filter {
 	    registrationBean.addUrlPatterns("/detailsOrders/prets");
 	    registrationBean.addUrlPatterns("/detailsOrders/changeToEnPreparation");
 	    registrationBean.addUrlPatterns("/detailsOrders/changeToPret");
+	    registrationBean.addUrlPatterns("/plats/formulaireAjout");
+	    registrationBean.addUrlPatterns("/plats/ajout");
+	    registrationBean.addUrlPatterns("/platIngredients/*");
+	    
 	    registrationBean.setOrder(1);
 	        
 	    return registrationBean;    

@@ -5,12 +5,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.resto.formattage.Formattage;
 import com.example.resto.marge.Marge;
-import com.example.resto.marge.MargeRepository;
 import com.example.resto.marge.MargeService;
 
 
@@ -18,6 +21,9 @@ import com.example.resto.marge.MargeService;
 public class PlatService {
 	private final PlatRepository repository;
 
+	@PersistenceContext
+    private EntityManager entityManager;
+	
 	@Autowired
 	private  MargeService margeServ;
 
@@ -25,6 +31,11 @@ public class PlatService {
     @Autowired
     public PlatService(PlatRepository repository) {
         this.repository = repository;
+    }
+    
+    public List<Plat> getPlats() {
+        
+        return repository.findAll();
     }
     
     public List<HashMap<String, Object>> hashMapPlatDetail(List<Object[]> liste) {
@@ -150,4 +161,17 @@ public class PlatService {
              Boolean val = (listeIngSuff.size()==ings.size());  
              return val;
 	}
+
+        @Transactional
+        public void insertWithQuery(Plat s) {
+        try {
+        	 entityManager.createNativeQuery("INSERT INTO plat VALUES ('P' || nextval('seqplat'),?,?,?,?)")
+        	 .setParameter(1, s.getIdCategorie())
+        	 .setParameter(2, s.getLabel())
+             .setParameter(3, s.getPrice())
+             .setParameter(4, s.getImage())
+             .executeUpdate(); 	
+        	}
+        catch(Exception e) {e.printStackTrace();}
+        }
 }

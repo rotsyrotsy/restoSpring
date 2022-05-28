@@ -20,13 +20,9 @@ import com.example.resto.plat.PlatService;
 public class DetailsOrderService {
 	
 	private final DetailsOrderRepository repository;
+	
 	@Autowired
 	private  PlatService platServ;
-        
-        
-        
-	
-	
 	
 	@Autowired
 	private  OrderrRepository ordServ;
@@ -156,7 +152,6 @@ public class DetailsOrderService {
 	        	}
 	        catch(Exception e) {e.printStackTrace();}
 	        
-	 
 	 }
 	        	
 	 
@@ -286,6 +281,4 @@ public class DetailsOrderService {
         catch(Exception e) {e.printStackTrace();}
 		
 	}
-
-   
 }
