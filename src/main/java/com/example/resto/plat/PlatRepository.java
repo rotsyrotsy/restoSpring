@@ -35,7 +35,15 @@ public interface PlatRepository extends JpaRepository<Plat,String>{
 	List<Object[]> ingredientPlat(@Param("id") String id);
         
         
-        @Query(nativeQuery = true, value ="select * from ingredientplat i join stockrestant s on i.idingredient = s.idingredient where idplat =:id and reste > quantity ")
+        @Query(nativeQuery = true, value ="select idplat,\n" +
+" i.label as nomPlat,\n" +
+" quantity,\n" +
+" unite,\n" +
+" nomingredient,\n" +
+" s.idingredient,\n" +
+" s.label as nomIng,\n" +
+" reste from ingredientplat i\n" +
+" join stockrestant s on i.idingredient = s.idingredient where idplat =:id and reste > quantity ")
 	List<Object[]> getIngredientSuffisant(@Param("id") String id);
         
            @Query(nativeQuery = true, value ="select * from ingredientplat i where idplat =:id")
