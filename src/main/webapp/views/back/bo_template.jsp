@@ -108,7 +108,7 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-menu-button-wide"></i><span>Ingrédients</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="ri-cake-3-line"></i><span>Ingrédients</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
@@ -127,7 +127,7 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-journal-text"></i><span>Plats</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="ri-cake-2-line"></i><span>Plats</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
@@ -135,66 +135,73 @@
               <i class="bi bi-circle"></i><span>Prix de revient</span>
             </a>
           </li>
+            <li>
+		        <a href="${baseURL }/plats/formulaireAjout">
+		          <i class="bi bi-circle"></i>
+		          <span>Ajouter un plat</span>
+		        </a>
+		      </li>
+		      
+		      
+		        <li >
+		        <a  href="${baseURL }/platIngredients">
+		          <i class="bi bi-circle"></i>
+		          <span>Ajouter un ingrédient au plat</span>
+		        </a>
+		      </li>
           
         </ul>
       </li><!-- End Forms Nav -->
 	
 	<li class="nav-item">
         <a class="nav-link collapsed" href="${baseURL }/order/boAdditionNonPaye">
-          <i class="bi bi-grid"></i>
-          <span>Additions non payés</span>
+          <i class="bi bi-layout-text-window-reverse"></i>
+          <span>Additions en cours</span>
         </a>
       </li>
       
 		<li class="nav-item">
         <a class="nav-link collapsed" href="${baseURL}/detailsOrders/choixServeurPourboire">
-          <i class="bi bi-grid"></i>
+          <i class="bi bi-cash-coin"></i>
           <span>Pourboire des serveurs</span>
         </a>
       </li>
       
       <li class="nav-item">
         <a class="nav-link collapsed" href="${baseURL }/payement/select">
-          <i class="bi bi-grid"></i>
-          <span>Paiement</span>
+          <i class="bi bi-list-check"></i>
+          <span>Liste des paiements</span>
         </a>
       </li>
       
         <li class="nav-item">
-        <a class="nav-link collapsed" href="${baseURL }/detailsOrders/valider">
-          <i class="bi bi-grid"></i>
-          <span>Plats Valides</span>
+        <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-journal-text"></i><span>Processus de fabrication</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-      </li>
+        <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+		        <li >
+		        <a href="${baseURL }/detailsOrders/valider">
+		         <i class="bi bi-circle"></i>
+		          <span>Validation</span>
+		        </a>
+		      </li>
+		      
+		        <li class="nav-item">
+		        <a  href="${baseURL }/detailsOrders/enPreparation">
+		          <i class="bi bi-circle"></i>
+		          <span>Preparation</span>
+		        </a>
+		      </li>
+		      
+		        <li class="nav-item">
+		        <a href="${baseURL }/detailsOrders/prets">
+		          <i class="bi bi-circle"></i>
+		          <span>Livraison</span>
+		        </a>
+		      </li>
       
-        <li class="nav-item">
-        <a class="nav-link collapsed" href="${baseURL }/detailsOrders/enPreparation">
-          <i class="bi bi-grid"></i>
-          <span>Plats en Preparation</span>
-        </a>
-      </li>
-      
-        <li class="nav-item">
-        <a class="nav-link collapsed" href="${baseURL }/detailsOrders/prets">
-          <i class="bi bi-grid"></i>
-          <span>Plats Prets</span>
-        </a>
-      </li>
-      
-        <li class="nav-item">
-        <a class="nav-link collapsed" href="${baseURL }/plats/formulaireAjout">
-          <i class="bi bi-grid"></i>
-          <span>Ajouter un plat</span>
-        </a>
-      </li>
-      
-      
-        <li class="nav-item">
-        <a class="nav-link collapsed" href="${baseURL }/platIngredients">
-          <i class="bi bi-grid"></i>
-          <span>Ajouter un ingrédient au plat</span>
-        </a>
-      </li>
+       </ul>
+      </li><!-- End Forms Nav -->
       
       
       
