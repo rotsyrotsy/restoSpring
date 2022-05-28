@@ -33,65 +33,48 @@ import com.example.resto.stock.StockService;
 @RestController
 @RequestMapping(path = "/detailsOrders")
 public class DetailsOrderController {
-	@Autowired
-	private  StockService stockService;
-	@Autowired
-	private  CategorieService catservice;
-	
-	@Autowired
-	private  PlatService platservice;
-	
-	@Autowired
-	private  DetailsOrderService service;
-	
-	@Autowired
-	private  ServeurService servservice;
-	
-	@Autowired
-	private OrderrController orderController;
-	
-	public DetailsOrderController(DetailsOrderService service) {
-	        this.service = service;
-	    }
-	
-	@GetMapping("/choixServeurPourboire")
-	public ModelAndView selectServeur(Model model){
-		List<Serveur> listeServeurs = servservice.getAllServeurs();
-		
-	    model.addAttribute("listServeur", listeServeurs);
-	    model.addAttribute("view", "bo_selectPourboire");
-	    return new ModelAndView("back/bo_template");
-	 }
-	
-	@GetMapping("/choixServeurBase")
-	public ModelAndView resultServeur2(Model model, 
-			@RequestParam(required = true) String serveur,
-			 @RequestParam(required = true) java.sql.Date date1 ,
-			 @RequestParam(required = true) java.sql.Date date2) throws ParseException{
-		List<HashMap<String,Object>> liste = service.getPrixOrderServeur(serveur, date1, date2);
-		
-		Double sum = 0.0;
-		for(int i=0; i<liste.size(); i++) {
-			HashMap<String,Object> temp = liste.get(i);
-			sum += (Double)temp.get("pourcentage");
-		}
-		model.addAttribute("sum",Formattage.formatePrice(sum));
-	    model.addAttribute("listOrder", liste);
-	    model.addAttribute("view", "bo_resultPourboire");
-	    return new ModelAndView("back/bo_template");
-	 }
-	
-    @GetMapping(path="/insert")
-    public ModelAndView ajout(Model model,@RequestParam String idPlat
-    		,ServletRequest request) throws Exception{
-    	
-    	String idOrder = null;
-		HttpServletRequest req = (HttpServletRequest) request;
-		HttpSession session = req.getSession();
-        if (session.getAttribute("sessionOrder")!=null) {
-        	HashMap<String,Object> order = (HashMap<String,Object>)session.getAttribute("sessionOrder");
-        	
-        	idOrder = (String) order.get("idOrder");
+
+    @Autowired
+    private StockService stockService;
+    @Autowired
+    private CategorieService catservice;
+
+    @Autowired
+    private PlatService platservice;
+
+    @Autowired
+    private DetailsOrderService service;
+
+    @Autowired
+    private ServeurService servservice;
+
+    @Autowired
+    private OrderrController orderController;
+
+    public DetailsOrderController(DetailsOrderService service) {
+        this.service = service;
+    }
+
+    @GetMapping("/choixServeurPourboire")
+    public ModelAndView selectServeur(Model model) {
+        List<Serveur> listeServeurs = servservice.getAllServeurs();
+
+        model.addAttribute("listServeur", listeServeurs);
+        model.addAttribute("view", "bo_selectPourboire");
+        return new ModelAndView("back/bo_template");
+    }
+
+    @GetMapping("/choixServeurBase")
+    public ModelAndView resultServeur2(Model model,
+            @RequestParam(required = true) String serveur,
+            @RequestParam(required = true) java.sql.Date date1,
+            @RequestParam(required = true) java.sql.Date date2) throws ParseException {
+        List<HashMap<String, Object>> liste = service.getPrixOrderServeur(serveur, date1, date2);
+
+        Double sum = 0.0;
+        for (int i = 0; i < liste.size(); i++) {
+            HashMap<String, Object> temp = liste.get(i);
+            sum += (Double) temp.get("pourcentage");
         }
         model.addAttribute("sum", sum);
         model.addAttribute("listOrder", liste);
