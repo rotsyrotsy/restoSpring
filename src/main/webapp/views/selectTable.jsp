@@ -38,6 +38,12 @@
         <button type="submit" class="btn3 flex-c-m size18 txt11 trans-0-4 m-10">
             Valider
         </button>
+        
+        <c:if test="${erreur != null}">
+			<div class="alert alert-danger" role="alert">
+			  ${erreur }
+			</div>
+		</c:if>
     </form>
     
     <form class="flex-c-m flex-w flex-col-c-m-lg p-l-5 p-r-5" action="${baseURL}/order/insert" method="post">

@@ -27,6 +27,8 @@ import com.example.resto.categorie.CategorieService;
 import com.example.resto.controlle.Controle;
 import com.example.resto.detailsOrder.DetailsOrderService;
 import com.example.resto.plat.PlatService;
+import com.example.resto.serveur.Serveur;
+import com.example.resto.serveur.ServeurService;
 import com.example.resto.table.TableController;
 import com.example.resto.table.TableService;
 @RestController
@@ -47,6 +49,9 @@ public class OrderrController {
 	
 	@Autowired
 	private  DetailsOrderService doservice;
+	
+	@Autowired
+	private  ServeurService servservice;
 	
 	@Autowired
 	private  OrderrService service;
@@ -94,19 +99,33 @@ public class OrderrController {
     	
     	HashMap<String, Object> lastOrder =  service.lastOrderByTable(idTable);
     	List<HashMap<String, Object>> listPlat = platservice.getAllPlats();
-		 
-        List<Categorie> listCategorie = catService.getAllCategories();
-		model.addAttribute("listPlat", listPlat);
-	    model.addAttribute("listCategorie", listCategorie);
-	    
-        model.addAttribute("sessionOrder", lastOrder);
-        
-		HttpServletRequest req = (HttpServletRequest) request;
-		HttpSession session = req.getSession();
-		session.setAttribute("sessionOrder", lastOrder);
-        
-        
-        model.addAttribute("view", "menu");
+    	
+    	if (lastOrder.size()>0) {
+    		 List<Categorie> listCategorie = catService.getAllCategories();
+    			model.addAttribute("listPlat", listPlat);
+    		    model.addAttribute("listCategorie", listCategorie);
+    		    
+    	        model.addAttribute("sessionOrder", lastOrder);
+    	        
+    			HttpServletRequest req = (HttpServletRequest) request;
+    			HttpSession session = req.getSession();
+    			session.setAttribute("sessionOrder", lastOrder);
+    	        
+    	        
+    	        model.addAttribute("view", "menu");
+    	}else {
+    		
+    	
+    	List<Serveur> listeServeurs = servservice.getAllServeurs();
+		
+		 List<HashMap<String,Object>> listTable = tabService.selectFromIdTable();
+
+		 model.addAttribute("erreur", "Il n'y a pas encore eu de commande sur cette table.");
+		 model.addAttribute("listServeur", listeServeurs);
+		 model.addAttribute("listTable", listTable);
+		 model.addAttribute("view", "selectTable");
+        }
+       
         return mv;
     }  
     
@@ -122,9 +141,13 @@ public class OrderrController {
         	HashMap<String, Object> order = (HashMap<String, Object>)session.getAttribute("sessionOrder");
         	idOrder = (String)order.get("idOrder");
         }
-		List<HashMap<String,Object>> liste = service.commandeEnCoursParOrder(idOrder);
+		List<HashMap<String,Object>> nonvalide = service.commandeEnCoursParOrder(idOrder);
+		List<HashMap<String,Object>> valide = service.commandeValideParOrder(idOrder);
+		List<HashMap<String,Object>> pret = service.commandePretParOrder(idOrder);
 		
-	    model.addAttribute("liste", liste);
+	    model.addAttribute("nonvalide", nonvalide);
+	    model.addAttribute("valide", valide);
+	    model.addAttribute("pret", pret);
 	    model.addAttribute("view", "commandeEnCours");
 	    return new ModelAndView("template");
 	 }
@@ -141,12 +164,12 @@ public class OrderrController {
         	idOrder = (String)order.get("idOrder");
         	doservice.validerCommande(idOrder);
         }
-		
-		List<HashMap<String,Object>> liste = doservice.getprixPlatOrderByIdOrder(idOrder);
+		return this.commandeEnCours(model, request);
+		/*List<HashMap<String,Object>> liste = doservice.getprixPlatOrderByIdOrder(idOrder);
 		
 	    model.addAttribute("platCommande", liste);
 	    model.addAttribute("view", "platCommande");
-	    return new ModelAndView("template");
+	    return new ModelAndView("template");*/
 	 }
         
         @GetMapping("/additionNonPaye")

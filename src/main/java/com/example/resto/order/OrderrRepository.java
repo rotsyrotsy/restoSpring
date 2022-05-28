@@ -31,10 +31,12 @@ public interface OrderrRepository extends JpaRepository<Orderr,String>{
 	
             
 
-            @Query(nativeQuery = true, value ="select d.idplat ,p.label ,sum(cast(p.price as double precision)) as montant, p.image \r\n"
-            		+ "            from detailsOrder d\r\n"
-            		+ "            join plat p on d.idplat =p.id \r\n"
-            		+ "            where d.idorder =?1 and d.etat='non valide'\r\n"
-            		+ "            group by d.idplat , p.label,p.image")
+            @Query(nativeQuery = true, value ="select * from affichageEtatCommande where idorder =?1 and etat='non valide'")
             List<Object[]> commandeEnCoursParOrder(String idOrder);
+            
+            @Query(nativeQuery = true, value ="select * from affichageEtatCommande where idorder =?1 and etat='valide'")
+            List<Object[]> commandeValideParOrder(String idOrder);
+
+            @Query(nativeQuery = true, value ="select * from affichageEtatCommande where idorder =?1 and etat='pret'")
+            List<Object[]> commandePretParOrder(String idOrder);
 }

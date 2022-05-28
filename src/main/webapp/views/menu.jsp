@@ -59,9 +59,7 @@
 			<div class="alert alert-success" role="alert">
 			  ${succes }
 			</div>
-			<a href="${baseURL}/order/validerCommande"  class="btn3 flex-c-m size30 txt11 trans-0-4 m-10">
-                  Valider la commande
-            </a>
+			
 		</div>
 			
 		</c:if>

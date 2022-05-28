@@ -145,7 +145,7 @@ public class DetailsOrderService {
 	   public void validerCommande(String idOrder) {
 		 System.out.println("IDORDEER: "+idOrder);
 	        try {
-	        	 entityManager.createNativeQuery("UPDATE detailsOrder SET etat='valide' where idOrder=?")
+	        	 entityManager.createNativeQuery("UPDATE detailsOrder SET etat='valide' where idOrder=? and etat is not null")
 	        	 .setParameter(1, idOrder)
 	             .executeUpdate(); 	
 	        	}
@@ -219,7 +219,7 @@ public class DetailsOrderService {
     public void changeToEnPreparation(String idDetailOrder) {
     	System.out.println("IDDETTTTT: "+idDetailOrder);
          try {
-     	 entityManager.createNativeQuery("UPDATE detailsOrder SET etat = 'en preparation' WHERE id = ?")
+     	 entityManager.createNativeQuery("UPDATE detailsOrder SET etat = 'en preparation' WHERE id = ? etat is not null")
      	 .setParameter(1, idDetailOrder)
           .executeUpdate(); 	
      	}
@@ -230,7 +230,7 @@ public class DetailsOrderService {
     public void changeToPret(String idDetailOrder) {
     	
            try {
-     	 entityManager.createNativeQuery("UPDATE detailsOrder SET etat = 'pret' WHERE id = ?")
+     	 entityManager.createNativeQuery("UPDATE detailsOrder SET etat = 'pret' WHERE id = ? etat is not null")
      	 .setParameter(1, idDetailOrder)
           .executeUpdate(); 	
      	}
@@ -241,6 +241,16 @@ public class DetailsOrderService {
     	return repository.getIdPlat(idDetailOrder);
     	
     }
+    @Transactional
+	public void annulerCommande(String idDetailOrder) {
+    	try {
+        	 entityManager.createNativeQuery("UPDATE detailsOrder SET etat = null WHERE id = ? ")
+        	 .setParameter(1, idDetailOrder)
+             .executeUpdate(); 	
+        	}
+        catch(Exception e) {e.printStackTrace();}
+		
+	}
 
    
 }
