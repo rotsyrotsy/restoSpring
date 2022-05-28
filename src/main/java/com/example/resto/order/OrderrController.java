@@ -173,8 +173,18 @@ public class OrderrController {
 	 }
         
         @GetMapping("/additionNonPaye")
-	public ModelAndView additionNonPaye(Model model){
-		List<HashMap<String,Object>> liste = service.getAdditionNonPaye();
+	public ModelAndView additionNonPaye(Model model,ServletRequest request){
+        	
+        List<HashMap<String,Object>> liste = service.getAdditionNonPaye();	
+        
+        	HttpServletRequest req = (HttpServletRequest) request;
+    		HttpSession session = req.getSession();
+            if (session.getAttribute("sessionOrder")!=null) {
+            	HashMap<String, Object> order = (HashMap<String, Object>)session.getAttribute("sessionOrder");
+            	String idOrder = (String)order.get("idOrder");
+            	liste = service.getAdditionParTable(idOrder);
+            }
+            
 		
 	    model.addAttribute("addition", liste);
 	    model.addAttribute("view", "additionNonPaye");
@@ -199,4 +209,5 @@ public class OrderrController {
 	   		session.invalidate();
 	   		return tableController.getAllTableOrder(model);
         }
+        
 }

@@ -52,7 +52,7 @@
 			
 				</hr>
 			
-			<div class="row p-t-108 p-b-70">
+			<div class="row">
 			<h2>Commandes validées et en attente de livraison </h2>
 				<c:forEach items="${valide}" var ="plat">
 					<div class="col-md-8 col-lg-6 m-l-r-auto">
@@ -77,7 +77,7 @@
 				</c:forEach>
 			</div>
 			</hr>
-			<div class="row p-t-108 p-b-70">
+			<div class="row">
 			<h2>Commandes prêtent à être livrées </h2>
 				<c:forEach items="${pret}" var ="plat">
 					<div class="col-md-8 col-lg-6 m-l-r-auto">
@@ -100,12 +100,15 @@
 						</div>
 					</div>
 				</c:forEach>
-				<c:if test="${pret.size()>0}">
+				
+			</div>
+			<c:if test="${pret.size()>0}">
+			<div>
 					<a href="#" class="btn3 flex-c-m size18 txt11 trans-0-4 m-10">
 						Payer
 					</a>
-				</c:if>
 			</div>
+			</c:if>
 		</div>
 	</section>
 

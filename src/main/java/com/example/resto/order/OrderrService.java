@@ -73,6 +73,27 @@ public class OrderrService {
  	
     }
     
+    public List<HashMap<String, Object>> getAdditionParTable(String idOrder) {
+       	List<Object[]> liste = orderRepository.getAdditionParTable(idOrder);
+    	List<HashMap<String, Object>> listehm = new ArrayList<HashMap<String, Object>>();
+
+        for (int i = 0; i < liste.size(); i++) {
+            HashMap<String, Object> hm = new HashMap<String, Object>();
+            Object[] s = (Object[]) liste.get(i);
+
+            hm.put("date", s[0]);	
+            hm.put("total", s[1]);	
+            hm.put("dejapayer", s[2]);	
+            hm.put("restant", s[3]);
+            hm.put("numero", s[4]);	
+            listehm.add(hm);
+        }
+ 		return listehm;
+ 	
+    }
+    
+    
+    
     public HashMap<String, Object> lastOrderByTable (String idTable){
     	
     	List<Object[]> liste = orderRepository.lastOrderByTable(idTable);

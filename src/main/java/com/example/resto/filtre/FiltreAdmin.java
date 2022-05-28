@@ -33,9 +33,11 @@ public class FiltreAdmin implements Filter {
         if (!Controle.isAdmin(request)) {
         	String baseURL = req.getScheme()+"://"+req.getServerName()+":"+req.getServerPort();
         	res.sendRedirect(baseURL+"/admin/forbidden");
+		}else {
+			chain.doFilter(request, response);
 		}
         
-        	chain.doFilter(request, response);
+        	
         
 	}
 	
@@ -54,6 +56,11 @@ public class FiltreAdmin implements Filter {
 	    registrationBean.addUrlPatterns("/plats/prix-plat-base");
 	    registrationBean.addUrlPatterns("/plats/prix-plat");
 	    registrationBean.addUrlPatterns("/stock/*");
+	    registrationBean.addUrlPatterns("/detailsOrder/valider");
+	    registrationBean.addUrlPatterns("/detailsOrder/enPreparation");
+	    registrationBean.addUrlPatterns("/detailsOrder/prets");
+	    registrationBean.addUrlPatterns("/detailsOrder/changeToEnPreparation");
+	    registrationBean.addUrlPatterns("/detailsOrder/changeToPret");
 	    registrationBean.setOrder(1);
 	        
 	    return registrationBean;    

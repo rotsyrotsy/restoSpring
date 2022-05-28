@@ -62,28 +62,6 @@ public class DetailsOrderController {
 	    return new ModelAndView("back/bo_template");
 	 }
 	
-/*
-	@GetMapping("/choixServeur")
-	public ModelAndView resultServeur(Model model, 
-			@RequestParam(required = true) String serveur,
-			 @RequestParam(required = true) String date1,
-			 @RequestParam(required = true) String date2) throws ParseException{
-		Date d1 = new SimpleDateFormat("dd/MM/yyyy").parse(date1);
-		Date d2 = new SimpleDateFormat("dd/MM/yyyy").parse(date2);
-		
-		List<HashMap<String,Object>> liste = service.groupByIdOrder(serveur, d1,d2);
-		
-		Double sum = 0.0;
-		for(int i=0; i<liste.size(); i++) {
-			HashMap<String,Object> temp = liste.get(i);
-			sum += (Double)temp.get("pourcentage");
-		}
-		model.addAttribute("sum",sum);
-	    model.addAttribute("listOrder", liste);
-	    model.addAttribute("view", "bo_resultPourboire");
-	    return new ModelAndView("back/bo_template");
-	 }*/
-	
 	@GetMapping("/choixServeurBase")
 	public ModelAndView resultServeur2(Model model, 
 			@RequestParam(required = true) String serveur,
@@ -131,23 +109,17 @@ public class DetailsOrderController {
     
         
      @GetMapping(path="/valider")
-	public ModelAndView selectDetailsOrderValide(Model model,ServletRequest request){
+	public ModelAndView selectDetailsOrderValide(Model model){
 		List<HashMap<String, Object>> listedo = service.getDetailsOrderValide();
-            if (!Controle.isAdmin(request)) {
-			return new ModelAndView("error500");
-		}
                      model.addAttribute("platsValide", listedo);
 			model.addAttribute("view","bo_platsValider");
 			return new ModelAndView("back/bo_template");
 	 }
       
     @GetMapping(path="/enPreparation")
-	public ModelAndView selectDetailsOrderEnPreparation(Model model,ServletRequest request){
+	public ModelAndView selectDetailsOrderEnPreparation(Model model){
 		List<HashMap<String, Object>> listeprep = service.getDetailsOrderPrep();
                 
-                  if (!Controle.isAdmin(request)) {
-			return new ModelAndView("error500");
-		}
 		
 	    model.addAttribute("platsEnPreparation", listeprep);
 	    model.addAttribute("view", "bo_platsEnPreparation");
@@ -157,13 +129,9 @@ public class DetailsOrderController {
 	 }
         
           @GetMapping(path="/prets")
-	public ModelAndView selectDetailsOrderPret(Model model,ServletRequest request){
+	public ModelAndView selectDetailsOrderPret(Model model){
 		List<HashMap<String, Object>> listeprep = service.getDetailsOrderPret();
                 
-                  if (!Controle.isAdmin(request)) {
-			return new ModelAndView("error500");
-		}
-		
 	    model.addAttribute("platsPrets", listeprep);
 	    model.addAttribute("view", "bo_platsPrets");
 	   return new ModelAndView("back/bo_template"); 
@@ -171,12 +139,8 @@ public class DetailsOrderController {
 	 }
         
       @GetMapping(path="/changeToEnPreparation")
-	public ModelAndView changeEnPrep(Model model,@RequestParam String idDetailOrder,ServletRequest request){
+	public ModelAndView changeEnPrep(Model model,@RequestParam String idDetailOrder){
             
-              
-                  if (!Controle.isAdmin(request)) {
-			return new ModelAndView("error500");
-		}
             service.changeToEnPreparation(idDetailOrder);
             
             
@@ -189,11 +153,8 @@ public class DetailsOrderController {
 	 }
         
       @GetMapping(path="/changeToPret")
-	public ModelAndView changeToPret(Model model,@RequestParam String idDetailOrder,ServletRequest request){
+	public ModelAndView changeToPret(Model model,@RequestParam String idDetailOrder){
               
-                  if (!Controle.isAdmin(request)) {
-			return new ModelAndView("error500");
-		}
             service.changeToPret(idDetailOrder);
             String idPlat = service.getIdPlat(idDetailOrder);
         	stockService.insertStock(idPlat);

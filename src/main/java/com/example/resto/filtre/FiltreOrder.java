@@ -30,9 +30,11 @@ public class FiltreOrder implements Filter {
         if (!Controle.thereIsOrder(request)) {
         	String baseURL = req.getScheme()+"://"+req.getServerName()+":"+req.getServerPort();
         	res.sendRedirect(baseURL+"/plats");
+		}else {
+			chain.doFilter(request, response);
 		}
         
-        	chain.doFilter(request, response);
+        	
         
 	}
 	
