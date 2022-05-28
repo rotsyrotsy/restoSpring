@@ -68,6 +68,42 @@ public class IngredientController {
 		
 	
 	}
+        
+        @GetMapping("/formAchatIngredient")
+	public ModelAndView formAchatIngredient(Model model,ServletRequest request){
+            if (!Controle.isAdmin(request)) {
+				return new ModelAndView("error500");
+			}
+            
+                  List<Ingredient> liste = ingservice.getAllIngredients();
+
+                        model.addAttribute("listIng", liste);
+			model.addAttribute("view","bo_achatIngredient");
+			return new ModelAndView("back/bo_template");
+		
+	
+	}
+          @GetMapping("/achat")
+	public ModelAndView achatIngredient(Model model,ServletRequest request,@RequestParam(required = true) String idIng,
+                @RequestParam(required = true) Double qte,
+                @RequestParam(required = true) java.sql.Date date){
+            if (!Controle.isAdmin(request)) {
+				return new ModelAndView("error500");
+			}
+            
+                       
+            ingservice.acheterIngredients(idIng,qte,date);
+
+                  List<Ingredient> liste = ingservice.getAllIngredients();
+
+                        model.addAttribute("message","Achat d'Ingredients correctement effectué");
+                        model.addAttribute("listIng", liste);
+			model.addAttribute("view","bo_achatIngredient");
+			return new ModelAndView("back/bo_template");
+		
+	
+	}
+        
 
         
        

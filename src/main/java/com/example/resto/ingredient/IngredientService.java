@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.resto.formattage.Formattage;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import org.springframework.transaction.annotation.Transactional;
 
 
 @Service
@@ -19,6 +22,9 @@ public class IngredientService {
     public IngredientService(IngredientRepository repository) {
         this.repository = repository;
     }
+    
+        @PersistenceContext
+    private EntityManager entityManager;
     
     public List<HashMap<String, Object>> getIngredientConsomer (Date date1, Date date2){
     	
@@ -38,4 +44,24 @@ public class IngredientService {
         }
  		return listehm;
  	}
+    
+      
+    public List<Ingredient> getAllIngredients (){
+    	
+    	return repository.findAll();
+    }
+    
+     	 @Transactional
+     public void acheterIngredients(String idIng, Double qte, Date date) {
+
+     try {
+     	 entityManager.createNativeQuery("INSERT INTO stock VALUES (nextval('seqStock'),?,?,?)")
+     	 .setParameter(1, idIng)
+     	 .setParameter(2, qte)
+          .setParameter(3, date)
+          .executeUpdate(); 	
+     	}
+     catch(Exception e) {e.printStackTrace();}
+     }
+    
 }

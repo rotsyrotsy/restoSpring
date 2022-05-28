@@ -181,6 +181,13 @@
         </a>
       </li>
       
+          <li class="nav-item">
+        <a class="nav-link collapsed" href="${baseURL }/ingredients/formAchatIngredient">
+          <i class="bi bi-grid"></i>
+          <span>Acheter Ingredients</span>
+        </a>
+      </li>
+      
       
       
 
