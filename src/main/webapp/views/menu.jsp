@@ -3,12 +3,73 @@
 <c:set var="serverName" value="${pageContext.request.serverName}"/>
 <c:set var="serverPort" value="${pageContext.request.serverPort}"/>
 <c:set var="baseURL" value="${scheme}://${serverName}:${serverPort}"/>
-	<!-- Title Page -->
-	<section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url(${baseURL}/views/images/bg-title-page-01.jpg);">
-		<h2 class="tit6 t-center">
-			Pato Menu
-		</h2>
+
+	<section class="section-slide">
+		<div class="wrap-slick1">
+			<div class="slick1">
+				<div class="item-slick1 item1-slick1" style="background-image: url(${baseURL}/views/images/slide1-01.jpg);">
+					<div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
+						<span class="caption1-slide1 txt1 t-center animated visible-false m-b-15" data-appear="fadeInDown">
+							Bienvenue chez
+						</span>
+
+						<h2 class="caption2-slide1 tit1 t-center animated visible-false m-b-37" data-appear="fadeInUp">
+							Pato 
+						</h2>
+
+						<div class="wrap-btn-slide1 animated visible-false" data-appear="zoomIn">
+							<!-- Button1 -->
+							<a href="#" class="btn1 flex-c-m size1 txt3 trans-0-4">
+								 Menu
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="item-slick1 item2-slick1" style="background-image: url(${baseURL}/views/images/master-slides-02.jpg);">
+					<div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
+						<span class="caption1-slide1 txt1 t-center animated visible-false m-b-15" data-appear="rollIn">
+							Bienvenue chez
+						</span>
+
+						<h2 class="caption2-slide1 tit1 t-center animated visible-false m-b-37" data-appear="lightSpeedIn">
+							Pato 
+						</h2>
+
+						<div class="wrap-btn-slide1 animated visible-false" data-appear="slideInUp">
+							<!-- Button1 -->
+							<a href="#" class="btn1 flex-c-m size1 txt3 trans-0-4">
+								 Menu
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="item-slick1 item3-slick1" style="background-image: url(${baseURL}/views/images/master-slides-01.jpg);">
+					<div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
+						<span class="caption1-slide1 txt1 t-center animated visible-false m-b-15" data-appear="rotateInDownLeft">
+							Bienvenue chez
+						</span>
+
+						<h2 class="caption2-slide1 tit1 t-center animated visible-false m-b-37" data-appear="rotateInUpRight">
+							Pato 
+						</h2>
+
+						<div class="wrap-btn-slide1 animated visible-false" data-appear="rotateIn">
+							<!-- Button1 -->
+							<a href="#" class="btn1 flex-c-m size1 txt3 trans-0-4">
+								Menu
+							</a>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="wrap-slick1-dots"></div>
+		</div>
 	</section>
+
 
 
 	<c:if test="${misyCat != null}">
@@ -37,7 +98,7 @@
 										</div>
 			
 										<span class="info-item-mainmenu txt23">
-											Sed fermentum eros vitae eros
+											Goûtez nos meilleurs plats
 										</span>
 									</div>
 								
@@ -52,54 +113,55 @@
 	<section class="section-lunch bgwhite">
 
 		<div class="container">
+		
+		<c:if test="${succes != null}">
+		<div>
+			<div class="alert alert-success" role="alert">
+			  ${succes }
+			</div>
+			
+		</div>
+			
+		</c:if>
+		<c:if test="${sessionScope.sessionOrder != null}">
+			<p>
+				Commande de la table ${sessionScope.sessionOrder.numero}
+			</p>
+			<p style="font-size: 14px; color:grey;">
+				Date et heure: ${sessionScope.sessionOrder.date}
+			</p>
+		</c:if>
 			<div class="row p-t-108 p-b-70">
-				<c:forEach begin="0" end="${(listPlat.size()/2)-1}" varStatus="i">
+				<c:forEach items="${listPlat}" var ="plat">
 					<div class="col-md-8 col-lg-6 m-l-r-auto">
 					<!-- Block3 -->
 						<div class="blo3 flex-w flex-col-l-sm m-b-30">
 							<div class="pic-blo3 size20 bo-rad-10 hov-img-zoom m-r-28">
-								<a href="#"><img src="${baseURL}/views/images/lunch-01.jpg" alt="IMG-MENU"></a>
+								<a href="#"><img src="${baseURL}/views/images/${plat.image}" alt="IMG-MENU"></a>
 							</div>
 	
 							<div class="text-blo3 size21 flex-col-l-m">
 								<a href="#" class="txt21 m-b-3">
-									${listPlat[i.index].label}
+									${plat.label}
 								</a>
 	
 								<span class="txt23">
-									${listPlat[i.index].categorie}
+									${plat.categorie}
 								</span>
 	
 								<span class="txt22 m-t-20">
-									${listPlat[i.index].price}
+									${plat.price} Ar
 								</span>
 							</div>
-						</div>
-					</div>
-				</c:forEach>
-	
-				
-				<c:forEach begin="${listPlat.size()/2}" end="${listPlat.size()}" varStatus="i">
-					<div class="col-md-8 col-lg-6 m-l-r-auto">
-						<!-- Block3 -->
-						<div class="blo3 flex-w flex-col-l-sm m-b-30">
-							<div class="pic-blo3 size20 bo-rad-10 hov-img-zoom m-r-28">
-								<a href="#"><img src="${baseURL}/views/images/lunch-02.jpg" alt="IMG-MENU"></a>
-							</div>
-	
-							<div class="text-blo3 size21 flex-col-l-m">
-								<a href="#" class="txt21 m-b-3">
-									${listPlat[i.index].label}
-								</a>
-	
-								<span class="txt23">
-									${listPlat[i.index].categorie}
-								</span>
-	
-								<span class="txt22 m-t-20">
-									${listPlat[i.index].price}
-								</span>
-							</div>
+							<c:if test="${sessionScope.sessionOrder != null}">
+								<a href="${baseURL}/detailsOrders/insert?idPlat=${plat.id}"  class="btn3 flex-c-m size18 txt11 trans-0-4 m-10">
+	                                  Commander
+	                            </a>
+	                        </c:if>
+                                                                
+                             <a href="${baseURL}/plats/getPlatIngredient?idPlat=${plat.id}"  class="btn3 flex-c-m size18 txt11 trans-0-4 m-10">
+                                  Voir Ingredient
+                             </a>
 						</div>
 					</div>
 				</c:forEach>

@@ -8,10 +8,18 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.resto.formattage.Formattage;
+import com.example.resto.marge.Marge;
+import com.example.resto.marge.MargeRepository;
+import com.example.resto.marge.MargeService;
+
 
 @Service
 public class PlatService {
 	private final PlatRepository repository;
+
+	@Autowired
+	private  MargeService margeServ;
 
 	   
     @Autowired
@@ -27,8 +35,9 @@ public class PlatService {
             Object[] s = (Object[]) liste.get(i);
             hm.put("id", s[0]);
             hm.put("label", s[1]);
-            hm.put("price", s[2]);
+            hm.put("price",Formattage.formatePrice( s[2]));
             hm.put("categorie", s[3]);
+            hm.put("image", s[4]);
             listehm.add(hm);
         }
         return listehm;
@@ -44,18 +53,88 @@ public class PlatService {
         return listehm;
 	}
 	
+	public List<HashMap<String, Object>> getPrixAllPlatsBase(){
+		List<HashMap<String, Object>> listehm = new ArrayList<HashMap<String, Object>>();
+		List<Object[]> liste = repository.getPrixDeVente();
+		
+        for (int i = 0; i < liste.size(); i++) {
+            HashMap<String, Object> hm = new HashMap<String, Object>();
+            Object[] s = (Object[]) liste.get(i);
+
+            hm.put("idPlat", s[0]);
+            hm.put("label", s[1]);
+            hm.put("prixVente", Formattage.formatePrice((Double)s[2]));
+            hm.put("pourcentage", s[3]);
+            hm.put("prixDeRevient", Formattage.formatePrice((Double)s[4]));
+            hm.put("image", s[5]);
+            listehm.add(hm);
+        }
+        return listehm;
+	}
+	
 	public List<HashMap<String, Object>> getPrixAllPlats(){
 		List<HashMap<String, Object>> listehm = new ArrayList<HashMap<String, Object>>();
 		List<Object[]> liste = repository.getPrixAllPlats();
+		
+		List<Marge> marges = margeServ.getAllMarges();
+		
 
         for (int i = 0; i < liste.size(); i++) {
             HashMap<String, Object> hm = new HashMap<String, Object>();
             Object[] s = (Object[]) liste.get(i);
+
+    		Double pourc = this.getPourcentagePrixVente(marges, (Double)s[3]);
+            Double pr = (Double)s[3];
             hm.put("idPlat", s[0]);
             hm.put("label", s[1]);
-            hm.put("prixVente", s[2]);
-            hm.put("prixDeRevient", s[3]);
-            hm.put("prixAchatPlat", s[5]);
+            hm.put("prixVente", Formattage.formatePrice((Double)(pr+(pr*pourc/100))));
+            hm.put("pourcentage", pourc);
+            hm.put("prixDeRevient", Formattage.formatePrice((Double)pr));
+            listehm.add(hm);
+        }
+        return listehm;
+	}
+	
+	public Double getPourcentagePrixVente(List<Marge> marges, Double prixRevient) {
+		for(int i=0; i<marges.size(); i++) {
+			Marge temp = (Marge)marges.get(i);
+			if (temp.getMaximum()>prixRevient && temp.getMinimum()<=prixRevient) {
+				return temp.getPourcentage();
+			}
+		}
+		return 0.0;
+	}
+	
+	public List<HashMap<String, Object>> getAllIngredient(String idPlat){
+		List<HashMap<String, Object>> listehm = new ArrayList<HashMap<String, Object>>();
+		List<Object[]> liste = repository.getAllIngredient(idPlat);
+        for (int i = 0; i < liste.size(); i++) {
+            HashMap<String, Object> hm = new HashMap<String, Object>();
+            Object[] platIng = (Object[]) liste.get(i);
+
+            hm.put("idPlat", platIng[0]);
+            hm.put("label", platIng[1]);
+            hm.put("quantity",platIng[2]);
+            hm.put("unite", platIng[3]);
+            hm.put("nomIngredient", platIng[4]);
+            listehm.add(hm);
+        }
+        return listehm;
+	}
+	
+	public List<HashMap<String, Object>> ingredientPlat(String idPlat){
+		List<HashMap<String, Object>> listehm = new ArrayList<HashMap<String, Object>>();
+		List<Object[]> liste = repository.ingredientPlat(idPlat);
+        for (int i = 0; i < liste.size(); i++) {
+            HashMap<String, Object> hm = new HashMap<String, Object>();
+            Object[] platIng = (Object[]) liste.get(i);
+
+            hm.put("idPlat", platIng[0]);
+            hm.put("label", platIng[1]);
+            hm.put("quantity",platIng[2]);
+            hm.put("unite", platIng[3]);
+            hm.put("nomIngredient", platIng[4]);
+            hm.put("idIngredient", platIng[5]);
             listehm.add(hm);
         }
         return listehm;

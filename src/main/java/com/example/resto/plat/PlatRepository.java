@@ -6,7 +6,9 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+
 
 
 @Repository
@@ -20,5 +22,15 @@ public interface PlatRepository extends JpaRepository<Plat,String>{
 
 	@Query(nativeQuery = true, value ="select * from prixRevient")
 	List<Object[]> getPrixAllPlats();
-  
+	
+
+	@Query(nativeQuery = true, value ="select * from prixDeVente")
+	List<Object[]> getPrixDeVente();
+
+	@Query(nativeQuery = true, value ="select * from qteParPlatParIngredient where idPlat=:id")
+	List<Object[]> getAllIngredient(@Param("id") String id);
+	
+
+	@Query(nativeQuery = true, value ="select * from ingredientPlat where idPlat=:id")
+	List<Object[]> ingredientPlat(@Param("id") String id);
 }

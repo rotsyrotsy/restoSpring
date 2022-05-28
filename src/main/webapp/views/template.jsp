@@ -12,7 +12,8 @@
 <!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="${baseURL}/views/images/icons/favicon.png"/>
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="${baseURL}/views/vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="${baseURL}/views/assets/vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="${baseURL}/views/assets/vendor/bootstrap-icons/bootstrap-icons.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="${baseURL}/views/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 <!--===============================================================================================-->
@@ -34,6 +35,7 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="${baseURL}/views/css/util.css">
 	<link rel="stylesheet" type="text/css" href="${baseURL}/views/css/main.css">
+	
 <!--===============================================================================================-->
 </head>
 <body class="animsition">
@@ -42,11 +44,11 @@
 	<header>
 		<!-- Header desktop -->
 		<div class="wrap-menu-header gradient1 trans-0-4">
-			<div class="container h-full">
-				<div class="wrap_header trans-0-3">
+			<div class="container-fluid">
+				<div class="wrap_header trans-0-3" style="margin-top:1%;">
 					<!-- Logo -->
-					<div class="logo">
-						<a href="index.html">
+					<div class="logo" style="margin-top:1%;">
+						<a href="#">
 							<img src="${baseURL}/views/images/icons/logo.png" alt="IMG-LOGO" data-logofixed="${baseURL}/views/images/icons/logo2.png">
 						</a>
 					</div>
@@ -55,44 +57,37 @@
 					<div class="wrap_menu p-l-45 p-l-0-xl">
 						<nav class="menu">
 							<ul class="main_menu">
-								<li>
-									<a href="index.html">Home</a>
-								</li>
-
+							
+								
 								<li>
 									<a href="${baseURL}/plats">Menu</a>
 								</li>
-
+								
 								<li>
-									<a href="reservation.html">Reservation</a>
+									<a href="${baseURL}/tables">Prendre commande</a>
 								</li>
-
+								
 								<li>
-									<a href="gallery.html">Gallery</a>
+									<a href="${baseURL }/order/additionNonPaye">Additions non payees</a>
 								</li>
-
-								<li>
-									<a href="about.html">About</a>
-								</li>
-
-								<li>
-									<a href="blog.html">Blog</a>
-								</li>
-
-								<li>
-									<a href="contact.html">Contact</a>
-								</li>
+								
+								<c:if test="${sessionScope.sessionOrder != null}">
+									<li>
+										<a href="${baseURL }/order/commandeEnCours">Commande en cours</a>
+									</li>
+									
+								</c:if>
+								
 							</ul>
 						</nav>
 					</div>
-
+				
+            
+            
 					<!-- Social -->
 					<div class="social flex-w flex-l-m p-r-20">
-						<a href="#"><i class="fa fa-tripadvisor" aria-hidden="true"></i></a>
-						<a href="#"><i class="fa fa-facebook m-l-21" aria-hidden="true"></i></a>
-						<a href="#"><i class="fa fa-twitter m-l-21" aria-hidden="true"></i></a>
 
-						<button class="btn-show-sidebar m-l-33 trans-0-4"></button>
+						<button class="btn-show-sidebar m-l-33 trans-0-4" style="margin-left:20%;"></button>
 					</div>
 				</div>
 			</div>
@@ -105,39 +100,7 @@
 		<button class="btn-hide-sidebar ti-close color0-hov trans-0-4"></button>
 
 		<!-- - -->
-		<ul class="menu-sidebar p-t-95 p-b-70">
-			<li class="t-center m-b-13">
-				<a href="index.html" class="txt19">Home</a>
-			</li>
-
-			<li class="t-center m-b-13">
-				<a href="menu.html" class="txt19">Menu</a>
-			</li>
-
-			<li class="t-center m-b-13">
-				<a href="gallery.html" class="txt19">Gallery</a>
-			</li>
-
-			<li class="t-center m-b-13">
-				<a href="about.html" class="txt19">About</a>
-			</li>
-
-			<li class="t-center m-b-13">
-				<a href="blog.html" class="txt19">Blog</a>
-			</li>
-
-			<li class="t-center m-b-33">
-				<a href="contact.html" class="txt19">Contact</a>
-			</li>
-
-			<li class="t-center">
-				<!-- Button3 -->
-				<a href="reservation.html" class="btn3 flex-c-m size13 txt11 trans-0-4 m-l-r-auto">
-					Reservation
-				</a>
-			</li>
-		</ul>
-
+		
 		<!-- - -->
 		<div class="gallery-sidebar t-center p-l-60 p-r-60 p-b-40">
 			<!-- - -->
@@ -198,96 +161,51 @@
 	<footer class="bg1">
 		<div class="container p-t-40 p-b-70">
 			<div class="row">
-				<div class="col-sm-6 col-md-4 p-t-50">
+				<div class="col-sm-6 col-md-6 p-t-50">
 					<!-- - -->
 					<h4 class="txt13 m-b-33">
-						Contact Us
+						Contactez-nous
 					</h4>
 
 					<ul class="m-b-70">
 						<li class="txt14 m-b-14">
 							<i class="fa fa-map-marker fs-16 dis-inline-block size19" aria-hidden="true"></i>
-							8th floor, 379 Hudson St, New York, NY 10018
+							Antananarivo 101, Andoharanofotsy
 						</li>
 
 						<li class="txt14 m-b-14">
 							<i class="fa fa-phone fs-16 dis-inline-block size19" aria-hidden="true"></i>
-							(+1) 96 716 6879
+							(+261) 00 000 00  
 						</li>
 
 						<li class="txt14 m-b-14">
 							<i class="fa fa-envelope fs-13 dis-inline-block size19" aria-hidden="true"></i>
-							contact@site.com
+							pato@site.com
 						</li>
 					</ul>
 
 					<!-- - -->
 					<h4 class="txt13 m-b-32">
-						Opening Times
+						Ouverture
 					</h4>
 
 					<ul>
 						<li class="txt14">
-							09:30 AM – 11:00 PM
+							10:00 AM à 11:00 PM
 						</li>
 
 						<li class="txt14">
-							Every Day
+							Tous les jours
 						</li>
 					</ul>
 				</div>
 
-				<div class="col-sm-6 col-md-4 p-t-50">
-					<!-- - -->
-					<h4 class="txt13 m-b-33">
-						Latest twitter
-					</h4>
+				
 
-					<div class="m-b-25">
-						<span class="fs-13 color2 m-r-5">
-							<i class="fa fa-twitter" aria-hidden="true"></i>
-						</span>
-						<a href="#" class="txt15">
-							@colorlib
-						</a>
-
-						<p class="txt14 m-b-18">
-							Activello is a good option. It has a slider built into that displays the featured image in the slider.
-							<a href="#" class="txt15">
-								https://buff.ly/2zaSfAQ
-							</a>
-						</p>
-
-						<span class="txt16">
-							21 Dec 2017
-						</span>
-					</div>
-
-					<div>
-						<span class="fs-13 color2 m-r-5">
-							<i class="fa fa-twitter" aria-hidden="true"></i>
-						</span>
-						<a href="#" class="txt15">
-							@colorlib
-						</a>
-
-						<p class="txt14 m-b-18">
-							Activello is a good option. It has a slider built into that displays
-							<a href="#" class="txt15">
-								https://buff.ly/2zaSfAQ
-							</a>
-						</p>
-
-						<span class="txt16">
-							21 Dec 2017
-						</span>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4 p-t-50">
+				<div class="col-sm-6 col-md-6 p-t-50">
 					<!-- - -->
 					<h4 class="txt13 m-b-38">
-						Gallery
+						Gallerie
 					</h4>
 
 					<!-- Gallery footer -->

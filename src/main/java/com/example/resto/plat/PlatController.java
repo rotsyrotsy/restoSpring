@@ -3,6 +3,8 @@ package com.example.resto.plat;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.ServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.example.resto.categorie.Categorie;
 import com.example.resto.categorie.CategorieService;
+import com.example.resto.controlle.Controle;
 
 @RestController
 @RequestMapping(path = "/plats")
@@ -46,20 +49,38 @@ public class PlatController {
 	    return new ModelAndView("template");
 	 }
         
-         @GetMapping("index")
+	 @GetMapping("index")
 	 public ModelAndView getIndex(Model model){
 
      	    model.addAttribute("view", "index");
      	    return new ModelAndView("template");
 	 }
          
-         @GetMapping("prix-plat")
-    	 public ModelAndView getPrixAllPlats(Model model){
-    		 List<HashMap<String, Object>> listPlat = service.getPrixAllPlats();
-    		 
-    		model.addAttribute("prixDeRevientPlat", listPlat);
-    	    model.addAttribute("view", "prixDeRevientPlat");
-    	    return new ModelAndView("template");
-    	 }
+     @GetMapping("prix-plat")
+	 public ModelAndView getPrixAllPlats(Model model){
+		 List<HashMap<String, Object>> listPlat = service.getPrixAllPlats();
+		 
+		model.addAttribute("prixDeRevientPlat", listPlat);
+	    model.addAttribute("view", "listPrixDeRevient");
+	    return new ModelAndView("template");
+	 }
+     
+     @GetMapping("prix-plat-base")
+	 public ModelAndView getPrixAllPlatsBase(Model model){
+		 List<HashMap<String, Object>> listPlat = service.getPrixAllPlatsBase();
+		 
+		model.addAttribute("prixDeRevientPlat", listPlat);
+	    model.addAttribute("view", "bo_listPrixDeRevient");
+	    return new ModelAndView("back/bo_template");
+	 }
+         
+     @GetMapping("/getPlatIngredient")
+     public ModelAndView getSignalementById(Model model, @RequestParam String idPlat) {
+    	 List<HashMap<String, Object>> listIng = service.getAllIngredient(idPlat);
+    	 model.addAttribute("platIngredient",listIng);
+    	 model.addAttribute("view","detailsPlat");
+    	 return new ModelAndView("template");
+     }
+       
 
 }
