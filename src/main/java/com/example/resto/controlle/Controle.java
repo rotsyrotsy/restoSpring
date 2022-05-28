@@ -38,4 +38,14 @@ public class Controle {
 		return false;
 		
     }
+    
+    public static boolean thereIsOrder(ServletRequest request) {
+    	HttpServletRequest req = (HttpServletRequest) request;
+		HttpSession session = req.getSession();
+		if (session.getAttribute("sessionOrder")!=null) {
+			return true;
+		}
+		return false;
+		
+    }
 }

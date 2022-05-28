@@ -30,20 +30,15 @@ public class PayementController {
 	        this.service = service;
 	    }
 	@GetMapping
-	public ModelAndView selectPaiement(Model model,ServletRequest request){
-		if (!Controle.isAdmin(request)) {
-			return new ModelAndView("error500");
-		}
+	public ModelAndView selectPaiement(Model model){
 		model.addAttribute("view","bo_selectPayementByDate");
 		return new ModelAndView("back/bo_template");
 	}
 	@GetMapping("/resultDate")
 	public ModelAndView paiementsEntre2Dates(Model model,
 			@RequestParam(required = true) java.sql.Date date1,
-			 @RequestParam(required = true) java.sql.Date date2,ServletRequest request)  throws ParseException{
-		if (!Controle.isAdmin(request)) {
-			return new ModelAndView("error500");
-		}
+			 @RequestParam(required = true) java.sql.Date date2)  throws ParseException{
+
 		
                 try{
                      Controle.controleDate(date1, date2);

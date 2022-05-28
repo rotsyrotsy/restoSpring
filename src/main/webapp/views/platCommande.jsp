@@ -6,13 +6,13 @@
 	<!-- Title Page -->
 	<section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url(${baseURL}/views/images/bg-title-page-01.jpg);">
 		<h2 class="tit6 t-center">
-			Pato Menu
+			Prix de vente de la commande
 		</h2>
 	</section>
 
 
 	<section class="section-lunch bgwhite">
-		<h1>Tous les plats commandés</h1>
+		<h1>Table ${sessionScope.sessionOrder.numero} le  ${sessionScope.sessionOrder.date} </h1>
 		<div class="container">
 			<div class="row p-t-108 p-b-70">
 				<c:forEach items="${platCommande}" var ="plat">
@@ -20,7 +20,7 @@
 					<!-- Block3 -->
 						<div class="blo3 flex-w flex-col-l-sm m-b-30">
 							<div class="pic-blo3 size20 bo-rad-10 hov-img-zoom m-r-28">
-								<a href="#"><img src="${baseURL}/views/images/lunch-01.jpg" alt="IMG-MENU"></a>
+								<a href="#"><img src="${baseURL}/views/images/${plat.image}" alt="IMG-MENU"></a>
 							</div>
 	
 							<div class="text-blo3 size21 flex-col-l-m">

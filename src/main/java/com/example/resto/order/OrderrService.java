@@ -27,19 +27,31 @@ public class OrderrService {
     }
 
     @Transactional
-    public String insertOrder(String idTable,String idServeur) {
+    public HashMap<String, Object> insertOrder(String idTable,String idServeur) {
     	
     	String seq = orderRepository.getIdOrder();
+    	HashMap<String, Object> hm = new HashMap<String, Object>();
     	try {
     	 entityManager.createNativeQuery("INSERT INTO orderr VALUES (?,?,?,now())")
     	 .setParameter(1, seq)
     	 .setParameter(2, idTable)
     	 .setParameter(3, idServeur)
     	 .executeUpdate();
+    	 
+    	 List<Object[]> liste = orderRepository.getOrderTableById(seq);
+    	 Object[] s = liste.get(0);
+
+         hm.put("idOrder", s[0]);	
+         hm.put("idServeur", s[1]);	
+         hm.put("date", s[2]);	
+         hm.put("idTable", s[3]);	
+         hm.put("numero", s[4]);	
+         
     	}
     catch(Exception e) {e.printStackTrace();}
     	
-    	return seq;
+    	
+    	return hm;
     }
 
     public List<HashMap<String, Object>> getAdditionNonPaye() {
@@ -59,6 +71,57 @@ public class OrderrService {
         }
  		return listehm;
  	
+    }
+    
+    public HashMap<String, Object> lastOrderByTable (String idTable){
+    	
+    	List<Object[]> liste = orderRepository.lastOrderByTable(idTable);
+            HashMap<String, Object> hm = new HashMap<String, Object>();
+            if (liste.size()>0) {
+            	Object[] s = liste.get(0);
+                hm.put("idOrder", s[0]);	
+                hm.put("idServeur", s[1]);	
+                hm.put("date", s[2]);	
+                hm.put("idTable", s[3]);	
+                hm.put("numero", s[4]);	
+            }
+            
+            
+            
+ 		return hm;
+ 	}
+    
+
+    public List<HashMap<String, Object>> toHashCommandeParOrder(List<Object[]> liste,String idOrder) {
+    
+    	List<HashMap<String, Object>> listehm = new ArrayList<HashMap<String, Object>>();
+
+        for (int i = 0; i < liste.size(); i++) {
+            HashMap<String, Object> hm = new HashMap<String, Object>();
+            Object[] s = (Object[]) liste.get(i);
+
+            hm.put("idPlat", s[0]);	
+            hm.put("label", s[1]);	
+            hm.put("montant", s[2]);	
+            hm.put("image", s[3]);
+            hm.put("iOrder", s[4]);
+            hm.put("etat", s[5]);
+            hm.put("idDetailsOrder", s[6]);
+            listehm.add(hm);
+        }
+ 		return listehm;
+    }
+    public List<HashMap<String, Object>> commandeEnCoursParOrder(String idOrder) {
+       	List<Object[]> liste = orderRepository.commandeEnCoursParOrder(idOrder);
+ 		return this.toHashCommandeParOrder(liste, idOrder);
+    }
+    public List<HashMap<String, Object>> commandeValideParOrder(String idOrder) {
+       	List<Object[]> liste = orderRepository.commandeValideParOrder(idOrder);
+ 		return this.toHashCommandeParOrder(liste, idOrder);
+    }
+    public List<HashMap<String, Object>> commandePretParOrder(String idOrder) {
+       	List<Object[]> liste = orderRepository.commandePretParOrder(idOrder);
+ 		return this.toHashCommandeParOrder(liste, idOrder);
     }
 	
 }

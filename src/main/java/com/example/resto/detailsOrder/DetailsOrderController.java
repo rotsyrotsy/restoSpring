@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.example.resto.categorie.Categorie;
 import com.example.resto.categorie.CategorieService;
 import com.example.resto.controlle.Controle;
+import com.example.resto.order.OrderrController;
 import com.example.resto.plat.PlatService;
 import com.example.resto.serveur.Serveur;
 import com.example.resto.serveur.ServeurService;
@@ -44,15 +46,15 @@ public class DetailsOrderController {
 	@Autowired
 	private  ServeurService servservice;
 	
+	@Autowired
+	private OrderrController orderController;
+	
 	public DetailsOrderController(DetailsOrderService service) {
 	        this.service = service;
 	    }
 	
 	@GetMapping("/choixServeurPourboire")
-	public ModelAndView selectServeur(Model model,ServletRequest request){
-		if (!Controle.isAdmin(request)) {
-			return new ModelAndView("error500");
-		}
+	public ModelAndView selectServeur(Model model){
 		List<Serveur> listeServeurs = servservice.getAllServeurs();
 		
 	    model.addAttribute("listServeur", listeServeurs);
@@ -86,11 +88,7 @@ public class DetailsOrderController {
 	public ModelAndView resultServeur2(Model model, 
 			@RequestParam(required = true) String serveur,
 			 @RequestParam(required = true) java.sql.Date date1 ,
-			 @RequestParam(required = true) java.sql.Date date2,ServletRequest request) throws ParseException{
-		if (!Controle.isAdmin(request)) {
-			return new ModelAndView("error500");
-		} 
-		
+			 @RequestParam(required = true) java.sql.Date date2) throws ParseException{
 		List<HashMap<String,Object>> liste = service.getPrixOrderServeur(serveur, date1, date2);
 		
 		Double sum = 0.0;
@@ -112,10 +110,14 @@ public class DetailsOrderController {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpSession session = req.getSession();
         if (session.getAttribute("sessionOrder")!=null) {
-        	idOrder = (String) session.getAttribute("sessionOrder");
+        	HashMap<String,Object> order = (HashMap<String,Object>)session.getAttribute("sessionOrder");
+        	
+        	idOrder = (String) order.get("idOrder");
         }
     	
-    	service.insertDetailsOrder(idPlat, idOrder);
+        service.insertDetailsOrder(idPlat, idOrder);
+        
+    	
         List<HashMap<String, Object>> listPlat = platservice.getAllPlats();
 		 
 		 
@@ -169,6 +171,12 @@ public class DetailsOrderController {
 	    model.addAttribute("view", "platsEnPreparation");
 	    return new ModelAndView("template");
 	 }
+      
+      @GetMapping(path = "/annuler/{idDetailOrder}")
+  	public ModelAndView annulerCommande(Model model,@PathVariable("idDetailOrder") String idDetailOrder,ServletRequest request) throws ParseException{
+              service.annulerCommande(idDetailOrder);
+            return orderController.commandeEnCours(model, request);
+  	 }
         
     
 	

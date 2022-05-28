@@ -66,10 +66,7 @@ public class PlatController {
 	 }
      
      @GetMapping("prix-plat-base")
-	 public ModelAndView getPrixAllPlatsBase(Model model,ServletRequest request){
-			if (!Controle.isAdmin(request)) {
-				return new ModelAndView("error500");
-			}
+	 public ModelAndView getPrixAllPlatsBase(Model model){
 		 List<HashMap<String, Object>> listPlat = service.getPrixAllPlatsBase();
 		 
 		model.addAttribute("prixDeRevientPlat", listPlat);

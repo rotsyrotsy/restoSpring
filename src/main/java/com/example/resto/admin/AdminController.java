@@ -30,6 +30,11 @@ public class AdminController {
 	    return new ModelAndView("back/bo_login");
 	 }
 	 
+	 @GetMapping("/forbidden")
+	 public ModelAndView forbidden(Model model){
+	    return new ModelAndView("error500");
+	 }
+	 
 	 @PostMapping("/login")
      public @ResponseBody ModelAndView login(Admin adm, Model model,ServletRequest request)
      {

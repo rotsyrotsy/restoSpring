@@ -36,6 +36,7 @@ public class PlatService {
             hm.put("label", s[1]);
             hm.put("price", s[2]);
             hm.put("categorie", s[3]);
+            hm.put("image", s[4]);
             listehm.add(hm);
         }
         return listehm;

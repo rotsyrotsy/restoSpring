@@ -9,19 +9,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.transaction.support.TransactionTemplate;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
-
 import com.example.resto.order.OrderrRepository;
-import com.example.resto.order.OrderrService;
 import com.example.resto.plat.PlatService;
-import com.example.resto.serveur.Serveur;
-import com.example.resto.stock.StockService;
 
 
 @Service
@@ -144,6 +134,7 @@ public class DetailsOrderService {
             hm.put("idServeur", s[4]);	
             hm.put("date", s[5]);
             hm.put("prixVente", s[6]);
+            hm.put("image", s[7]);
             listehm.add(hm);
         }
  		return listehm;
@@ -154,7 +145,7 @@ public class DetailsOrderService {
 	   public void validerCommande(String idOrder) {
 		 System.out.println("IDORDEER: "+idOrder);
 	        try {
-	        	 entityManager.createNativeQuery("UPDATE detailsOrder SET etat='valide' where idOrder=?")
+	        	 entityManager.createNativeQuery("UPDATE detailsOrder SET etat='valide' where idOrder=? and etat is not null")
 	        	 .setParameter(1, idOrder)
 	             .executeUpdate(); 	
 	        	}
@@ -167,6 +158,7 @@ public class DetailsOrderService {
     
  	 @Transactional
      public void insertDetailsOrder(String idPlat, String idOrder) {
+ 		System.out.println("IDPLAT: "+idPlat+", IDORDER: "+idOrder);
  		String idServeur = ordServ.getIdServeurFromOrder(idOrder);
      try {
      	 entityManager.createNativeQuery("INSERT INTO detailsOrder VALUES (nextval('seqDetailsOrder'),?,?,now(),?,'non valide')")
@@ -227,7 +219,7 @@ public class DetailsOrderService {
     public void changeToEnPreparation(String idDetailOrder) {
     	System.out.println("IDDETTTTT: "+idDetailOrder);
          try {
-     	 entityManager.createNativeQuery("UPDATE detailsOrder SET etat = 'en preparation' WHERE id = ?")
+     	 entityManager.createNativeQuery("UPDATE detailsOrder SET etat = 'en preparation' WHERE id = ? etat is not null")
      	 .setParameter(1, idDetailOrder)
           .executeUpdate(); 	
      	}
@@ -238,7 +230,7 @@ public class DetailsOrderService {
     public void changeToPret(String idDetailOrder) {
     	
            try {
-     	 entityManager.createNativeQuery("UPDATE detailsOrder SET etat = 'pret' WHERE id = ?")
+     	 entityManager.createNativeQuery("UPDATE detailsOrder SET etat = 'pret' WHERE id = ? etat is not null")
      	 .setParameter(1, idDetailOrder)
           .executeUpdate(); 	
      	}
@@ -249,6 +241,16 @@ public class DetailsOrderService {
     	return repository.getIdPlat(idDetailOrder);
     	
     }
+    @Transactional
+	public void annulerCommande(String idDetailOrder) {
+    	try {
+        	 entityManager.createNativeQuery("UPDATE detailsOrder SET etat = null WHERE id = ? ")
+        	 .setParameter(1, idDetailOrder)
+             .executeUpdate(); 	
+        	}
+        catch(Exception e) {e.printStackTrace();}
+		
+	}
 
    
 }

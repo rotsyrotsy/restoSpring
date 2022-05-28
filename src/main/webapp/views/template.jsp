@@ -58,38 +58,25 @@
 					<div class="wrap_menu p-l-45 p-l-0-xl">
 						<nav class="menu">
 							<ul class="main_menu">
-
+							
+								
 								<li>
 									<a href="${baseURL}/plats">Menu</a>
 								</li>
 								
 								<li>
-									<a href="${baseURL}/tables">Commandes d'une table</a>
+									<a href="${baseURL}/tables">Prendre commande</a>
 								</li>
 								
 								<li>
-									<a href="${baseURL}/stock">Stock</a>
-								</li>
-
-								<li>
-									<a href="${baseURL}/detailsOrders/choixServeurPourboire">Pourboires</a>
-								</li>
-
-								<li>
-									<a href="${baseURL }/ingredients/choixDate">Consommation</a>
-								</li>
-
-								<li>
 									<a href="${baseURL }/order/additionNonPaye">Additions en cours</a>
 								</li>
-
-								<li>
-									<a href="${baseURL }/payement">Paie</a>
-								</li>
-
-								<li>
-									<a href="${baseURL }/plats/prix-plat-base">Prix de revient</a>
-								</li>
+								
+								<c:if test="${sessionScope.sessionOrder != null}">
+									<li>
+										<a href="${baseURL }/order/commandeEnCours">Commande en cours</a>
+									</li>
+								</c:if>
 								
 							</ul>
 						</nav>
