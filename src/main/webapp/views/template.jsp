@@ -68,6 +68,10 @@
 								</li>
 								
 								<li>
+									<a href="${baseURL}/livrer">Se faire livré</a>
+								</li>
+								
+								<li>
 									<a href="${baseURL }/order/additionNonPaye">Additions non payees</a>
 								</li>
 								
@@ -112,26 +116,16 @@
 					<a href="${baseURL}/plats">Menu</a>
 				</li>
 				<li>
-					<a href="${baseURL}/tables">Commandes d'une table</a>
+					<a href="${baseURL}/tables">Prendre commande</a>
 				</li>
 				<li>
-					<a href="${baseURL}/stock">Stock</a>
+					<a href="${baseURL }/order/additionNonPaye">Additions non payees</a>
 				</li>
+				<c:if test="${sessionScope.sessionOrder != null}">
 				<li>
-					<a href="${baseURL}/detailsOrders/choixServeurPourboire">Pourboires</a>
+					<a href="${baseURL }/order/commandeEnCours">Commande en cours</a>
 				</li>
-				<li>
-					<a href="${baseURL }/ingredients/choixDate">Consommation</a>
-				</li>
-				<li>
-					<a href="${baseURL }/order/additionNonPaye">Additions en cours</a>
-				</li>
-				<li>
-					<a href="${baseURL }/payement">Paie</a>
-				</li>
-				<li>
-					<a href="${baseURL }/plats/prix-plat-base">Prix de revient</a>
-				</li>
+				</c:if>
 			</ul>
 			<!-- Gallery -->
 			<div class="wrap-gallery-sidebar flex-w">

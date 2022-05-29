@@ -32,6 +32,10 @@ public interface OrderrRepository extends JpaRepository<Orderr,String>{
             		+ "            JOIN idtable t ON o.idtable = t.id where o.id=?1")
             List<Object[]> getOrderTableById(String idOrder);
 
+            @Query(nativeQuery = true, value ="SELECT o.id as idorder , o.daty,o.lieuLivraison \r\n"
+            		+ "          FROM orderr o\r\n"
+            		+ "          where o.id=?1")
+            List<Object[]> getOrderById(String idOrder);
 	
             
 

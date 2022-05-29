@@ -132,8 +132,7 @@
 		</div>
                    </c:if>
 			
-		
-		<c:if test="${sessionScope.sessionOrder != null}">
+		<c:if test="${sessionScope.sessionOrder != null && sessionScope.sessionOrder.lieuLivraison == null}">
 			<p>
 				Commande de la table ${sessionScope.sessionOrder.numero}
 			</p>
@@ -141,6 +140,16 @@
 				Date et heure: ${sessionScope.sessionOrder.date}
 			</p>
 		</c:if>
+		
+		<c:if test="${sessionScope.sessionOrder != null && sessionScope.sessionOrder.lieuLivraison != null}">
+			<p>
+				Commande de la livraison numero ${sessionScope.sessionOrder.idOrder}
+			</p>
+			<p style="font-size: 14px; color:grey;">
+				Date et heure: ${sessionScope.sessionOrder.date}
+			</p>
+		</c:if>
+		
 			<div class="row p-t-108 p-b-70">
 				<c:forEach items="${listPlat}" var ="plat">
 					<div class="col-md-8 col-lg-6 m-l-r-auto">

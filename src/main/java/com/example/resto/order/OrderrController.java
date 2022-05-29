@@ -92,6 +92,40 @@ public class OrderrController {
         return mv;
     }  
     
+    @PostMapping(path="/insertLivraison")
+    public ModelAndView ajoutLivraison(Model model,@RequestParam String lieuLivraison, 
+    		@RequestParam(required = false) String categorie
+    		,ServletRequest request) throws Exception{
+    	HashMap<String, Object> idOrder = service.insertOrderLivraison(lieuLivraison);
+        
+        
+    	ModelAndView mv = new ModelAndView("template");
+    	
+    	List<HashMap<String, Object>> listPlat = platservice.getAllPlats();
+		 
+		 if (categorie!=null ) {
+			 if (!categorie.isEmpty() && categorie.compareToIgnoreCase("tous")!=0) {
+					listPlat = platservice.getPlatByCategorie(categorie);
+					model.addAttribute("misyCat", 1);
+			 }
+		 }
+		 
+		 
+        List<Categorie> listCategorie = catService.getAllCategories();
+		model.addAttribute("listPlat", listPlat);
+	    model.addAttribute("listCategorie", listCategorie);
+	    
+        model.addAttribute("sessionOrder", idOrder);
+        
+		HttpServletRequest req = (HttpServletRequest) request;
+		HttpSession session = req.getSession();
+		session.setAttribute("sessionOrder", idOrder);
+        
+        
+        model.addAttribute("view", "menu");
+        return mv;
+    }  
+    
     @GetMapping()
     public ModelAndView getAddition(Model model,@RequestParam String idTable,ServletRequest request) throws Exception{
     

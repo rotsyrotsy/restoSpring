@@ -12,7 +12,12 @@
 
 
 	<section class="section-lunch bgwhite">
-		<h2>Table ${sessionScope.sessionOrder.numero} le  ${sessionScope.sessionOrder.date} </h2>
+		<c:if test="${sessionScope.sessionOrder != null && sessionScope.sessionOrder.lieuLivraison == null}">
+			<h2>Table ${sessionScope.sessionOrder.numero} le  ${sessionScope.sessionOrder.date} </h2>
+		</c:if>
+		<c:if test="${sessionScope.sessionOrder != null && sessionScope.sessionOrder.lieuLivraison != null}">
+			<h2>Livraison numero ${sessionScope.sessionOrder.idOrder} le  ${sessionScope.sessionOrder.date} </h2>
+		</c:if>
 		
 		<div class="container">
 			<div class="row">
@@ -89,7 +94,7 @@
 			<div class="row">
 			<div class="t-center">
 				<span class="tit2 t-center">
-					Commandes prêtent à être livrées
+					Commandes prêtes à être livrées
 				</span>
 			</div>
 				<c:forEach items="${pret}" var ="plat">

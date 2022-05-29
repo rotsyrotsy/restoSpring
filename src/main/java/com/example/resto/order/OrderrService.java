@@ -33,7 +33,7 @@ public class OrderrService {
     	String seq = orderRepository.getIdOrder();
     	HashMap<String, Object> hm = new HashMap<String, Object>();
     	try {
-    	 entityManager.createNativeQuery("INSERT INTO orderr VALUES (?,?,?,now())")
+    	 entityManager.createNativeQuery("INSERT INTO orderr VALUES (?,?,?,now(),null)")
     	 .setParameter(1, seq)
     	 .setParameter(2, idTable)
     	 .setParameter(3, idServeur)
@@ -55,6 +55,31 @@ public class OrderrService {
     	return hm;
     }
 
+    @Transactional
+    public HashMap<String, Object> insertOrderLivraison(String lieuLivraison) {
+    	
+    	String seq = orderRepository.getIdOrder();
+    	HashMap<String, Object> hm = new HashMap<String, Object>();
+    	try {
+    	 entityManager.createNativeQuery("INSERT INTO orderr VALUES (?,null,null,now(),null,null,?)")
+    	 .setParameter(1, seq)
+    	 .setParameter(2, lieuLivraison)
+    	 .executeUpdate();
+    	 
+    	 List<Object[]> liste = orderRepository.getOrderById(seq);
+    	 Object[] s = liste.get(0);
+
+         hm.put("idOrder", s[0]);
+         hm.put("date", Formattage.formateDate(s[1]));
+         hm.put("lieuLivraison", s[2]);
+    	
+    	}
+    catch(Exception e) {e.printStackTrace();}
+    	
+    	
+    	return hm;
+    }
+    
     public List<HashMap<String, Object>> getAdditionNonPaye() {
        	List<Object[]> liste = orderRepository.getAdditionNonPaye();
     	List<HashMap<String, Object>> listehm = new ArrayList<HashMap<String, Object>>();
