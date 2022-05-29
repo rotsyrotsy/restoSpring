@@ -119,6 +119,9 @@
 					<a href="${baseURL}/tables">Prendre commande</a>
 				</li>
 				<li>
+					<a href="${baseURL}/livrer">Se faire livre</a>
+				</li>
+				<li>
 					<a href="${baseURL }/order/additionNonPaye">Additions en cours</a>
 				</li>
 				<c:if test="${sessionScope.sessionOrder != null}">
@@ -176,7 +179,7 @@
 
 					<ul>
 						<li class="txt14">
-							10:00 AM - 11:00 PM
+							10:00 - 23:00 
 						</li>
 
 						<li class="txt14">

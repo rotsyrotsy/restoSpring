@@ -152,7 +152,7 @@
 		
 			<div class="row p-t-108 p-b-70">
 				<c:forEach items="${listPlat}" var ="plat">
-					<div class="col-md-8 col-lg-6 m-l-r-auto">
+					<div class="col-md-4 col-lg-4 ">
 					<!-- Block3 -->
 						<div class="blo3 flex-w flex-col-l-sm m-b-30">
 							<div class="pic-blo3 size20 bo-rad-10 hov-img-zoom m-r-28">

@@ -126,7 +126,7 @@
           <li>
 		        <a href="${baseURL }/ingredients/formAchatIngredient">
 		          <i class="bi bi-circle"></i>
-		          <span>Acheter Ingredients</span>
+		          <span>Achat</span>
 		        </a>
 		      </li>
         </ul>
