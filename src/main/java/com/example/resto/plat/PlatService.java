@@ -1,6 +1,5 @@
 package com.example.resto.plat;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -46,7 +45,7 @@ public class PlatService {
             Object[] s = (Object[]) liste.get(i);
             hm.put("id", s[0]);
             hm.put("label", s[1]);
-            hm.put("price",Formattage.formatePrice( s[2]));
+            hm.put("price",Formattage.formatePrice(s[2]));
             hm.put("categorie", s[3]);
             hm.put("image", s[4]);
             hm.put("ruptureDeStock", 0);
@@ -130,7 +129,7 @@ public class PlatService {
 
             hm.put("idPlat", platIng[0]);
             hm.put("label", platIng[1]);
-            hm.put("quantity",platIng[2]);
+            hm.put("quantity",Formattage.formatDecimale(platIng[2]));
             hm.put("unite", platIng[3]);
             hm.put("nomIngredient", platIng[4]);
             listehm.add(hm);
@@ -147,7 +146,7 @@ public class PlatService {
 
             hm.put("idPlat", platIng[0]);
             hm.put("label", platIng[1]);
-            hm.put("quantity",platIng[2]);
+            hm.put("quantity", Formattage.formatDecimale(platIng[2]));
             hm.put("unite", platIng[3]);
             hm.put("nomIngredient", platIng[4]);
             hm.put("idIngredient", platIng[5]);

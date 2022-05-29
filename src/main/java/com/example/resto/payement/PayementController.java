@@ -1,11 +1,8 @@
 package com.example.resto.payement;
 
-import com.example.resto.categorie.Categorie;
 import com.example.resto.controlle.Controle;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -75,13 +72,13 @@ public class PayementController {
 		double sumEspece = service.sumPayement(espece);
 		double sumCheque = service.sumPayement(cheque);
 
-		model.addAttribute("date1",date1);
-		model.addAttribute("date2",date2);
-		model.addAttribute("sumEspece",Formattage.formatePrice(sumEspece));
-		model.addAttribute("sumCheque",Formattage.formatePrice(sumCheque));
+		model.addAttribute("date1",Formattage.formateDate(date1));
+		model.addAttribute("date2",Formattage.formateDate(date2));
+		model.addAttribute("sumEspece",Formattage.formatePrice(Formattage.formatDecimale(sumEspece)));
+		model.addAttribute("sumCheque",Formattage.formatePrice(Formattage.formatDecimale(sumCheque)));
 		model.addAttribute("cheque",cheque);
 		model.addAttribute("espece",espece);
-		model.addAttribute("sumTotal",Formattage.formatePrice(sumEspece+sumCheque));
+		model.addAttribute("sumTotal",Formattage.formatePrice(Formattage.formatDecimale(sumEspece+sumCheque)));
 		model.addAttribute("view","bo_resultPayement");
 				return new ModelAndView("back/bo_template");
 	}

@@ -35,4 +35,7 @@ public class Formattage {
 		return mediumDateFormat.format(date);
 	
 	}
+	public static Double formatDecimale(Object nb) {
+		return (double) Math.round((Double)nb * 100) / 100; 
+	}
 }

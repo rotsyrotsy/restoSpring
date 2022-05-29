@@ -51,13 +51,13 @@ public class IngredientController {
 		Double sum = 0.0;
 		for(int i=0; i<liste.size(); i++) {
 			HashMap<String,Object> temp = liste.get(i);
-			sum += (Double)temp.get("prixTotal");
+			sum += (Double)temp.get("pt");
 		}
 
-		model.addAttribute("sumPrix", Formattage.formatePrice(sum));
+		model.addAttribute("sumPrix", Formattage.formatePrice(Formattage.formatDecimale(sum)));
 		model.addAttribute("listIngredient", liste);
-		model.addAttribute("date1",date1);
-		model.addAttribute("date2",date2);
+		model.addAttribute("date1",Formattage.formateDate(date1) );
+		model.addAttribute("date2",Formattage.formateDate(date2));
 		model.addAttribute("view", "bo_resultConsomIngredient");
 		return new ModelAndView("back/bo_template");
 	}

@@ -12,6 +12,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.resto.formattage.Formattage;
 import com.example.resto.marge.MargeService;
 import com.example.resto.plat.PlatRepository;
 import com.example.resto.plat.PlatService;
@@ -41,7 +42,7 @@ public class StockService {
             hm.put("id", platRestant[0]);
             hm.put("nomIngredient", platRestant[1]);
             hm.put("unite", platRestant[2]);
-            hm.put("qte",platRestant[3]);
+            hm.put("qte", Formattage.formatDecimale(platRestant[3]));
             listehm.add(hm);
         }
         return listehm;

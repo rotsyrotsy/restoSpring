@@ -17,7 +17,7 @@
 
 	<div>
 		<p>${message }</p>
-	    <h1>Payement entre ${date1 } et ${date2 }</h1>
+	    <h3>Payement entre ${date1 } et ${date2 }</h3>
 	</div>
 	
     <section class="section">
@@ -86,7 +86,7 @@
 
         </div>
       </div>  
-      <h2>Somme total des payements: ${sumTotal} Ar</h2>
+      <h3>Somme total des payements: ${sumTotal} Ar</h3>
     </section>
 	
 	

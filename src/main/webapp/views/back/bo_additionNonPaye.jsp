@@ -35,7 +35,7 @@
 	                  <th scope="col" data-sortable="" style="width: 10%;">
 	                  <a href="#" class="dataTable-sorter">#</a></th>
 	                  <th scope="col" data-sortable="" style="width: 18%;">
-	                  <a href="#" class="dataTable-sorter">Table</a></th>
+	                  <a href="#" class="dataTable-sorter">Destination</a></th>
 	                  <th scope="col" data-sortable="" style="width: 18%;">
 	                  <a href="#" class="dataTable-sorter">Date</a></th>
 	                  <th scope="col" data-sortable="" style="width: 18%;">

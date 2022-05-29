@@ -30,11 +30,6 @@ public class PayementService {
     }
 	
 	public List<Payement> findBetween(Date d1, Date d2){
-		List<Payement> list = repository.findBetween(d1, d2);
-		for(Payement p : list)
-		{
-			p.setIdOrder(Formattage.formatePrice(p.getValeur()));
-		}
 		return repository.findBetween(d1, d2);
 	}
 	

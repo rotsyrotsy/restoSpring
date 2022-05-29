@@ -76,7 +76,7 @@ public class DetailsOrderController {
             HashMap<String, Object> temp = liste.get(i);
             sum += (Double) temp.get("pourcentage");
         }
-        model.addAttribute("sum", sum);
+        model.addAttribute("sum", Formattage.formatePrice(Formattage.formatDecimale(sum)));
         model.addAttribute("listOrder", liste);
         model.addAttribute("view", "bo_resultPourboire");
         return new ModelAndView("back/bo_template");

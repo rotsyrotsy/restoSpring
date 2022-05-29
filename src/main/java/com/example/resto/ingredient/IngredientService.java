@@ -42,10 +42,11 @@ public class IngredientService {
             Object[] s = (Object[]) liste.get(i);
             
             hm.put("label", s[0]);	
-            hm.put("quantite", s[1]);	
+            hm.put("quantite", Formattage.formatDecimale(s[1]));	
             hm.put("unite", s[2]);	
-            hm.put("pu", Formattage.formatePrice(s[3]));		
-            hm.put("prixTotal", s[4]);			
+            hm.put("pu", Formattage.formatePrice(Formattage.formatDecimale(s[3])));		
+            hm.put("prixTotal", Formattage.formatePrice(Formattage.formatDecimale(s[4])));	
+            hm.put("pt", s[4]);			
             listehm.add(hm);
         }
  		return listehm;

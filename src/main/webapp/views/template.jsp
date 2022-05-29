@@ -68,7 +68,7 @@
 								</li>
 								
 								<li>
-									<a href="${baseURL}/livrer">Se faire livré</a>
+									<a href="${baseURL}/livrer">Se faire livre</a>
 								</li>
 								
 								<li>

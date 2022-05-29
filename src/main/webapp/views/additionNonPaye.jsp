@@ -24,7 +24,7 @@
 		        <thead>
 		            <tr>
 		                <th>#</th>
-		                <th>Table</th>
+		                <th>Destination</th>
 		                <th>Date</th>
 		                <th>Montant total (Ar)</th>
 		                <th>Déja payé (Ar)</th>
@@ -50,6 +50,14 @@
 </div>
 
 <c:if test="${sessionScope.sessionOrder != null}">
+
+<c:if test="${addition.size()==0}">
+	<div class="alert alert-success" role="alert">
+	  Vous avez payer la totalité de votre commande, nous vous remercions.
+	</div>
+</c:if>
+
+<c:if test="${addition.size()>0}">
 <div class="container">
 			<div class="row">
 				<div class="col-lg-12 p-b-30">
@@ -110,5 +118,6 @@
 			</div>
 
 		</div>
+</c:if>
 </c:if>
 
