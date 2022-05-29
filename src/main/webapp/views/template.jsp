@@ -68,11 +68,11 @@
 								</li>
 								
 								<li>
-									<a href="${baseURL}/livrer">Se faire livr�</a>
+									<a href="${baseURL}/livrer">Se faire livré</a>
 								</li>
 								
 								<li>
-									<a href="${baseURL }/order/additionNonPaye">Additions non payees</a>
+									<a href="${baseURL }/order/additionNonPaye">Additions en cours</a>
 								</li>
 								
 								<c:if test="${sessionScope.sessionOrder != null}">
@@ -119,12 +119,12 @@
 					<a href="${baseURL}/tables">Prendre commande</a>
 				</li>
 				<li>
-					<a href="${baseURL }/order/additionNonPaye">Additions non payees</a>
+					<a href="${baseURL }/order/additionNonPaye">Additions en cours</a>
 				</li>
 				<c:if test="${sessionScope.sessionOrder != null}">
-				<li>
-					<a href="${baseURL }/order/commandeEnCours">Commande en cours</a>
-				</li>
+					<li>
+						<a href="${baseURL }/order/commandeEnCours">Commande en cours</a>
+					</li>
 				</c:if>
 			</ul>
 			<!-- Gallery -->
@@ -176,7 +176,7 @@
 
 					<ul>
 						<li class="txt14">
-							10:00 AM à 11:00 PM
+							10:00 AM - 11:00 PM
 						</li>
 
 						<li class="txt14">

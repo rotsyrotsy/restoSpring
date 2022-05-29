@@ -26,9 +26,6 @@ public class StockController {
 	
 	  @GetMapping
 		public ModelAndView stockRestant(Model model,ServletRequest request){
-			if (!Controle.isAdmin(request)) {
-				return new ModelAndView("error500");
-			}
 		  List<HashMap<String, Object>> ingredients = service.getAllStockRestant();
 		    model.addAttribute("ingredients", ingredients);
 		    model.addAttribute("view", "bo_stock");
