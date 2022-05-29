@@ -93,6 +93,8 @@ public class OrderrService {
             hm.put("dejapayer", Formattage.formatePrice((Double)s[2]));	
             hm.put("restant", Formattage.formatePrice((Double)s[3]));
             hm.put("numero", s[4]);	
+            hm.put("idorder", s[5]);	
+            hm.put("lieulivraison", s[6]);	
             listehm.add(hm);
         }
  		return listehm;
