@@ -6,7 +6,7 @@
 
 
     <div class="pagetitle">
-      <h1>Liste des additions non payés</h1>
+      <h1>Liste des additions non payées</h1>
       
     </div><!-- End Page Title -->
 
@@ -16,7 +16,7 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Les commandes non encore payés</h5>
+              <h5 class="card-title">Les commandes non encore payées</h5>
 
               <!-- Table with stripped rows -->
               <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
