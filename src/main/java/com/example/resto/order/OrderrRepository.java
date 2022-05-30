@@ -44,8 +44,6 @@ public interface OrderrRepository extends JpaRepository<Orderr,String>{
             		+ "          where o.id=?1")
             List<Object[]> getOrderById(String idOrder);
 	
-            
-
             @Query(nativeQuery = true, value ="select * from affichageEtatCommande where idorder =?1 and etat='non valide'")
             List<Object[]> commandeEnCoursParOrder(String idOrder);
             
