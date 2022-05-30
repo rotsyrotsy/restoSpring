@@ -19,7 +19,7 @@
 	</c:if>
     <form class="flex-c-m flex-w flex-col-c-m-lg p-l-5 p-r-5" action="${baseURL}/order" method="get">
         <span class="txt5 m-10">
-            Avoir l'addition d'une table
+            Reprendre la commande d'une table
         </span>
 
         <div class="wrap-input-signup size17 bo2 bo-rad-10 bgwhite pos-relative txt10 m-10">
@@ -48,7 +48,7 @@
     
     <form class="flex-c-m flex-w flex-col-c-m-lg p-l-7 p-r-7" action="${baseURL}/order/insert" method="post">
         <span class="txt5 m-10">
-            Faire la commande d'une table
+            Prendre une nouvelle commande
         </span>
 		<div class="row">
 	        <div class="col-md-5">

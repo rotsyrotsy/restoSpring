@@ -20,19 +20,19 @@ public interface OrderrRepository extends JpaRepository<Orderr,String>{
 	@Query(nativeQuery = true, value ="select idServeur from orderr where id=?1")
 	String getIdServeurFromOrder(String idOrder);
 
-        @Query(nativeQuery = true, value ="select * from additionnonpayesurcarte where restant>0")
+       /* @Query(nativeQuery = true, value ="select * from additionnonpayesurcarte where restant>0")
         List<Object[]> getAdditionNonPaye();
         
 
         @Query(nativeQuery = true, value ="select * from additionnonpayesurcarte where idorder=?1 and restant>0")
-        List<Object[]> getAdditionByOrder(String idOrder);
+        List<Object[]> getAdditionByOrder(String idOrder);*/
         
-        /*@Query(nativeQuery = true, value ="select * from additionNonPaye where restant>0")
+        @Query(nativeQuery = true, value ="select * from additionNonPaye where restant>0")
         List<Object[]> getAdditionNonPaye();
         
 
         @Query(nativeQuery = true, value ="select * from additionNonPaye where idorder=?1 and restant>0")
-        List<Object[]> getAdditionByOrder(String idOrder);*/
+        List<Object[]> getAdditionByOrder(String idOrder);
         
             @Query(nativeQuery = true, value ="SELECT o.id as idorder, o.idserveur , o.daty, t.id as idtable , t.numero \r\n"
             		+ "          FROM orderr o\r\n"

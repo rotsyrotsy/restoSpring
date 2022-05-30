@@ -169,11 +169,10 @@ public class PlatService {
         @Transactional
         public void insertWithQuery(Plat s) {
         try {
-        	 entityManager.createNativeQuery("INSERT INTO plat VALUES ('P' || nextval('seqplat'),?,?,?,?)")
+        	 entityManager.createNativeQuery("INSERT INTO plat VALUES ('P' || nextval('seqplat'),?,?,null,?)")
         	 .setParameter(1, s.getIdCategorie())
         	 .setParameter(2, s.getLabel())
-             .setParameter(3, s.getPrice())
-             .setParameter(4, s.getImage())
+             .setParameter(3, s.getImage())
              .executeUpdate(); 	
         	}
         catch(Exception e) {e.printStackTrace();}

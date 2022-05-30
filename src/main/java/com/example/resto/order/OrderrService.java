@@ -92,11 +92,7 @@ public class OrderrService {
             hm.put("total", Formattage.formatePrice((Double)s[1]));	
             hm.put("dejapayer", Formattage.formatePrice((Double)s[2]));	
             hm.put("restant", Formattage.formatePrice((Double)s[3]));
-            if (s[4]!=null) {
-            	hm.put("numero", "Table "+ s[4].toString() );
-            }else {
-            	hm.put("numero", s[6]);
-            }
+            hm.put("numero", s[4]);
             hm.put("idorder", s[5]);		
             listehm.add(hm);
         }
@@ -116,11 +112,7 @@ public class OrderrService {
             hm.put("total", Formattage.formatePrice((Double)s[1]));	
             hm.put("dejapayer", Formattage.formatePrice((Double)s[2]));	
             hm.put("restant", Formattage.formatePrice((Double)s[3]));
-            if (s[4]!=null) {
-            	hm.put("numero", "Table "+ s[4].toString() );
-            }else {
-            	hm.put("numero", s[6]);
-            }
+            hm.put("numero", s[4] );
             hm.put("idorder", s[5]);		
             listehm.add(hm);
         }

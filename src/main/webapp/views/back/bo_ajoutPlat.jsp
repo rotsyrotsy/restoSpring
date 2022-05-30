@@ -45,12 +45,6 @@
                   </div>
                 </div>
                 <div class="row mb-3">
-                  <label for="inputNumber" class="col-sm-2 col-form-label">Prix</label>
-                  <div class="col-sm-10">
-                    <input type="number" name="price" class="form-control">
-                  </div>
-                </div>
-                <div class="row mb-3">
                   <label for="inputNumber" class="col-sm-2 col-form-label">Image</label>
                   <div class="col-sm-10">
                     <input class="form-control" type="file" name="photo" id="formFile" accept="image/png, image/jpeg, image/jpg">

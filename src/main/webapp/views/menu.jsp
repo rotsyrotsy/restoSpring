@@ -9,20 +9,39 @@
 			<div class="slick1">
 				<div class="item-slick1 item1-slick1" style="background-image: url(${baseURL}/views/images/slide1-01.jpg);">
 					<div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
-						<span class="caption1-slide1 txt1 t-center animated visible-false m-b-15" data-appear="fadeInDown">
-							Bienvenue chez
-						</span>
-
-						<h2 class="caption2-slide1 tit1 t-center animated visible-false m-b-37" data-appear="fadeInUp">
-							Pato 
-						</h2>
-
-						<div class="wrap-btn-slide1 animated visible-false" data-appear="zoomIn">
-							<!-- Button1 -->
-							<a href="#" class="btn1 flex-c-m size1 txt3 trans-0-4">
-								 Menu
-							</a>
-						</div>
+						<c:if test="${sessionScope.sessionOrder == null }">
+							<span class="caption1-slide1 txt1 t-center animated visible-false m-b-15" data-appear="fadeInDown">
+								Bienvenue chez
+							</span>
+	
+							<h2 class="caption2-slide1 tit1 t-center animated visible-false m-b-37" data-appear="fadeInUp">
+								Pato 
+							</h2>
+	
+							<div class="wrap-btn-slide1 animated visible-false" data-appear="zoomIn">
+								<!-- Button1 -->
+								<a href="#" class="btn1 flex-c-m size1 txt3 trans-0-4">
+									 Menu
+								</a>
+							</div>
+						</c:if>
+						<c:if test="${sessionScope.sessionOrder != null && sessionScope.sessionOrder.lieuLivraison == null}">
+							<span class="caption1-slide1 txt1 t-center animated visible-false m-b-15" data-appear="fadeInDown">
+								Commande de la table ${sessionScope.sessionOrder.numero}
+							</span>
+							<p style="font-size: 20px; color:white;">
+								Date et heure: ${sessionScope.sessionOrder.date}
+							</p>
+						</c:if>
+						
+						<c:if test="${sessionScope.sessionOrder != null && sessionScope.sessionOrder.lieuLivraison != null}">
+							<span class="caption1-slide1 txt1 t-center animated visible-false m-b-15" data-appear="fadeInDown">
+								Commande de la livraison numero ${sessionScope.sessionOrder.idOrder}
+							</span>
+							<p style="font-size: 20px; color:white;">
+								Date et heure: ${sessionScope.sessionOrder.date}
+							</p>
+						</c:if>
 					</div>
 				</div>
 
@@ -132,23 +151,7 @@
 		</div>
                    </c:if>
 			
-		<c:if test="${sessionScope.sessionOrder != null && sessionScope.sessionOrder.lieuLivraison == null}">
-			<p>
-				Commande de la table ${sessionScope.sessionOrder.numero}
-			</p>
-			<p style="font-size: 14px; color:grey;">
-				Date et heure: ${sessionScope.sessionOrder.date}
-			</p>
-		</c:if>
 		
-		<c:if test="${sessionScope.sessionOrder != null && sessionScope.sessionOrder.lieuLivraison != null}">
-			<p>
-				Commande de la livraison numero ${sessionScope.sessionOrder.idOrder}
-			</p>
-			<p style="font-size: 14px; color:grey;">
-				Date et heure: ${sessionScope.sessionOrder.date}
-			</p>
-		</c:if>
 		
 			<div class="row p-t-108 p-b-70">
 				<c:forEach items="${listPlat}" var ="plat">
@@ -156,7 +159,9 @@
 					<!-- Block3 -->
 						<div class="blo3 flex-w flex-col-l-sm m-b-30">
 							<div class="pic-blo3 size20 bo-rad-10 hov-img-zoom m-r-28">
-								<a href="#"><img src="${baseURL}/views/images/${plat.image}" alt="IMG-MENU"></a>
+								<a class="wrap-pic-w" href="${baseURL}/views/images/${plat.image}" data-lightbox="gallery-footer">
+									<img src="${baseURL}/views/images/${plat.image}" alt="IMG-MENU">
+								</a>
 							</div>
 	
 							<div class="text-blo3 size21 flex-col-l-m">
@@ -173,7 +178,7 @@
 								</span>
 								
 								<c:if test="${plat.ruptureDeStock == 1}">
-									<span class="txt22 m-t-20 text-danger font-weight-bold" >
+									<span class="txt21  m-b-3 text-danger font-weight-bold" >
 										En rupture de stock
 									</span>
 								</c:if>
@@ -181,7 +186,7 @@
 								
 							</div>
 							<c:if test="${sessionScope.sessionOrder != null}">
-								<a href="${baseURL}/detailsOrders/insert?idPlat=${plat.id}"  class="btn3 flex-c-m size18 txt11 trans-0-4 m-10">
+								<a href="${baseURL}/detailsOrders/insert?idPlat=${plat.id}"  class="btn3 flex-c-m size18 txt11 trans-0-4 m-10" >
 	                                  Commander
 	                            </a>
 	                        </c:if>

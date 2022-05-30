@@ -46,7 +46,8 @@ public class DetailsOrderService {
             hm.put("idOrder", s[1]);	//idOrder
             hm.put("idServeur", s[2]);	//idServeur
             hm.put("date", Formattage.formateDate(s[3]));		//date
-            hm.put("pourcentage", s[4]);	//pourboire
+            hm.put("pourcentage", Formattage.formatePrice(Formattage.formatDecimale(s[4])));	//pourboire
+            hm.put("pourc", s[4]);
             listehm.add(hm);
         }
  		return listehm;

@@ -5,28 +5,29 @@
 <c:set var="baseURL" value="${scheme}://${serverName}:${serverPort}"/>
 	<!-- Title Page -->
 	<section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url(${baseURL}/views/images/bg-title-page-02.jpg);">
-		<h2 class="tit6 t-center">
-			Commande en cours
-		</h2>
+		<c:if test="${sessionScope.sessionOrder != null && sessionScope.sessionOrder.lieuLivraison == null}">
+			<h2 class="tit6 t-center">Table ${sessionScope.sessionOrder.numero} le  ${sessionScope.sessionOrder.date} </h2>
+		</c:if>
+		<c:if test="${sessionScope.sessionOrder != null && sessionScope.sessionOrder.lieuLivraison != null}">
+			<h2 class="tit6 t-center">Livraison numero ${sessionScope.sessionOrder.idOrder} le  ${sessionScope.sessionOrder.date} </h2>
+		</c:if>
 	</section>
 
 
 	<section class="section-lunch bgwhite">
-		<c:if test="${sessionScope.sessionOrder != null && sessionScope.sessionOrder.lieuLivraison == null}">
-			<h2>Table ${sessionScope.sessionOrder.numero} le  ${sessionScope.sessionOrder.date} </h2>
-		</c:if>
-		<c:if test="${sessionScope.sessionOrder != null && sessionScope.sessionOrder.lieuLivraison != null}">
-			<h2>Livraison numero ${sessionScope.sessionOrder.idOrder} le  ${sessionScope.sessionOrder.date} </h2>
-		</c:if>
+		
 		
 		<div class="container">
 			<div class="row">
-			<div class="t-center">
-				<span class="tit2 t-center">
-					Commandes non encore validées
-				</span>
-			</div>
-				<c:forEach items="${nonvalide}" var ="plat">
+			
+				<c:forEach items="${nonvalide}" var ="plat" varStatus="i">
+				<c:if test="${i.index == 0}">
+					<div class="t-center">
+						<span class="tit2 t-center">
+							Commandes non encore validées
+						</span>
+					</div>
+				</c:if>
 					<div class="col-md-4 col-lg-4 ">
 					<!-- Block3 -->
 						<div class="blo3 flex-w flex-col-l-sm m-b-30">
@@ -63,12 +64,14 @@
 				</hr>
 			
 			<div class="row">
-			<div class="t-center">
-				<span class="tit2 t-center">
-					Commandes validées et en attente de livraison
-				</span>
-			</div>
-				<c:forEach items="${valide}" var ="plat">
+				<c:forEach items="${valide}" var ="plat" varStatus="i">
+				<c:if test="${i.index == 0}">
+					<div class="t-center">
+						<span class="tit2 t-center">
+							Commandes validées et en attente de livraison
+						</span>
+					</div>
+				</c:if>
 					<div class="col-md-8 col-lg-6 m-l-r-auto">
 					<!-- Block3 -->
 						<div class="blo3 flex-w flex-col-l-sm m-b-30">
@@ -92,12 +95,15 @@
 			</div>
 			</hr>
 			<div class="row">
-			<div class="t-center">
-				<span class="tit2 t-center">
-					Commandes prêtes à être livrées
-				</span>
-			</div>
-				<c:forEach items="${pret}" var ="plat">
+			
+				<c:forEach items="${pret}" var ="plat" varStatus="i">
+				<c:if test="${i.index == 0}">
+					<div class="t-center">
+						<span class="tit2 t-center">
+							Commandes prêtes à être livrées
+						</span>
+					</div>
+				</c:if>
 					<div class="col-md-8 col-lg-6 m-l-r-auto">
 					<!-- Block3 -->
 						<div class="blo3 flex-w flex-col-l-sm m-b-30">
